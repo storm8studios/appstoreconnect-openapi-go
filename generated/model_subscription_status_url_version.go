@@ -20,8 +20,6 @@ type SubscriptionStatusUrlVersion string
 
 // List of SubscriptionStatusUrlVersion
 const (
-	SUBSCRIPTIONSTATUSURLVERSION_V1 SubscriptionStatusUrlVersion = "V1"
-	SUBSCRIPTIONSTATUSURLVERSION_V2 SubscriptionStatusUrlVersion = "V2"
 	SUBSCRIPTIONSTATUSURLVERSION_V1 SubscriptionStatusUrlVersion = "v1"
 	SUBSCRIPTIONSTATUSURLVERSION_V2 SubscriptionStatusUrlVersion = "v2"
 )

@@ -16,28 +16,55 @@ Method | HTTP request | Description
 
 ## ProfilesBundleIdGetToOneRelated
 
-> BundleIdResponse ProfilesBundleIdGetToOneRelated(ctx, id, optional)
+> BundleIdResponse ProfilesBundleIdGetToOneRelated(ctx, id).FieldsBundleIds(fieldsBundleIds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBundleIds := []string{"FieldsBundleIds_example"} // []string | the fields to include for returned resources of type bundleIds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfilesApi.ProfilesBundleIdGetToOneRelated(context.Background(), id).FieldsBundleIds(fieldsBundleIds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfilesApi.ProfilesBundleIdGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProfilesBundleIdGetToOneRelated`: BundleIdResponse
+    fmt.Fprintf(os.Stdout, "Response from `ProfilesApi.ProfilesBundleIdGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***ProfilesBundleIdGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a ProfilesBundleIdGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiProfilesBundleIdGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBundleIds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIds | 
+ **fieldsBundleIds** | **[]string** | the fields to include for returned resources of type bundleIds | 
 
 ### Return type
 
@@ -59,29 +86,57 @@ Name | Type | Description  | Notes
 
 ## ProfilesCertificatesGetToManyRelated
 
-> CertificatesResponse ProfilesCertificatesGetToManyRelated(ctx, id, optional)
+> CertificatesResponse ProfilesCertificatesGetToManyRelated(ctx, id).FieldsCertificates(fieldsCertificates).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsCertificates := []string{"FieldsCertificates_example"} // []string | the fields to include for returned resources of type certificates (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfilesApi.ProfilesCertificatesGetToManyRelated(context.Background(), id).FieldsCertificates(fieldsCertificates).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfilesApi.ProfilesCertificatesGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProfilesCertificatesGetToManyRelated`: CertificatesResponse
+    fmt.Fprintf(os.Stdout, "Response from `ProfilesApi.ProfilesCertificatesGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***ProfilesCertificatesGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a ProfilesCertificatesGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiProfilesCertificatesGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsCertificates** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type certificates | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsCertificates** | **[]string** | the fields to include for returned resources of type certificates | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -103,17 +158,49 @@ Name | Type | Description  | Notes
 
 ## ProfilesCreateInstance
 
-> ProfileResponse ProfilesCreateInstance(ctx, profileCreateRequest)
+> ProfileResponse ProfilesCreateInstance(ctx).ProfileCreateRequest(profileCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    profileCreateRequest := *openapiclient.NewProfileCreateRequest(*openapiclient.NewProfileCreateRequestData("Type_example", *openapiclient.NewProfileCreateRequestDataAttributes("Name_example", "ProfileType_example"), *openapiclient.NewProfileCreateRequestDataRelationships(*openapiclient.NewBundleIdCapabilityCreateRequestDataRelationshipsBundleId(*openapiclient.NewBundleIdCapabilityCreateRequestDataRelationshipsBundleIdData("Type_example", "Id_example")), *openapiclient.NewProfileCreateRequestDataRelationshipsCertificates([]openapiclient.ProfileRelationshipsCertificatesDataInner{*openapiclient.NewProfileRelationshipsCertificatesDataInner("Type_example", "Id_example")})))) // ProfileCreateRequest | Profile representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfilesApi.ProfilesCreateInstance(context.Background()).ProfileCreateRequest(profileCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfilesApi.ProfilesCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProfilesCreateInstance`: ProfileResponse
+    fmt.Fprintf(os.Stdout, "Response from `ProfilesApi.ProfilesCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProfilesCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**profileCreateRequest** | [**ProfileCreateRequest**](ProfileCreateRequest.md)| Profile representation | 
+ **profileCreateRequest** | [**ProfileCreateRequest**](ProfileCreateRequest.md) | Profile representation | 
 
 ### Return type
 
@@ -135,17 +222,51 @@ Name | Type | Description  | Notes
 
 ## ProfilesDeleteInstance
 
-> ProfilesDeleteInstance(ctx, id)
+> ProfilesDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ProfilesApi.ProfilesDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfilesApi.ProfilesDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProfilesDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -167,29 +288,57 @@ Name | Type | Description  | Notes
 
 ## ProfilesDevicesGetToManyRelated
 
-> DevicesResponse ProfilesDevicesGetToManyRelated(ctx, id, optional)
+> DevicesResponse ProfilesDevicesGetToManyRelated(ctx, id).FieldsDevices(fieldsDevices).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsDevices := []string{"FieldsDevices_example"} // []string | the fields to include for returned resources of type devices (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfilesApi.ProfilesDevicesGetToManyRelated(context.Background(), id).FieldsDevices(fieldsDevices).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfilesApi.ProfilesDevicesGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProfilesDevicesGetToManyRelated`: DevicesResponse
+    fmt.Fprintf(os.Stdout, "Response from `ProfilesApi.ProfilesDevicesGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***ProfilesDevicesGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a ProfilesDevicesGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiProfilesDevicesGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsDevices** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type devices | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsDevices** | **[]string** | the fields to include for returned resources of type devices | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -211,38 +360,73 @@ Name | Type | Description  | Notes
 
 ## ProfilesGetCollection
 
-> ProfilesResponse ProfilesGetCollection(ctx, optional)
+> ProfilesResponse ProfilesGetCollection(ctx).FilterName(filterName).FilterProfileState(filterProfileState).FilterProfileType(filterProfileType).FilterId(filterId).Sort(sort).FieldsProfiles(fieldsProfiles).Limit(limit).Include(include).FieldsCertificates(fieldsCertificates).FieldsDevices(fieldsDevices).FieldsBundleIds(fieldsBundleIds).LimitCertificates(limitCertificates).LimitDevices(limitDevices).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterName := []string{"Inner_example"} // []string | filter by attribute 'name' (optional)
+    filterProfileState := []string{"FilterProfileState_example"} // []string | filter by attribute 'profileState' (optional)
+    filterProfileType := []string{"FilterProfileType_example"} // []string | filter by attribute 'profileType' (optional)
+    filterId := []string{"Inner_example"} // []string | filter by id(s) (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsProfiles := []string{"FieldsProfiles_example"} // []string | the fields to include for returned resources of type profiles (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsCertificates := []string{"FieldsCertificates_example"} // []string | the fields to include for returned resources of type certificates (optional)
+    fieldsDevices := []string{"FieldsDevices_example"} // []string | the fields to include for returned resources of type devices (optional)
+    fieldsBundleIds := []string{"FieldsBundleIds_example"} // []string | the fields to include for returned resources of type bundleIds (optional)
+    limitCertificates := int32(56) // int32 | maximum number of related certificates returned (when they are included) (optional)
+    limitDevices := int32(56) // int32 | maximum number of related devices returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfilesApi.ProfilesGetCollection(context.Background()).FilterName(filterName).FilterProfileState(filterProfileState).FilterProfileType(filterProfileType).FilterId(filterId).Sort(sort).FieldsProfiles(fieldsProfiles).Limit(limit).Include(include).FieldsCertificates(fieldsCertificates).FieldsDevices(fieldsDevices).FieldsBundleIds(fieldsBundleIds).LimitCertificates(limitCertificates).LimitDevices(limitDevices).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfilesApi.ProfilesGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProfilesGetCollection`: ProfilesResponse
+    fmt.Fprintf(os.Stdout, "Response from `ProfilesApi.ProfilesGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProfilesGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ProfilesGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ProfilesGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterName** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;name&#39; | 
- **filterProfileState** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;profileState&#39; | 
- **filterProfileType** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;profileType&#39; | 
- **filterId** | [**optional.Interface of []string**](string.md)| filter by id(s) | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsProfiles** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type profiles | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsCertificates** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type certificates | 
- **fieldsDevices** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type devices | 
- **fieldsBundleIds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIds | 
- **limitCertificates** | **optional.Int32**| maximum number of related certificates returned (when they are included) | 
- **limitDevices** | **optional.Int32**| maximum number of related devices returned (when they are included) | 
+ **filterName** | **[]string** | filter by attribute &#39;name&#39; | 
+ **filterProfileState** | **[]string** | filter by attribute &#39;profileState&#39; | 
+ **filterProfileType** | **[]string** | filter by attribute &#39;profileType&#39; | 
+ **filterId** | **[]string** | filter by id(s) | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsProfiles** | **[]string** | the fields to include for returned resources of type profiles | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsCertificates** | **[]string** | the fields to include for returned resources of type certificates | 
+ **fieldsDevices** | **[]string** | the fields to include for returned resources of type devices | 
+ **fieldsBundleIds** | **[]string** | the fields to include for returned resources of type bundleIds | 
+ **limitCertificates** | **int32** | maximum number of related certificates returned (when they are included) | 
+ **limitDevices** | **int32** | maximum number of related devices returned (when they are included) | 
 
 ### Return type
 
@@ -264,34 +448,67 @@ Name | Type | Description  | Notes
 
 ## ProfilesGetInstance
 
-> ProfileResponse ProfilesGetInstance(ctx, id, optional)
+> ProfileResponse ProfilesGetInstance(ctx, id).FieldsProfiles(fieldsProfiles).Include(include).FieldsCertificates(fieldsCertificates).FieldsDevices(fieldsDevices).FieldsBundleIds(fieldsBundleIds).LimitCertificates(limitCertificates).LimitDevices(limitDevices).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsProfiles := []string{"FieldsProfiles_example"} // []string | the fields to include for returned resources of type profiles (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsCertificates := []string{"FieldsCertificates_example"} // []string | the fields to include for returned resources of type certificates (optional)
+    fieldsDevices := []string{"FieldsDevices_example"} // []string | the fields to include for returned resources of type devices (optional)
+    fieldsBundleIds := []string{"FieldsBundleIds_example"} // []string | the fields to include for returned resources of type bundleIds (optional)
+    limitCertificates := int32(56) // int32 | maximum number of related certificates returned (when they are included) (optional)
+    limitDevices := int32(56) // int32 | maximum number of related devices returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProfilesApi.ProfilesGetInstance(context.Background(), id).FieldsProfiles(fieldsProfiles).Include(include).FieldsCertificates(fieldsCertificates).FieldsDevices(fieldsDevices).FieldsBundleIds(fieldsBundleIds).LimitCertificates(limitCertificates).LimitDevices(limitDevices).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProfilesApi.ProfilesGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProfilesGetInstance`: ProfileResponse
+    fmt.Fprintf(os.Stdout, "Response from `ProfilesApi.ProfilesGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***ProfilesGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a ProfilesGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiProfilesGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsProfiles** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type profiles | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsCertificates** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type certificates | 
- **fieldsDevices** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type devices | 
- **fieldsBundleIds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIds | 
- **limitCertificates** | **optional.Int32**| maximum number of related certificates returned (when they are included) | 
- **limitDevices** | **optional.Int32**| maximum number of related devices returned (when they are included) | 
+ **fieldsProfiles** | **[]string** | the fields to include for returned resources of type profiles | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsCertificates** | **[]string** | the fields to include for returned resources of type certificates | 
+ **fieldsDevices** | **[]string** | the fields to include for returned resources of type devices | 
+ **fieldsBundleIds** | **[]string** | the fields to include for returned resources of type bundleIds | 
+ **limitCertificates** | **int32** | maximum number of related certificates returned (when they are included) | 
+ **limitDevices** | **int32** | maximum number of related devices returned (when they are included) | 
 
 ### Return type
 

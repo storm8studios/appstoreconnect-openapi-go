@@ -13,28 +13,55 @@ Method | HTTP request | Description
 
 ## PreReleaseVersionsAppGetToOneRelated
 
-> AppResponse PreReleaseVersionsAppGetToOneRelated(ctx, id, optional)
+> AppResponse PreReleaseVersionsAppGetToOneRelated(ctx, id).FieldsApps(fieldsApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PreReleaseVersionsApi.PreReleaseVersionsAppGetToOneRelated(context.Background(), id).FieldsApps(fieldsApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PreReleaseVersionsApi.PreReleaseVersionsAppGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PreReleaseVersionsAppGetToOneRelated`: AppResponse
+    fmt.Fprintf(os.Stdout, "Response from `PreReleaseVersionsApi.PreReleaseVersionsAppGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***PreReleaseVersionsAppGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a PreReleaseVersionsAppGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiPreReleaseVersionsAppGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
 
 ### Return type
 
@@ -56,29 +83,57 @@ Name | Type | Description  | Notes
 
 ## PreReleaseVersionsBuildsGetToManyRelated
 
-> BuildsResponse PreReleaseVersionsBuildsGetToManyRelated(ctx, id, optional)
+> BuildsResponse PreReleaseVersionsBuildsGetToManyRelated(ctx, id).FieldsBuilds(fieldsBuilds).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PreReleaseVersionsApi.PreReleaseVersionsBuildsGetToManyRelated(context.Background(), id).FieldsBuilds(fieldsBuilds).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PreReleaseVersionsApi.PreReleaseVersionsBuildsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PreReleaseVersionsBuildsGetToManyRelated`: BuildsResponse
+    fmt.Fprintf(os.Stdout, "Response from `PreReleaseVersionsApi.PreReleaseVersionsBuildsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***PreReleaseVersionsBuildsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a PreReleaseVersionsBuildsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiPreReleaseVersionsBuildsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -100,38 +155,75 @@ Name | Type | Description  | Notes
 
 ## PreReleaseVersionsGetCollection
 
-> PreReleaseVersionsResponse PreReleaseVersionsGetCollection(ctx, optional)
+> PreReleaseVersionsResponse PreReleaseVersionsGetCollection(ctx).FilterBuildsExpired(filterBuildsExpired).FilterBuildsProcessingState(filterBuildsProcessingState).FilterBuildsVersion(filterBuildsVersion).FilterPlatform(filterPlatform).FilterVersion(filterVersion).FilterApp(filterApp).FilterBuilds(filterBuilds).Sort(sort).FieldsPreReleaseVersions(fieldsPreReleaseVersions).Limit(limit).Include(include).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBuilds(limitBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterBuildsExpired := []string{"Inner_example"} // []string | filter by attribute 'builds.expired' (optional)
+    filterBuildsProcessingState := []string{"FilterBuildsProcessingState_example"} // []string | filter by attribute 'builds.processingState' (optional)
+    filterBuildsVersion := []string{"Inner_example"} // []string | filter by attribute 'builds.version' (optional)
+    filterPlatform := []string{"FilterPlatform_example"} // []string | filter by attribute 'platform' (optional)
+    filterVersion := []string{"Inner_example"} // []string | filter by attribute 'version' (optional)
+    filterApp := []string{"Inner_example"} // []string | filter by id(s) of related 'app' (optional)
+    filterBuilds := []string{"Inner_example"} // []string | filter by id(s) of related 'builds' (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsPreReleaseVersions := []string{"FieldsPreReleaseVersions_example"} // []string | the fields to include for returned resources of type preReleaseVersions (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    limitBuilds := int32(56) // int32 | maximum number of related builds returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PreReleaseVersionsApi.PreReleaseVersionsGetCollection(context.Background()).FilterBuildsExpired(filterBuildsExpired).FilterBuildsProcessingState(filterBuildsProcessingState).FilterBuildsVersion(filterBuildsVersion).FilterPlatform(filterPlatform).FilterVersion(filterVersion).FilterApp(filterApp).FilterBuilds(filterBuilds).Sort(sort).FieldsPreReleaseVersions(fieldsPreReleaseVersions).Limit(limit).Include(include).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBuilds(limitBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PreReleaseVersionsApi.PreReleaseVersionsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PreReleaseVersionsGetCollection`: PreReleaseVersionsResponse
+    fmt.Fprintf(os.Stdout, "Response from `PreReleaseVersionsApi.PreReleaseVersionsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPreReleaseVersionsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PreReleaseVersionsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a PreReleaseVersionsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterBuildsExpired** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;builds.expired&#39; | 
- **filterBuildsProcessingState** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;builds.processingState&#39; | 
- **filterPlatform** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;platform&#39; | 
- **filterVersion** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;version&#39; | 
- **filterApp** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;app&#39; | 
- **filterBuilds** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;builds&#39; | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsPreReleaseVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type preReleaseVersions | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBuilds** | **optional.Int32**| maximum number of related builds returned (when they are included) | 
+ **filterBuildsExpired** | **[]string** | filter by attribute &#39;builds.expired&#39; | 
+ **filterBuildsProcessingState** | **[]string** | filter by attribute &#39;builds.processingState&#39; | 
+ **filterBuildsVersion** | **[]string** | filter by attribute &#39;builds.version&#39; | 
+ **filterPlatform** | **[]string** | filter by attribute &#39;platform&#39; | 
+ **filterVersion** | **[]string** | filter by attribute &#39;version&#39; | 
+ **filterApp** | **[]string** | filter by id(s) of related &#39;app&#39; | 
+ **filterBuilds** | **[]string** | filter by id(s) of related &#39;builds&#39; | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsPreReleaseVersions** | **[]string** | the fields to include for returned resources of type preReleaseVersions | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **limitBuilds** | **int32** | maximum number of related builds returned (when they are included) | 
 
 ### Return type
 
@@ -153,32 +245,63 @@ Name | Type | Description  | Notes
 
 ## PreReleaseVersionsGetInstance
 
-> PrereleaseVersionResponse PreReleaseVersionsGetInstance(ctx, id, optional)
+> PrereleaseVersionResponse PreReleaseVersionsGetInstance(ctx, id).FieldsPreReleaseVersions(fieldsPreReleaseVersions).Include(include).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBuilds(limitBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsPreReleaseVersions := []string{"FieldsPreReleaseVersions_example"} // []string | the fields to include for returned resources of type preReleaseVersions (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    limitBuilds := int32(56) // int32 | maximum number of related builds returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PreReleaseVersionsApi.PreReleaseVersionsGetInstance(context.Background(), id).FieldsPreReleaseVersions(fieldsPreReleaseVersions).Include(include).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBuilds(limitBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PreReleaseVersionsApi.PreReleaseVersionsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PreReleaseVersionsGetInstance`: PrereleaseVersionResponse
+    fmt.Fprintf(os.Stdout, "Response from `PreReleaseVersionsApi.PreReleaseVersionsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***PreReleaseVersionsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a PreReleaseVersionsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiPreReleaseVersionsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsPreReleaseVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type preReleaseVersions | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBuilds** | **optional.Int32**| maximum number of related builds returned (when they are included) | 
+ **fieldsPreReleaseVersions** | **[]string** | the fields to include for returned resources of type preReleaseVersions | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **limitBuilds** | **int32** | maximum number of related builds returned (when they are included) | 
 
 ### Return type
 

@@ -13,17 +13,49 @@ Method | HTTP request | Description
 
 ## AppScreenshotsCreateInstance
 
-> AppScreenshotResponse AppScreenshotsCreateInstance(ctx, appScreenshotCreateRequest)
+> AppScreenshotResponse AppScreenshotsCreateInstance(ctx).AppScreenshotCreateRequest(appScreenshotCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appScreenshotCreateRequest := *openapiclient.NewAppScreenshotCreateRequest(*openapiclient.NewAppScreenshotCreateRequestData("Type_example", *openapiclient.NewAppClipAdvancedExperienceImageCreateRequestDataAttributes(int32(123), "FileName_example"), *openapiclient.NewAppScreenshotCreateRequestDataRelationships(*openapiclient.NewAppScreenshotCreateRequestDataRelationshipsAppScreenshotSet(*openapiclient.NewAppCustomProductPageLocalizationRelationshipsAppScreenshotSetsDataInner("Type_example", "Id_example"))))) // AppScreenshotCreateRequest | AppScreenshot representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppScreenshotsApi.AppScreenshotsCreateInstance(context.Background()).AppScreenshotCreateRequest(appScreenshotCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotsApi.AppScreenshotsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppScreenshotsCreateInstance`: AppScreenshotResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppScreenshotsApi.AppScreenshotsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppScreenshotsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appScreenshotCreateRequest** | [**AppScreenshotCreateRequest**](AppScreenshotCreateRequest.md)| AppScreenshot representation | 
+ **appScreenshotCreateRequest** | [**AppScreenshotCreateRequest**](AppScreenshotCreateRequest.md) | AppScreenshot representation | 
 
 ### Return type
 
@@ -45,17 +77,51 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotsDeleteInstance
 
-> AppScreenshotsDeleteInstance(ctx, id)
+> AppScreenshotsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppScreenshotsApi.AppScreenshotsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotsApi.AppScreenshotsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppScreenshotsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -77,29 +143,57 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotsGetInstance
 
-> AppScreenshotResponse AppScreenshotsGetInstance(ctx, id, optional)
+> AppScreenshotResponse AppScreenshotsGetInstance(ctx, id).FieldsAppScreenshots(fieldsAppScreenshots).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppScreenshots := []string{"FieldsAppScreenshots_example"} // []string | the fields to include for returned resources of type appScreenshots (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppScreenshotsApi.AppScreenshotsGetInstance(context.Background(), id).FieldsAppScreenshots(fieldsAppScreenshots).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotsApi.AppScreenshotsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppScreenshotsGetInstance`: AppScreenshotResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppScreenshotsApi.AppScreenshotsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppScreenshotsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppScreenshotsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppScreenshotsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppScreenshots** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appScreenshots | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppScreenshots** | **[]string** | the fields to include for returned resources of type appScreenshots | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -121,18 +215,55 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotsUpdateInstance
 
-> AppScreenshotResponse AppScreenshotsUpdateInstance(ctx, id, appScreenshotUpdateRequest)
+> AppScreenshotResponse AppScreenshotsUpdateInstance(ctx, id).AppScreenshotUpdateRequest(appScreenshotUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appScreenshotUpdateRequest := *openapiclient.NewAppScreenshotUpdateRequest(*openapiclient.NewAppScreenshotUpdateRequestData("Type_example", "Id_example")) // AppScreenshotUpdateRequest | AppScreenshot representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppScreenshotsApi.AppScreenshotsUpdateInstance(context.Background(), id).AppScreenshotUpdateRequest(appScreenshotUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotsApi.AppScreenshotsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppScreenshotsUpdateInstance`: AppScreenshotResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppScreenshotsApi.AppScreenshotsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appScreenshotUpdateRequest** | [**AppScreenshotUpdateRequest**](AppScreenshotUpdateRequest.md)| AppScreenshot representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppScreenshotsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appScreenshotUpdateRequest** | [**AppScreenshotUpdateRequest**](AppScreenshotUpdateRequest.md) | AppScreenshot representation | 
 
 ### Return type
 

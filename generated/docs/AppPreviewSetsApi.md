@@ -15,31 +15,61 @@ Method | HTTP request | Description
 
 ## AppPreviewSetsAppPreviewsGetToManyRelated
 
-> AppPreviewsResponse AppPreviewSetsAppPreviewsGetToManyRelated(ctx, id, optional)
+> AppPreviewsResponse AppPreviewSetsAppPreviewsGetToManyRelated(ctx, id).FieldsAppPreviews(fieldsAppPreviews).FieldsAppPreviewSets(fieldsAppPreviewSets).Limit(limit).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppPreviews := []string{"FieldsAppPreviews_example"} // []string | the fields to include for returned resources of type appPreviews (optional)
+    fieldsAppPreviewSets := []string{"FieldsAppPreviewSets_example"} // []string | the fields to include for returned resources of type appPreviewSets (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreviewSetsApi.AppPreviewSetsAppPreviewsGetToManyRelated(context.Background(), id).FieldsAppPreviews(fieldsAppPreviews).FieldsAppPreviewSets(fieldsAppPreviewSets).Limit(limit).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewSetsApi.AppPreviewSetsAppPreviewsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreviewSetsAppPreviewsGetToManyRelated`: AppPreviewsResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreviewSetsApi.AppPreviewSetsAppPreviewsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppPreviewSetsAppPreviewsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppPreviewSetsAppPreviewsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiAppPreviewSetsAppPreviewsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppPreviews** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appPreviews | 
- **fieldsAppPreviewSets** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appPreviewSets | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppPreviews** | **[]string** | the fields to include for returned resources of type appPreviews | 
+ **fieldsAppPreviewSets** | **[]string** | the fields to include for returned resources of type appPreviewSets | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -61,28 +91,55 @@ Name | Type | Description  | Notes
 
 ## AppPreviewSetsAppPreviewsGetToManyRelationship
 
-> AppPreviewSetAppPreviewsLinkagesResponse AppPreviewSetsAppPreviewsGetToManyRelationship(ctx, id, optional)
+> AppPreviewSetAppPreviewsLinkagesResponse AppPreviewSetsAppPreviewsGetToManyRelationship(ctx, id).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreviewSetsApi.AppPreviewSetsAppPreviewsGetToManyRelationship(context.Background(), id).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewSetsApi.AppPreviewSetsAppPreviewsGetToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreviewSetsAppPreviewsGetToManyRelationship`: AppPreviewSetAppPreviewsLinkagesResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreviewSetsApi.AppPreviewSetsAppPreviewsGetToManyRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppPreviewSetsAppPreviewsGetToManyRelationshipOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppPreviewSetsAppPreviewsGetToManyRelationshipOpts struct
+Other parameters are passed through a pointer to a apiAppPreviewSetsAppPreviewsGetToManyRelationshipRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -104,18 +161,53 @@ Name | Type | Description  | Notes
 
 ## AppPreviewSetsAppPreviewsReplaceToManyRelationship
 
-> AppPreviewSetsAppPreviewsReplaceToManyRelationship(ctx, id, appPreviewSetAppPreviewsLinkagesRequest)
+> AppPreviewSetsAppPreviewsReplaceToManyRelationship(ctx, id).AppPreviewSetAppPreviewsLinkagesRequest(appPreviewSetAppPreviewsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appPreviewSetAppPreviewsLinkagesRequest := *openapiclient.NewAppPreviewSetAppPreviewsLinkagesRequest([]openapiclient.AppPreviewSetRelationshipsAppPreviewsDataInner{*openapiclient.NewAppPreviewSetRelationshipsAppPreviewsDataInner("Type_example", "Id_example")}) // AppPreviewSetAppPreviewsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppPreviewSetsApi.AppPreviewSetsAppPreviewsReplaceToManyRelationship(context.Background(), id).AppPreviewSetAppPreviewsLinkagesRequest(appPreviewSetAppPreviewsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewSetsApi.AppPreviewSetsAppPreviewsReplaceToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appPreviewSetAppPreviewsLinkagesRequest** | [**AppPreviewSetAppPreviewsLinkagesRequest**](AppPreviewSetAppPreviewsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreviewSetsAppPreviewsReplaceToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appPreviewSetAppPreviewsLinkagesRequest** | [**AppPreviewSetAppPreviewsLinkagesRequest**](AppPreviewSetAppPreviewsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -137,17 +229,49 @@ Name | Type | Description  | Notes
 
 ## AppPreviewSetsCreateInstance
 
-> AppPreviewSetResponse AppPreviewSetsCreateInstance(ctx, appPreviewSetCreateRequest)
+> AppPreviewSetResponse AppPreviewSetsCreateInstance(ctx).AppPreviewSetCreateRequest(appPreviewSetCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appPreviewSetCreateRequest := *openapiclient.NewAppPreviewSetCreateRequest(*openapiclient.NewAppPreviewSetCreateRequestData("Type_example", *openapiclient.NewAppPreviewSetCreateRequestDataAttributes(openapiclient.PreviewType("IPHONE_67")))) // AppPreviewSetCreateRequest | AppPreviewSet representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreviewSetsApi.AppPreviewSetsCreateInstance(context.Background()).AppPreviewSetCreateRequest(appPreviewSetCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewSetsApi.AppPreviewSetsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreviewSetsCreateInstance`: AppPreviewSetResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreviewSetsApi.AppPreviewSetsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreviewSetsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appPreviewSetCreateRequest** | [**AppPreviewSetCreateRequest**](AppPreviewSetCreateRequest.md)| AppPreviewSet representation | 
+ **appPreviewSetCreateRequest** | [**AppPreviewSetCreateRequest**](AppPreviewSetCreateRequest.md) | AppPreviewSet representation | 
 
 ### Return type
 
@@ -169,17 +293,51 @@ Name | Type | Description  | Notes
 
 ## AppPreviewSetsDeleteInstance
 
-> AppPreviewSetsDeleteInstance(ctx, id)
+> AppPreviewSetsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppPreviewSetsApi.AppPreviewSetsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewSetsApi.AppPreviewSetsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreviewSetsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -201,31 +359,61 @@ Name | Type | Description  | Notes
 
 ## AppPreviewSetsGetInstance
 
-> AppPreviewSetResponse AppPreviewSetsGetInstance(ctx, id, optional)
+> AppPreviewSetResponse AppPreviewSetsGetInstance(ctx, id).FieldsAppPreviewSets(fieldsAppPreviewSets).Include(include).FieldsAppPreviews(fieldsAppPreviews).LimitAppPreviews(limitAppPreviews).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppPreviewSets := []string{"FieldsAppPreviewSets_example"} // []string | the fields to include for returned resources of type appPreviewSets (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsAppPreviews := []string{"FieldsAppPreviews_example"} // []string | the fields to include for returned resources of type appPreviews (optional)
+    limitAppPreviews := int32(56) // int32 | maximum number of related appPreviews returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreviewSetsApi.AppPreviewSetsGetInstance(context.Background(), id).FieldsAppPreviewSets(fieldsAppPreviewSets).Include(include).FieldsAppPreviews(fieldsAppPreviews).LimitAppPreviews(limitAppPreviews).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewSetsApi.AppPreviewSetsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreviewSetsGetInstance`: AppPreviewSetResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreviewSetsApi.AppPreviewSetsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppPreviewSetsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppPreviewSetsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppPreviewSetsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppPreviewSets** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appPreviewSets | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsAppPreviews** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appPreviews | 
- **limitAppPreviews** | **optional.Int32**| maximum number of related appPreviews returned (when they are included) | 
+ **fieldsAppPreviewSets** | **[]string** | the fields to include for returned resources of type appPreviewSets | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsAppPreviews** | **[]string** | the fields to include for returned resources of type appPreviews | 
+ **limitAppPreviews** | **int32** | maximum number of related appPreviews returned (when they are included) | 
 
 ### Return type
 

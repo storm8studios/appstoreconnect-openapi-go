@@ -30,28 +30,55 @@ Method | HTTP request | Description
 
 ## BuildsAppEncryptionDeclarationGetToOneRelated
 
-> AppEncryptionDeclarationResponse BuildsAppEncryptionDeclarationGetToOneRelated(ctx, id, optional)
+> AppEncryptionDeclarationResponse BuildsAppEncryptionDeclarationGetToOneRelated(ctx, id).FieldsAppEncryptionDeclarations(fieldsAppEncryptionDeclarations).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppEncryptionDeclarations := []string{"FieldsAppEncryptionDeclarations_example"} // []string | the fields to include for returned resources of type appEncryptionDeclarations (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsAppEncryptionDeclarationGetToOneRelated(context.Background(), id).FieldsAppEncryptionDeclarations(fieldsAppEncryptionDeclarations).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsAppEncryptionDeclarationGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsAppEncryptionDeclarationGetToOneRelated`: AppEncryptionDeclarationResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsAppEncryptionDeclarationGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsAppEncryptionDeclarationGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsAppEncryptionDeclarationGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsAppEncryptionDeclarationGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppEncryptionDeclarations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appEncryptionDeclarations | 
+ **fieldsAppEncryptionDeclarations** | **[]string** | the fields to include for returned resources of type appEncryptionDeclarations | 
 
 ### Return type
 
@@ -73,17 +100,53 @@ Name | Type | Description  | Notes
 
 ## BuildsAppEncryptionDeclarationGetToOneRelationship
 
-> BuildAppEncryptionDeclarationLinkageResponse BuildsAppEncryptionDeclarationGetToOneRelationship(ctx, id)
+> BuildAppEncryptionDeclarationLinkageResponse BuildsAppEncryptionDeclarationGetToOneRelationship(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsAppEncryptionDeclarationGetToOneRelationship(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsAppEncryptionDeclarationGetToOneRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsAppEncryptionDeclarationGetToOneRelationship`: BuildAppEncryptionDeclarationLinkageResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsAppEncryptionDeclarationGetToOneRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsAppEncryptionDeclarationGetToOneRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -105,18 +168,53 @@ Name | Type | Description  | Notes
 
 ## BuildsAppEncryptionDeclarationUpdateToOneRelationship
 
-> BuildsAppEncryptionDeclarationUpdateToOneRelationship(ctx, id, buildAppEncryptionDeclarationLinkageRequest)
+> BuildsAppEncryptionDeclarationUpdateToOneRelationship(ctx, id).BuildAppEncryptionDeclarationLinkageRequest(buildAppEncryptionDeclarationLinkageRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    buildAppEncryptionDeclarationLinkageRequest := *openapiclient.NewBuildAppEncryptionDeclarationLinkageRequest(*openapiclient.NewAppEncryptionDeclarationDocumentCreateRequestDataRelationshipsAppEncryptionDeclarationData("Type_example", "Id_example")) // BuildAppEncryptionDeclarationLinkageRequest | Related linkage
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BuildsApi.BuildsAppEncryptionDeclarationUpdateToOneRelationship(context.Background(), id).BuildAppEncryptionDeclarationLinkageRequest(buildAppEncryptionDeclarationLinkageRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsAppEncryptionDeclarationUpdateToOneRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**buildAppEncryptionDeclarationLinkageRequest** | [**BuildAppEncryptionDeclarationLinkageRequest**](BuildAppEncryptionDeclarationLinkageRequest.md)| Related linkage | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsAppEncryptionDeclarationUpdateToOneRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **buildAppEncryptionDeclarationLinkageRequest** | [**BuildAppEncryptionDeclarationLinkageRequest**](BuildAppEncryptionDeclarationLinkageRequest.md) | Related linkage | 
 
 ### Return type
 
@@ -138,28 +236,55 @@ Name | Type | Description  | Notes
 
 ## BuildsAppGetToOneRelated
 
-> AppResponse BuildsAppGetToOneRelated(ctx, id, optional)
+> AppResponse BuildsAppGetToOneRelated(ctx, id).FieldsApps(fieldsApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsAppGetToOneRelated(context.Background(), id).FieldsApps(fieldsApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsAppGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsAppGetToOneRelated`: AppResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsAppGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsAppGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsAppGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsAppGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
 
 ### Return type
 
@@ -181,28 +306,81 @@ Name | Type | Description  | Notes
 
 ## BuildsAppStoreVersionGetToOneRelated
 
-> AppStoreVersionResponse BuildsAppStoreVersionGetToOneRelated(ctx, id, optional)
+> AppStoreVersionResponse BuildsAppStoreVersionGetToOneRelated(ctx, id).FieldsAppStoreVersionExperiments(fieldsAppStoreVersionExperiments).FieldsAgeRatingDeclarations(fieldsAgeRatingDeclarations).FieldsAppStoreVersionSubmissions(fieldsAppStoreVersionSubmissions).FieldsAppStoreReviewDetails(fieldsAppStoreReviewDetails).FieldsAppStoreVersions(fieldsAppStoreVersions).FieldsApps(fieldsApps).FieldsRoutingAppCoverages(fieldsRoutingAppCoverages).FieldsAppClipDefaultExperiences(fieldsAppClipDefaultExperiences).FieldsAppStoreVersionPhasedReleases(fieldsAppStoreVersionPhasedReleases).FieldsBuilds(fieldsBuilds).FieldsAppStoreVersionLocalizations(fieldsAppStoreVersionLocalizations).LimitAppStoreVersionLocalizations(limitAppStoreVersionLocalizations).LimitAppStoreVersionExperiments(limitAppStoreVersionExperiments).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppStoreVersionExperiments := []string{"FieldsAppStoreVersionExperiments_example"} // []string | the fields to include for returned resources of type appStoreVersionExperiments (optional)
+    fieldsAgeRatingDeclarations := []string{"FieldsAgeRatingDeclarations_example"} // []string | the fields to include for returned resources of type ageRatingDeclarations (optional)
+    fieldsAppStoreVersionSubmissions := []string{"FieldsAppStoreVersionSubmissions_example"} // []string | the fields to include for returned resources of type appStoreVersionSubmissions (optional)
+    fieldsAppStoreReviewDetails := []string{"FieldsAppStoreReviewDetails_example"} // []string | the fields to include for returned resources of type appStoreReviewDetails (optional)
+    fieldsAppStoreVersions := []string{"FieldsAppStoreVersions_example"} // []string | the fields to include for returned resources of type appStoreVersions (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    fieldsRoutingAppCoverages := []string{"FieldsRoutingAppCoverages_example"} // []string | the fields to include for returned resources of type routingAppCoverages (optional)
+    fieldsAppClipDefaultExperiences := []string{"FieldsAppClipDefaultExperiences_example"} // []string | the fields to include for returned resources of type appClipDefaultExperiences (optional)
+    fieldsAppStoreVersionPhasedReleases := []string{"FieldsAppStoreVersionPhasedReleases_example"} // []string | the fields to include for returned resources of type appStoreVersionPhasedReleases (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    fieldsAppStoreVersionLocalizations := []string{"FieldsAppStoreVersionLocalizations_example"} // []string | the fields to include for returned resources of type appStoreVersionLocalizations (optional)
+    limitAppStoreVersionLocalizations := int32(56) // int32 | maximum number of related appStoreVersionLocalizations returned (when they are included) (optional)
+    limitAppStoreVersionExperiments := int32(56) // int32 | maximum number of related appStoreVersionExperiments returned (when they are included) (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsAppStoreVersionGetToOneRelated(context.Background(), id).FieldsAppStoreVersionExperiments(fieldsAppStoreVersionExperiments).FieldsAgeRatingDeclarations(fieldsAgeRatingDeclarations).FieldsAppStoreVersionSubmissions(fieldsAppStoreVersionSubmissions).FieldsAppStoreReviewDetails(fieldsAppStoreReviewDetails).FieldsAppStoreVersions(fieldsAppStoreVersions).FieldsApps(fieldsApps).FieldsRoutingAppCoverages(fieldsRoutingAppCoverages).FieldsAppClipDefaultExperiences(fieldsAppClipDefaultExperiences).FieldsAppStoreVersionPhasedReleases(fieldsAppStoreVersionPhasedReleases).FieldsBuilds(fieldsBuilds).FieldsAppStoreVersionLocalizations(fieldsAppStoreVersionLocalizations).LimitAppStoreVersionLocalizations(limitAppStoreVersionLocalizations).LimitAppStoreVersionExperiments(limitAppStoreVersionExperiments).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsAppStoreVersionGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsAppStoreVersionGetToOneRelated`: AppStoreVersionResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsAppStoreVersionGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsAppStoreVersionGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsAppStoreVersionGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsAppStoreVersionGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppStoreVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreVersions | 
+ **fieldsAppStoreVersionExperiments** | **[]string** | the fields to include for returned resources of type appStoreVersionExperiments | 
+ **fieldsAgeRatingDeclarations** | **[]string** | the fields to include for returned resources of type ageRatingDeclarations | 
+ **fieldsAppStoreVersionSubmissions** | **[]string** | the fields to include for returned resources of type appStoreVersionSubmissions | 
+ **fieldsAppStoreReviewDetails** | **[]string** | the fields to include for returned resources of type appStoreReviewDetails | 
+ **fieldsAppStoreVersions** | **[]string** | the fields to include for returned resources of type appStoreVersions | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **fieldsRoutingAppCoverages** | **[]string** | the fields to include for returned resources of type routingAppCoverages | 
+ **fieldsAppClipDefaultExperiences** | **[]string** | the fields to include for returned resources of type appClipDefaultExperiences | 
+ **fieldsAppStoreVersionPhasedReleases** | **[]string** | the fields to include for returned resources of type appStoreVersionPhasedReleases | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **fieldsAppStoreVersionLocalizations** | **[]string** | the fields to include for returned resources of type appStoreVersionLocalizations | 
+ **limitAppStoreVersionLocalizations** | **int32** | maximum number of related appStoreVersionLocalizations returned (when they are included) | 
+ **limitAppStoreVersionExperiments** | **int32** | maximum number of related appStoreVersionExperiments returned (when they are included) | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -224,28 +402,55 @@ Name | Type | Description  | Notes
 
 ## BuildsBetaAppReviewSubmissionGetToOneRelated
 
-> BetaAppReviewSubmissionResponse BuildsBetaAppReviewSubmissionGetToOneRelated(ctx, id, optional)
+> BetaAppReviewSubmissionResponse BuildsBetaAppReviewSubmissionGetToOneRelated(ctx, id).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaAppReviewSubmissions := []string{"FieldsBetaAppReviewSubmissions_example"} // []string | the fields to include for returned resources of type betaAppReviewSubmissions (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsBetaAppReviewSubmissionGetToOneRelated(context.Background(), id).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsBetaAppReviewSubmissionGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsBetaAppReviewSubmissionGetToOneRelated`: BetaAppReviewSubmissionResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsBetaAppReviewSubmissionGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsBetaAppReviewSubmissionGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsBetaAppReviewSubmissionGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsBetaAppReviewSubmissionGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaAppReviewSubmissions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaAppReviewSubmissions | 
+ **fieldsBetaAppReviewSubmissions** | **[]string** | the fields to include for returned resources of type betaAppReviewSubmissions | 
 
 ### Return type
 
@@ -267,29 +472,57 @@ Name | Type | Description  | Notes
 
 ## BuildsBetaBuildLocalizationsGetToManyRelated
 
-> BetaBuildLocalizationsResponse BuildsBetaBuildLocalizationsGetToManyRelated(ctx, id, optional)
+> BetaBuildLocalizationsResponse BuildsBetaBuildLocalizationsGetToManyRelated(ctx, id).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaBuildLocalizations := []string{"FieldsBetaBuildLocalizations_example"} // []string | the fields to include for returned resources of type betaBuildLocalizations (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsBetaBuildLocalizationsGetToManyRelated(context.Background(), id).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsBetaBuildLocalizationsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsBetaBuildLocalizationsGetToManyRelated`: BetaBuildLocalizationsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsBetaBuildLocalizationsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsBetaBuildLocalizationsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsBetaBuildLocalizationsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsBetaBuildLocalizationsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaBuildLocalizations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaBuildLocalizations | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsBetaBuildLocalizations** | **[]string** | the fields to include for returned resources of type betaBuildLocalizations | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -311,18 +544,53 @@ Name | Type | Description  | Notes
 
 ## BuildsBetaGroupsCreateToManyRelationship
 
-> BuildsBetaGroupsCreateToManyRelationship(ctx, id, buildBetaGroupsLinkagesRequest)
+> BuildsBetaGroupsCreateToManyRelationship(ctx, id).BuildBetaGroupsLinkagesRequest(buildBetaGroupsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    buildBetaGroupsLinkagesRequest := *openapiclient.NewBuildBetaGroupsLinkagesRequest([]openapiclient.AppRelationshipsBetaGroupsDataInner{*openapiclient.NewAppRelationshipsBetaGroupsDataInner("Type_example", "Id_example")}) // BuildBetaGroupsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BuildsApi.BuildsBetaGroupsCreateToManyRelationship(context.Background(), id).BuildBetaGroupsLinkagesRequest(buildBetaGroupsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsBetaGroupsCreateToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**buildBetaGroupsLinkagesRequest** | [**BuildBetaGroupsLinkagesRequest**](BuildBetaGroupsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsBetaGroupsCreateToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **buildBetaGroupsLinkagesRequest** | [**BuildBetaGroupsLinkagesRequest**](BuildBetaGroupsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -344,18 +612,53 @@ Name | Type | Description  | Notes
 
 ## BuildsBetaGroupsDeleteToManyRelationship
 
-> BuildsBetaGroupsDeleteToManyRelationship(ctx, id, buildBetaGroupsLinkagesRequest)
+> BuildsBetaGroupsDeleteToManyRelationship(ctx, id).BuildBetaGroupsLinkagesRequest(buildBetaGroupsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    buildBetaGroupsLinkagesRequest := *openapiclient.NewBuildBetaGroupsLinkagesRequest([]openapiclient.AppRelationshipsBetaGroupsDataInner{*openapiclient.NewAppRelationshipsBetaGroupsDataInner("Type_example", "Id_example")}) // BuildBetaGroupsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BuildsApi.BuildsBetaGroupsDeleteToManyRelationship(context.Background(), id).BuildBetaGroupsLinkagesRequest(buildBetaGroupsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsBetaGroupsDeleteToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**buildBetaGroupsLinkagesRequest** | [**BuildBetaGroupsLinkagesRequest**](BuildBetaGroupsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsBetaGroupsDeleteToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **buildBetaGroupsLinkagesRequest** | [**BuildBetaGroupsLinkagesRequest**](BuildBetaGroupsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -377,28 +680,55 @@ Name | Type | Description  | Notes
 
 ## BuildsBuildBetaDetailGetToOneRelated
 
-> BuildBetaDetailResponse BuildsBuildBetaDetailGetToOneRelated(ctx, id, optional)
+> BuildBetaDetailResponse BuildsBuildBetaDetailGetToOneRelated(ctx, id).FieldsBuildBetaDetails(fieldsBuildBetaDetails).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuildBetaDetails := []string{"FieldsBuildBetaDetails_example"} // []string | the fields to include for returned resources of type buildBetaDetails (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsBuildBetaDetailGetToOneRelated(context.Background(), id).FieldsBuildBetaDetails(fieldsBuildBetaDetails).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsBuildBetaDetailGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsBuildBetaDetailGetToOneRelated`: BuildBetaDetailResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsBuildBetaDetailGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsBuildBetaDetailGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsBuildBetaDetailGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsBuildBetaDetailGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuildBetaDetails** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildBetaDetails | 
+ **fieldsBuildBetaDetails** | **[]string** | the fields to include for returned resources of type buildBetaDetails | 
 
 ### Return type
 
@@ -420,30 +750,59 @@ Name | Type | Description  | Notes
 
 ## BuildsDiagnosticSignaturesGetToManyRelated
 
-> DiagnosticSignaturesResponse BuildsDiagnosticSignaturesGetToManyRelated(ctx, id, optional)
+> DiagnosticSignaturesResponse BuildsDiagnosticSignaturesGetToManyRelated(ctx, id).FilterDiagnosticType(filterDiagnosticType).FieldsDiagnosticSignatures(fieldsDiagnosticSignatures).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    filterDiagnosticType := []string{"FilterDiagnosticType_example"} // []string | filter by attribute 'diagnosticType' (optional)
+    fieldsDiagnosticSignatures := []string{"FieldsDiagnosticSignatures_example"} // []string | the fields to include for returned resources of type diagnosticSignatures (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsDiagnosticSignaturesGetToManyRelated(context.Background(), id).FilterDiagnosticType(filterDiagnosticType).FieldsDiagnosticSignatures(fieldsDiagnosticSignatures).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsDiagnosticSignaturesGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsDiagnosticSignaturesGetToManyRelated`: DiagnosticSignaturesResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsDiagnosticSignaturesGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsDiagnosticSignaturesGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsDiagnosticSignaturesGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsDiagnosticSignaturesGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **filterDiagnosticType** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;diagnosticType&#39; | 
- **fieldsDiagnosticSignatures** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type diagnosticSignatures | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **filterDiagnosticType** | **[]string** | filter by attribute &#39;diagnosticType&#39; | 
+ **fieldsDiagnosticSignatures** | **[]string** | the fields to include for returned resources of type diagnosticSignatures | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -465,55 +824,113 @@ Name | Type | Description  | Notes
 
 ## BuildsGetCollection
 
-> BuildsResponse BuildsGetCollection(ctx, optional)
+> BuildsResponse BuildsGetCollection(ctx).FilterBetaAppReviewSubmissionBetaReviewState(filterBetaAppReviewSubmissionBetaReviewState).FilterBuildAudienceType(filterBuildAudienceType).FilterExpired(filterExpired).FilterPreReleaseVersionPlatform(filterPreReleaseVersionPlatform).FilterPreReleaseVersionVersion(filterPreReleaseVersionVersion).FilterProcessingState(filterProcessingState).FilterUsesNonExemptEncryption(filterUsesNonExemptEncryption).FilterVersion(filterVersion).FilterApp(filterApp).FilterAppStoreVersion(filterAppStoreVersion).FilterBetaGroups(filterBetaGroups).FilterPreReleaseVersion(filterPreReleaseVersion).FilterId(filterId).Sort(sort).FieldsBuilds(fieldsBuilds).Limit(limit).Include(include).FieldsDiagnosticSignatures(fieldsDiagnosticSignatures).FieldsBuildIcons(fieldsBuildIcons).FieldsBuildBetaDetails(fieldsBuildBetaDetails).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).FieldsBetaTesters(fieldsBetaTesters).FieldsAppStoreVersions(fieldsAppStoreVersions).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).FieldsPreReleaseVersions(fieldsPreReleaseVersions).FieldsAppEncryptionDeclarations(fieldsAppEncryptionDeclarations).FieldsApps(fieldsApps).FieldsPerfPowerMetrics(fieldsPerfPowerMetrics).LimitBetaBuildLocalizations(limitBetaBuildLocalizations).LimitBetaGroups(limitBetaGroups).LimitBuildBundles(limitBuildBundles).LimitIcons(limitIcons).LimitIndividualTesters(limitIndividualTesters).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterBetaAppReviewSubmissionBetaReviewState := []string{"FilterBetaAppReviewSubmissionBetaReviewState_example"} // []string | filter by attribute 'betaAppReviewSubmission.betaReviewState' (optional)
+    filterBuildAudienceType := []string{"FilterBuildAudienceType_example"} // []string | filter by attribute 'buildAudienceType' (optional)
+    filterExpired := []string{"Inner_example"} // []string | filter by attribute 'expired' (optional)
+    filterPreReleaseVersionPlatform := []string{"FilterPreReleaseVersionPlatform_example"} // []string | filter by attribute 'preReleaseVersion.platform' (optional)
+    filterPreReleaseVersionVersion := []string{"Inner_example"} // []string | filter by attribute 'preReleaseVersion.version' (optional)
+    filterProcessingState := []string{"FilterProcessingState_example"} // []string | filter by attribute 'processingState' (optional)
+    filterUsesNonExemptEncryption := []string{"Inner_example"} // []string | filter by attribute 'usesNonExemptEncryption' (optional)
+    filterVersion := []string{"Inner_example"} // []string | filter by attribute 'version' (optional)
+    filterApp := []string{"Inner_example"} // []string | filter by id(s) of related 'app' (optional)
+    filterAppStoreVersion := []string{"Inner_example"} // []string | filter by id(s) of related 'appStoreVersion' (optional)
+    filterBetaGroups := []string{"Inner_example"} // []string | filter by id(s) of related 'betaGroups' (optional)
+    filterPreReleaseVersion := []string{"Inner_example"} // []string | filter by id(s) of related 'preReleaseVersion' (optional)
+    filterId := []string{"Inner_example"} // []string | filter by id(s) (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsDiagnosticSignatures := []string{"FieldsDiagnosticSignatures_example"} // []string | the fields to include for returned resources of type diagnosticSignatures (optional)
+    fieldsBuildIcons := []string{"FieldsBuildIcons_example"} // []string | the fields to include for returned resources of type buildIcons (optional)
+    fieldsBuildBetaDetails := []string{"FieldsBuildBetaDetails_example"} // []string | the fields to include for returned resources of type buildBetaDetails (optional)
+    fieldsBetaAppReviewSubmissions := []string{"FieldsBetaAppReviewSubmissions_example"} // []string | the fields to include for returned resources of type betaAppReviewSubmissions (optional)
+    fieldsBetaTesters := []string{"FieldsBetaTesters_example"} // []string | the fields to include for returned resources of type betaTesters (optional)
+    fieldsAppStoreVersions := []string{"FieldsAppStoreVersions_example"} // []string | the fields to include for returned resources of type appStoreVersions (optional)
+    fieldsBetaBuildLocalizations := []string{"FieldsBetaBuildLocalizations_example"} // []string | the fields to include for returned resources of type betaBuildLocalizations (optional)
+    fieldsPreReleaseVersions := []string{"FieldsPreReleaseVersions_example"} // []string | the fields to include for returned resources of type preReleaseVersions (optional)
+    fieldsAppEncryptionDeclarations := []string{"FieldsAppEncryptionDeclarations_example"} // []string | the fields to include for returned resources of type appEncryptionDeclarations (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    fieldsPerfPowerMetrics := []string{"FieldsPerfPowerMetrics_example"} // []string | the fields to include for returned resources of type perfPowerMetrics (optional)
+    limitBetaBuildLocalizations := int32(56) // int32 | maximum number of related betaBuildLocalizations returned (when they are included) (optional)
+    limitBetaGroups := int32(56) // int32 | maximum number of related betaGroups returned (when they are included) (optional)
+    limitBuildBundles := int32(56) // int32 | maximum number of related buildBundles returned (when they are included) (optional)
+    limitIcons := int32(56) // int32 | maximum number of related icons returned (when they are included) (optional)
+    limitIndividualTesters := int32(56) // int32 | maximum number of related individualTesters returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsGetCollection(context.Background()).FilterBetaAppReviewSubmissionBetaReviewState(filterBetaAppReviewSubmissionBetaReviewState).FilterBuildAudienceType(filterBuildAudienceType).FilterExpired(filterExpired).FilterPreReleaseVersionPlatform(filterPreReleaseVersionPlatform).FilterPreReleaseVersionVersion(filterPreReleaseVersionVersion).FilterProcessingState(filterProcessingState).FilterUsesNonExemptEncryption(filterUsesNonExemptEncryption).FilterVersion(filterVersion).FilterApp(filterApp).FilterAppStoreVersion(filterAppStoreVersion).FilterBetaGroups(filterBetaGroups).FilterPreReleaseVersion(filterPreReleaseVersion).FilterId(filterId).Sort(sort).FieldsBuilds(fieldsBuilds).Limit(limit).Include(include).FieldsDiagnosticSignatures(fieldsDiagnosticSignatures).FieldsBuildIcons(fieldsBuildIcons).FieldsBuildBetaDetails(fieldsBuildBetaDetails).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).FieldsBetaTesters(fieldsBetaTesters).FieldsAppStoreVersions(fieldsAppStoreVersions).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).FieldsPreReleaseVersions(fieldsPreReleaseVersions).FieldsAppEncryptionDeclarations(fieldsAppEncryptionDeclarations).FieldsApps(fieldsApps).FieldsPerfPowerMetrics(fieldsPerfPowerMetrics).LimitBetaBuildLocalizations(limitBetaBuildLocalizations).LimitBetaGroups(limitBetaGroups).LimitBuildBundles(limitBuildBundles).LimitIcons(limitIcons).LimitIndividualTesters(limitIndividualTesters).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsGetCollection`: BuildsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***BuildsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a BuildsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterBetaAppReviewSubmissionBetaReviewState** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;betaAppReviewSubmission.betaReviewState&#39; | 
- **filterExpired** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;expired&#39; | 
- **filterPreReleaseVersionPlatform** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;preReleaseVersion.platform&#39; | 
- **filterPreReleaseVersionVersion** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;preReleaseVersion.version&#39; | 
- **filterProcessingState** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;processingState&#39; | 
- **filterUsesNonExemptEncryption** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;usesNonExemptEncryption&#39; | 
- **filterVersion** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;version&#39; | 
- **filterApp** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;app&#39; | 
- **filterAppStoreVersion** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;appStoreVersion&#39; | 
- **filterBetaGroups** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;betaGroups&#39; | 
- **filterPreReleaseVersion** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;preReleaseVersion&#39; | 
- **filterId** | [**optional.Interface of []string**](string.md)| filter by id(s) | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsAppEncryptionDeclarations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appEncryptionDeclarations | 
- **fieldsBetaAppReviewSubmissions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaAppReviewSubmissions | 
- **fieldsBuildBetaDetails** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildBetaDetails | 
- **fieldsBuildIcons** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildIcons | 
- **fieldsPerfPowerMetrics** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type perfPowerMetrics | 
- **fieldsPreReleaseVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type preReleaseVersions | 
- **fieldsAppStoreVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreVersions | 
- **fieldsDiagnosticSignatures** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type diagnosticSignatures | 
- **fieldsBetaTesters** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaTesters | 
- **fieldsBetaBuildLocalizations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaBuildLocalizations | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBetaBuildLocalizations** | **optional.Int32**| maximum number of related betaBuildLocalizations returned (when they are included) | 
- **limitIcons** | **optional.Int32**| maximum number of related icons returned (when they are included) | 
- **limitIndividualTesters** | **optional.Int32**| maximum number of related individualTesters returned (when they are included) | 
+ **filterBetaAppReviewSubmissionBetaReviewState** | **[]string** | filter by attribute &#39;betaAppReviewSubmission.betaReviewState&#39; | 
+ **filterBuildAudienceType** | **[]string** | filter by attribute &#39;buildAudienceType&#39; | 
+ **filterExpired** | **[]string** | filter by attribute &#39;expired&#39; | 
+ **filterPreReleaseVersionPlatform** | **[]string** | filter by attribute &#39;preReleaseVersion.platform&#39; | 
+ **filterPreReleaseVersionVersion** | **[]string** | filter by attribute &#39;preReleaseVersion.version&#39; | 
+ **filterProcessingState** | **[]string** | filter by attribute &#39;processingState&#39; | 
+ **filterUsesNonExemptEncryption** | **[]string** | filter by attribute &#39;usesNonExemptEncryption&#39; | 
+ **filterVersion** | **[]string** | filter by attribute &#39;version&#39; | 
+ **filterApp** | **[]string** | filter by id(s) of related &#39;app&#39; | 
+ **filterAppStoreVersion** | **[]string** | filter by id(s) of related &#39;appStoreVersion&#39; | 
+ **filterBetaGroups** | **[]string** | filter by id(s) of related &#39;betaGroups&#39; | 
+ **filterPreReleaseVersion** | **[]string** | filter by id(s) of related &#39;preReleaseVersion&#39; | 
+ **filterId** | **[]string** | filter by id(s) | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsDiagnosticSignatures** | **[]string** | the fields to include for returned resources of type diagnosticSignatures | 
+ **fieldsBuildIcons** | **[]string** | the fields to include for returned resources of type buildIcons | 
+ **fieldsBuildBetaDetails** | **[]string** | the fields to include for returned resources of type buildBetaDetails | 
+ **fieldsBetaAppReviewSubmissions** | **[]string** | the fields to include for returned resources of type betaAppReviewSubmissions | 
+ **fieldsBetaTesters** | **[]string** | the fields to include for returned resources of type betaTesters | 
+ **fieldsAppStoreVersions** | **[]string** | the fields to include for returned resources of type appStoreVersions | 
+ **fieldsBetaBuildLocalizations** | **[]string** | the fields to include for returned resources of type betaBuildLocalizations | 
+ **fieldsPreReleaseVersions** | **[]string** | the fields to include for returned resources of type preReleaseVersions | 
+ **fieldsAppEncryptionDeclarations** | **[]string** | the fields to include for returned resources of type appEncryptionDeclarations | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **fieldsPerfPowerMetrics** | **[]string** | the fields to include for returned resources of type perfPowerMetrics | 
+ **limitBetaBuildLocalizations** | **int32** | maximum number of related betaBuildLocalizations returned (when they are included) | 
+ **limitBetaGroups** | **int32** | maximum number of related betaGroups returned (when they are included) | 
+ **limitBuildBundles** | **int32** | maximum number of related buildBundles returned (when they are included) | 
+ **limitIcons** | **int32** | maximum number of related icons returned (when they are included) | 
+ **limitIndividualTesters** | **int32** | maximum number of related individualTesters returned (when they are included) | 
 
 ### Return type
 
@@ -535,43 +952,89 @@ Name | Type | Description  | Notes
 
 ## BuildsGetInstance
 
-> BuildResponse BuildsGetInstance(ctx, id, optional)
+> BuildResponse BuildsGetInstance(ctx, id).FieldsBuilds(fieldsBuilds).Include(include).FieldsDiagnosticSignatures(fieldsDiagnosticSignatures).FieldsBuildIcons(fieldsBuildIcons).FieldsBuildBetaDetails(fieldsBuildBetaDetails).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).FieldsBetaTesters(fieldsBetaTesters).FieldsAppStoreVersions(fieldsAppStoreVersions).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).FieldsPreReleaseVersions(fieldsPreReleaseVersions).FieldsAppEncryptionDeclarations(fieldsAppEncryptionDeclarations).FieldsApps(fieldsApps).FieldsPerfPowerMetrics(fieldsPerfPowerMetrics).LimitBetaBuildLocalizations(limitBetaBuildLocalizations).LimitBetaGroups(limitBetaGroups).LimitBuildBundles(limitBuildBundles).LimitIcons(limitIcons).LimitIndividualTesters(limitIndividualTesters).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsDiagnosticSignatures := []string{"FieldsDiagnosticSignatures_example"} // []string | the fields to include for returned resources of type diagnosticSignatures (optional)
+    fieldsBuildIcons := []string{"FieldsBuildIcons_example"} // []string | the fields to include for returned resources of type buildIcons (optional)
+    fieldsBuildBetaDetails := []string{"FieldsBuildBetaDetails_example"} // []string | the fields to include for returned resources of type buildBetaDetails (optional)
+    fieldsBetaAppReviewSubmissions := []string{"FieldsBetaAppReviewSubmissions_example"} // []string | the fields to include for returned resources of type betaAppReviewSubmissions (optional)
+    fieldsBetaTesters := []string{"FieldsBetaTesters_example"} // []string | the fields to include for returned resources of type betaTesters (optional)
+    fieldsAppStoreVersions := []string{"FieldsAppStoreVersions_example"} // []string | the fields to include for returned resources of type appStoreVersions (optional)
+    fieldsBetaBuildLocalizations := []string{"FieldsBetaBuildLocalizations_example"} // []string | the fields to include for returned resources of type betaBuildLocalizations (optional)
+    fieldsPreReleaseVersions := []string{"FieldsPreReleaseVersions_example"} // []string | the fields to include for returned resources of type preReleaseVersions (optional)
+    fieldsAppEncryptionDeclarations := []string{"FieldsAppEncryptionDeclarations_example"} // []string | the fields to include for returned resources of type appEncryptionDeclarations (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    fieldsPerfPowerMetrics := []string{"FieldsPerfPowerMetrics_example"} // []string | the fields to include for returned resources of type perfPowerMetrics (optional)
+    limitBetaBuildLocalizations := int32(56) // int32 | maximum number of related betaBuildLocalizations returned (when they are included) (optional)
+    limitBetaGroups := int32(56) // int32 | maximum number of related betaGroups returned (when they are included) (optional)
+    limitBuildBundles := int32(56) // int32 | maximum number of related buildBundles returned (when they are included) (optional)
+    limitIcons := int32(56) // int32 | maximum number of related icons returned (when they are included) (optional)
+    limitIndividualTesters := int32(56) // int32 | maximum number of related individualTesters returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsGetInstance(context.Background(), id).FieldsBuilds(fieldsBuilds).Include(include).FieldsDiagnosticSignatures(fieldsDiagnosticSignatures).FieldsBuildIcons(fieldsBuildIcons).FieldsBuildBetaDetails(fieldsBuildBetaDetails).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).FieldsBetaTesters(fieldsBetaTesters).FieldsAppStoreVersions(fieldsAppStoreVersions).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).FieldsPreReleaseVersions(fieldsPreReleaseVersions).FieldsAppEncryptionDeclarations(fieldsAppEncryptionDeclarations).FieldsApps(fieldsApps).FieldsPerfPowerMetrics(fieldsPerfPowerMetrics).LimitBetaBuildLocalizations(limitBetaBuildLocalizations).LimitBetaGroups(limitBetaGroups).LimitBuildBundles(limitBuildBundles).LimitIcons(limitIcons).LimitIndividualTesters(limitIndividualTesters).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsGetInstance`: BuildResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiBuildsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsAppEncryptionDeclarations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appEncryptionDeclarations | 
- **fieldsBetaAppReviewSubmissions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaAppReviewSubmissions | 
- **fieldsBuildBetaDetails** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildBetaDetails | 
- **fieldsBuildIcons** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildIcons | 
- **fieldsPerfPowerMetrics** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type perfPowerMetrics | 
- **fieldsPreReleaseVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type preReleaseVersions | 
- **fieldsAppStoreVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreVersions | 
- **fieldsDiagnosticSignatures** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type diagnosticSignatures | 
- **fieldsBetaTesters** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaTesters | 
- **fieldsBetaBuildLocalizations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaBuildLocalizations | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBetaBuildLocalizations** | **optional.Int32**| maximum number of related betaBuildLocalizations returned (when they are included) | 
- **limitIcons** | **optional.Int32**| maximum number of related icons returned (when they are included) | 
- **limitIndividualTesters** | **optional.Int32**| maximum number of related individualTesters returned (when they are included) | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsDiagnosticSignatures** | **[]string** | the fields to include for returned resources of type diagnosticSignatures | 
+ **fieldsBuildIcons** | **[]string** | the fields to include for returned resources of type buildIcons | 
+ **fieldsBuildBetaDetails** | **[]string** | the fields to include for returned resources of type buildBetaDetails | 
+ **fieldsBetaAppReviewSubmissions** | **[]string** | the fields to include for returned resources of type betaAppReviewSubmissions | 
+ **fieldsBetaTesters** | **[]string** | the fields to include for returned resources of type betaTesters | 
+ **fieldsAppStoreVersions** | **[]string** | the fields to include for returned resources of type appStoreVersions | 
+ **fieldsBetaBuildLocalizations** | **[]string** | the fields to include for returned resources of type betaBuildLocalizations | 
+ **fieldsPreReleaseVersions** | **[]string** | the fields to include for returned resources of type preReleaseVersions | 
+ **fieldsAppEncryptionDeclarations** | **[]string** | the fields to include for returned resources of type appEncryptionDeclarations | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **fieldsPerfPowerMetrics** | **[]string** | the fields to include for returned resources of type perfPowerMetrics | 
+ **limitBetaBuildLocalizations** | **int32** | maximum number of related betaBuildLocalizations returned (when they are included) | 
+ **limitBetaGroups** | **int32** | maximum number of related betaGroups returned (when they are included) | 
+ **limitBuildBundles** | **int32** | maximum number of related buildBundles returned (when they are included) | 
+ **limitIcons** | **int32** | maximum number of related icons returned (when they are included) | 
+ **limitIndividualTesters** | **int32** | maximum number of related individualTesters returned (when they are included) | 
 
 ### Return type
 
@@ -593,29 +1056,57 @@ Name | Type | Description  | Notes
 
 ## BuildsIconsGetToManyRelated
 
-> BuildIconsResponse BuildsIconsGetToManyRelated(ctx, id, optional)
+> BuildIconsResponse BuildsIconsGetToManyRelated(ctx, id).FieldsBuildIcons(fieldsBuildIcons).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuildIcons := []string{"FieldsBuildIcons_example"} // []string | the fields to include for returned resources of type buildIcons (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsIconsGetToManyRelated(context.Background(), id).FieldsBuildIcons(fieldsBuildIcons).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsIconsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsIconsGetToManyRelated`: BuildIconsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsIconsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsIconsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsIconsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsIconsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuildIcons** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildIcons | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsBuildIcons** | **[]string** | the fields to include for returned resources of type buildIcons | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -637,18 +1128,53 @@ Name | Type | Description  | Notes
 
 ## BuildsIndividualTestersCreateToManyRelationship
 
-> BuildsIndividualTestersCreateToManyRelationship(ctx, id, buildIndividualTestersLinkagesRequest)
+> BuildsIndividualTestersCreateToManyRelationship(ctx, id).BuildIndividualTestersLinkagesRequest(buildIndividualTestersLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    buildIndividualTestersLinkagesRequest := *openapiclient.NewBuildIndividualTestersLinkagesRequest([]openapiclient.BetaGroupRelationshipsBetaTestersDataInner{*openapiclient.NewBetaGroupRelationshipsBetaTestersDataInner("Type_example", "Id_example")}) // BuildIndividualTestersLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BuildsApi.BuildsIndividualTestersCreateToManyRelationship(context.Background(), id).BuildIndividualTestersLinkagesRequest(buildIndividualTestersLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsIndividualTestersCreateToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**buildIndividualTestersLinkagesRequest** | [**BuildIndividualTestersLinkagesRequest**](BuildIndividualTestersLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsIndividualTestersCreateToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **buildIndividualTestersLinkagesRequest** | [**BuildIndividualTestersLinkagesRequest**](BuildIndividualTestersLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -670,18 +1196,53 @@ Name | Type | Description  | Notes
 
 ## BuildsIndividualTestersDeleteToManyRelationship
 
-> BuildsIndividualTestersDeleteToManyRelationship(ctx, id, buildIndividualTestersLinkagesRequest)
+> BuildsIndividualTestersDeleteToManyRelationship(ctx, id).BuildIndividualTestersLinkagesRequest(buildIndividualTestersLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    buildIndividualTestersLinkagesRequest := *openapiclient.NewBuildIndividualTestersLinkagesRequest([]openapiclient.BetaGroupRelationshipsBetaTestersDataInner{*openapiclient.NewBetaGroupRelationshipsBetaTestersDataInner("Type_example", "Id_example")}) // BuildIndividualTestersLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BuildsApi.BuildsIndividualTestersDeleteToManyRelationship(context.Background(), id).BuildIndividualTestersLinkagesRequest(buildIndividualTestersLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsIndividualTestersDeleteToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**buildIndividualTestersLinkagesRequest** | [**BuildIndividualTestersLinkagesRequest**](BuildIndividualTestersLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsIndividualTestersDeleteToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **buildIndividualTestersLinkagesRequest** | [**BuildIndividualTestersLinkagesRequest**](BuildIndividualTestersLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -703,29 +1264,57 @@ Name | Type | Description  | Notes
 
 ## BuildsIndividualTestersGetToManyRelated
 
-> BetaTestersResponse BuildsIndividualTestersGetToManyRelated(ctx, id, optional)
+> BetaTestersResponse BuildsIndividualTestersGetToManyRelated(ctx, id).FieldsBetaTesters(fieldsBetaTesters).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaTesters := []string{"FieldsBetaTesters_example"} // []string | the fields to include for returned resources of type betaTesters (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsIndividualTestersGetToManyRelated(context.Background(), id).FieldsBetaTesters(fieldsBetaTesters).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsIndividualTestersGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsIndividualTestersGetToManyRelated`: BetaTestersResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsIndividualTestersGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsIndividualTestersGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsIndividualTestersGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsIndividualTestersGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaTesters** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaTesters | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsBetaTesters** | **[]string** | the fields to include for returned resources of type betaTesters | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -747,28 +1336,55 @@ Name | Type | Description  | Notes
 
 ## BuildsIndividualTestersGetToManyRelationship
 
-> BuildIndividualTestersLinkagesResponse BuildsIndividualTestersGetToManyRelationship(ctx, id, optional)
+> BuildIndividualTestersLinkagesResponse BuildsIndividualTestersGetToManyRelationship(ctx, id).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsIndividualTestersGetToManyRelationship(context.Background(), id).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsIndividualTestersGetToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsIndividualTestersGetToManyRelationship`: BuildIndividualTestersLinkagesResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsIndividualTestersGetToManyRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsIndividualTestersGetToManyRelationshipOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsIndividualTestersGetToManyRelationshipOpts struct
+Other parameters are passed through a pointer to a apiBuildsIndividualTestersGetToManyRelationshipRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -790,34 +1406,63 @@ Name | Type | Description  | Notes
 
 ## BuildsPerfPowerMetricsGetToManyRelated
 
-> PerfPowerMetricsResponse BuildsPerfPowerMetricsGetToManyRelated(ctx, id, optional)
+> XcodeMetrics BuildsPerfPowerMetricsGetToManyRelated(ctx, id).FilterDeviceType(filterDeviceType).FilterMetricType(filterMetricType).FilterPlatform(filterPlatform).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    filterDeviceType := []string{"Inner_example"} // []string | filter by attribute 'deviceType' (optional)
+    filterMetricType := []string{"FilterMetricType_example"} // []string | filter by attribute 'metricType' (optional)
+    filterPlatform := []string{"FilterPlatform_example"} // []string | filter by attribute 'platform' (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsPerfPowerMetricsGetToManyRelated(context.Background(), id).FilterDeviceType(filterDeviceType).FilterMetricType(filterMetricType).FilterPlatform(filterPlatform).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsPerfPowerMetricsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsPerfPowerMetricsGetToManyRelated`: XcodeMetrics
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsPerfPowerMetricsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsPerfPowerMetricsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsPerfPowerMetricsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsPerfPowerMetricsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **filterDeviceType** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;deviceType&#39; | 
- **filterMetricType** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;metricType&#39; | 
- **filterPlatform** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;platform&#39; | 
+ **filterDeviceType** | **[]string** | filter by attribute &#39;deviceType&#39; | 
+ **filterMetricType** | **[]string** | filter by attribute &#39;metricType&#39; | 
+ **filterPlatform** | **[]string** | filter by attribute &#39;platform&#39; | 
 
 ### Return type
 
-[**PerfPowerMetricsResponse**](PerfPowerMetricsResponse.md)
+[**XcodeMetrics**](XcodeMetrics.md)
 
 ### Authorization
 
@@ -826,7 +1471,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.apple.xcode-metrics+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -835,28 +1480,55 @@ Name | Type | Description  | Notes
 
 ## BuildsPreReleaseVersionGetToOneRelated
 
-> PrereleaseVersionResponse BuildsPreReleaseVersionGetToOneRelated(ctx, id, optional)
+> PrereleaseVersionResponse BuildsPreReleaseVersionGetToOneRelated(ctx, id).FieldsPreReleaseVersions(fieldsPreReleaseVersions).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsPreReleaseVersions := []string{"FieldsPreReleaseVersions_example"} // []string | the fields to include for returned resources of type preReleaseVersions (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsPreReleaseVersionGetToOneRelated(context.Background(), id).FieldsPreReleaseVersions(fieldsPreReleaseVersions).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsPreReleaseVersionGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsPreReleaseVersionGetToOneRelated`: PrereleaseVersionResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsPreReleaseVersionGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildsPreReleaseVersionGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildsPreReleaseVersionGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildsPreReleaseVersionGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsPreReleaseVersions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type preReleaseVersions | 
+ **fieldsPreReleaseVersions** | **[]string** | the fields to include for returned resources of type preReleaseVersions | 
 
 ### Return type
 
@@ -878,18 +1550,55 @@ Name | Type | Description  | Notes
 
 ## BuildsUpdateInstance
 
-> BuildResponse BuildsUpdateInstance(ctx, id, buildUpdateRequest)
+> BuildResponse BuildsUpdateInstance(ctx, id).BuildUpdateRequest(buildUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    buildUpdateRequest := *openapiclient.NewBuildUpdateRequest(*openapiclient.NewBuildUpdateRequestData("Type_example", "Id_example")) // BuildUpdateRequest | Build representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildsApi.BuildsUpdateInstance(context.Background(), id).BuildUpdateRequest(buildUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildsApi.BuildsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildsUpdateInstance`: BuildResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildsApi.BuildsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**buildUpdateRequest** | [**BuildUpdateRequest**](BuildUpdateRequest.md)| Build representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **buildUpdateRequest** | [**BuildUpdateRequest**](BuildUpdateRequest.md) | Build representation | 
 
 ### Return type
 

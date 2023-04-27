@@ -18,17 +18,51 @@ Method | HTTP request | Description
 
 ## UsersDeleteInstance
 
-> UsersDeleteInstance(ctx, id)
+> UsersDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.UsersDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -50,34 +84,65 @@ Name | Type | Description  | Notes
 
 ## UsersGetCollection
 
-> UsersResponse UsersGetCollection(ctx, optional)
+> UsersResponse UsersGetCollection(ctx).FilterRoles(filterRoles).FilterUsername(filterUsername).FilterVisibleApps(filterVisibleApps).Sort(sort).FieldsUsers(fieldsUsers).Limit(limit).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterRoles := []string{"FilterRoles_example"} // []string | filter by attribute 'roles' (optional)
+    filterUsername := []string{"Inner_example"} // []string | filter by attribute 'username' (optional)
+    filterVisibleApps := []string{"Inner_example"} // []string | filter by id(s) of related 'visibleApps' (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsUsers := []string{"FieldsUsers_example"} // []string | the fields to include for returned resources of type users (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limitVisibleApps := int32(56) // int32 | maximum number of related visibleApps returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UsersApi.UsersGetCollection(context.Background()).FilterRoles(filterRoles).FilterUsername(filterUsername).FilterVisibleApps(filterVisibleApps).Sort(sort).FieldsUsers(fieldsUsers).Limit(limit).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersGetCollection`: UsersResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.UsersGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***UsersGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a UsersGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterRoles** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;roles&#39; | 
- **filterUsername** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;username&#39; | 
- **filterVisibleApps** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;visibleApps&#39; | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsUsers** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type users | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitVisibleApps** | **optional.Int32**| maximum number of related visibleApps returned (when they are included) | 
+ **filterRoles** | **[]string** | filter by attribute &#39;roles&#39; | 
+ **filterUsername** | **[]string** | filter by attribute &#39;username&#39; | 
+ **filterVisibleApps** | **[]string** | filter by id(s) of related &#39;visibleApps&#39; | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsUsers** | **[]string** | the fields to include for returned resources of type users | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limitVisibleApps** | **int32** | maximum number of related visibleApps returned (when they are included) | 
 
 ### Return type
 
@@ -99,31 +164,61 @@ Name | Type | Description  | Notes
 
 ## UsersGetInstance
 
-> UserResponse UsersGetInstance(ctx, id, optional)
+> UserResponse UsersGetInstance(ctx, id).FieldsUsers(fieldsUsers).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsUsers := []string{"FieldsUsers_example"} // []string | the fields to include for returned resources of type users (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limitVisibleApps := int32(56) // int32 | maximum number of related visibleApps returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UsersApi.UsersGetInstance(context.Background(), id).FieldsUsers(fieldsUsers).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersGetInstance`: UserResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.UsersGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***UsersGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UsersGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiUsersGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsUsers** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type users | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitVisibleApps** | **optional.Int32**| maximum number of related visibleApps returned (when they are included) | 
+ **fieldsUsers** | **[]string** | the fields to include for returned resources of type users | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limitVisibleApps** | **int32** | maximum number of related visibleApps returned (when they are included) | 
 
 ### Return type
 
@@ -145,18 +240,55 @@ Name | Type | Description  | Notes
 
 ## UsersUpdateInstance
 
-> UserResponse UsersUpdateInstance(ctx, id, userUpdateRequest)
+> UserResponse UsersUpdateInstance(ctx, id).UserUpdateRequest(userUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    userUpdateRequest := *openapiclient.NewUserUpdateRequest(*openapiclient.NewUserUpdateRequestData("Type_example", "Id_example")) // UserUpdateRequest | User representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UsersApi.UsersUpdateInstance(context.Background(), id).UserUpdateRequest(userUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersUpdateInstance`: UserResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.UsersUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**userUpdateRequest** | [**UserUpdateRequest**](UserUpdateRequest.md)| User representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userUpdateRequest** | [**UserUpdateRequest**](UserUpdateRequest.md) | User representation | 
 
 ### Return type
 
@@ -178,18 +310,53 @@ Name | Type | Description  | Notes
 
 ## UsersVisibleAppsCreateToManyRelationship
 
-> UsersVisibleAppsCreateToManyRelationship(ctx, id, userVisibleAppsLinkagesRequest)
+> UsersVisibleAppsCreateToManyRelationship(ctx, id).UserVisibleAppsLinkagesRequest(userVisibleAppsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    userVisibleAppsLinkagesRequest := *openapiclient.NewUserVisibleAppsLinkagesRequest([]openapiclient.AppAvailabilityRelationshipsAppData{*openapiclient.NewAppAvailabilityRelationshipsAppData("Type_example", "Id_example")}) // UserVisibleAppsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.UsersVisibleAppsCreateToManyRelationship(context.Background(), id).UserVisibleAppsLinkagesRequest(userVisibleAppsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersVisibleAppsCreateToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**userVisibleAppsLinkagesRequest** | [**UserVisibleAppsLinkagesRequest**](UserVisibleAppsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersVisibleAppsCreateToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userVisibleAppsLinkagesRequest** | [**UserVisibleAppsLinkagesRequest**](UserVisibleAppsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -211,18 +378,53 @@ Name | Type | Description  | Notes
 
 ## UsersVisibleAppsDeleteToManyRelationship
 
-> UsersVisibleAppsDeleteToManyRelationship(ctx, id, userVisibleAppsLinkagesRequest)
+> UsersVisibleAppsDeleteToManyRelationship(ctx, id).UserVisibleAppsLinkagesRequest(userVisibleAppsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    userVisibleAppsLinkagesRequest := *openapiclient.NewUserVisibleAppsLinkagesRequest([]openapiclient.AppAvailabilityRelationshipsAppData{*openapiclient.NewAppAvailabilityRelationshipsAppData("Type_example", "Id_example")}) // UserVisibleAppsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.UsersVisibleAppsDeleteToManyRelationship(context.Background(), id).UserVisibleAppsLinkagesRequest(userVisibleAppsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersVisibleAppsDeleteToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**userVisibleAppsLinkagesRequest** | [**UserVisibleAppsLinkagesRequest**](UserVisibleAppsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersVisibleAppsDeleteToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userVisibleAppsLinkagesRequest** | [**UserVisibleAppsLinkagesRequest**](UserVisibleAppsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -244,29 +446,57 @@ Name | Type | Description  | Notes
 
 ## UsersVisibleAppsGetToManyRelated
 
-> AppsResponse UsersVisibleAppsGetToManyRelated(ctx, id, optional)
+> AppsResponse UsersVisibleAppsGetToManyRelated(ctx, id).FieldsApps(fieldsApps).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UsersApi.UsersVisibleAppsGetToManyRelated(context.Background(), id).FieldsApps(fieldsApps).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersVisibleAppsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersVisibleAppsGetToManyRelated`: AppsResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.UsersVisibleAppsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***UsersVisibleAppsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UsersVisibleAppsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiUsersVisibleAppsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -288,28 +518,55 @@ Name | Type | Description  | Notes
 
 ## UsersVisibleAppsGetToManyRelationship
 
-> UserVisibleAppsLinkagesResponse UsersVisibleAppsGetToManyRelationship(ctx, id, optional)
+> UserVisibleAppsLinkagesResponse UsersVisibleAppsGetToManyRelationship(ctx, id).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UsersApi.UsersVisibleAppsGetToManyRelationship(context.Background(), id).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersVisibleAppsGetToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UsersVisibleAppsGetToManyRelationship`: UserVisibleAppsLinkagesResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.UsersVisibleAppsGetToManyRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***UsersVisibleAppsGetToManyRelationshipOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UsersVisibleAppsGetToManyRelationshipOpts struct
+Other parameters are passed through a pointer to a apiUsersVisibleAppsGetToManyRelationshipRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -331,18 +588,53 @@ Name | Type | Description  | Notes
 
 ## UsersVisibleAppsReplaceToManyRelationship
 
-> UsersVisibleAppsReplaceToManyRelationship(ctx, id, userVisibleAppsLinkagesRequest)
+> UsersVisibleAppsReplaceToManyRelationship(ctx, id).UserVisibleAppsLinkagesRequest(userVisibleAppsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    userVisibleAppsLinkagesRequest := *openapiclient.NewUserVisibleAppsLinkagesRequest([]openapiclient.AppAvailabilityRelationshipsAppData{*openapiclient.NewAppAvailabilityRelationshipsAppData("Type_example", "Id_example")}) // UserVisibleAppsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.UsersVisibleAppsReplaceToManyRelationship(context.Background(), id).UserVisibleAppsLinkagesRequest(userVisibleAppsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UsersVisibleAppsReplaceToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**userVisibleAppsLinkagesRequest** | [**UserVisibleAppsLinkagesRequest**](UserVisibleAppsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUsersVisibleAppsReplaceToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userVisibleAppsLinkagesRequest** | [**UserVisibleAppsLinkagesRequest**](UserVisibleAppsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 

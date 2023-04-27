@@ -13,17 +13,49 @@ Method | HTTP request | Description
 
 ## AppPreviewsCreateInstance
 
-> AppPreviewResponse AppPreviewsCreateInstance(ctx, appPreviewCreateRequest)
+> AppPreviewResponse AppPreviewsCreateInstance(ctx).AppPreviewCreateRequest(appPreviewCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appPreviewCreateRequest := *openapiclient.NewAppPreviewCreateRequest(*openapiclient.NewAppPreviewCreateRequestData("Type_example", *openapiclient.NewAppPreviewCreateRequestDataAttributes(int32(123), "FileName_example"), *openapiclient.NewAppPreviewCreateRequestDataRelationships(*openapiclient.NewAppPreviewCreateRequestDataRelationshipsAppPreviewSet(*openapiclient.NewAppCustomProductPageLocalizationRelationshipsAppPreviewSetsDataInner("Type_example", "Id_example"))))) // AppPreviewCreateRequest | AppPreview representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreviewsApi.AppPreviewsCreateInstance(context.Background()).AppPreviewCreateRequest(appPreviewCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewsApi.AppPreviewsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreviewsCreateInstance`: AppPreviewResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreviewsApi.AppPreviewsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreviewsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appPreviewCreateRequest** | [**AppPreviewCreateRequest**](AppPreviewCreateRequest.md)| AppPreview representation | 
+ **appPreviewCreateRequest** | [**AppPreviewCreateRequest**](AppPreviewCreateRequest.md) | AppPreview representation | 
 
 ### Return type
 
@@ -45,17 +77,51 @@ Name | Type | Description  | Notes
 
 ## AppPreviewsDeleteInstance
 
-> AppPreviewsDeleteInstance(ctx, id)
+> AppPreviewsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppPreviewsApi.AppPreviewsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewsApi.AppPreviewsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreviewsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -77,29 +143,57 @@ Name | Type | Description  | Notes
 
 ## AppPreviewsGetInstance
 
-> AppPreviewResponse AppPreviewsGetInstance(ctx, id, optional)
+> AppPreviewResponse AppPreviewsGetInstance(ctx, id).FieldsAppPreviews(fieldsAppPreviews).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppPreviews := []string{"FieldsAppPreviews_example"} // []string | the fields to include for returned resources of type appPreviews (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreviewsApi.AppPreviewsGetInstance(context.Background(), id).FieldsAppPreviews(fieldsAppPreviews).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewsApi.AppPreviewsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreviewsGetInstance`: AppPreviewResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreviewsApi.AppPreviewsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppPreviewsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppPreviewsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppPreviewsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppPreviews** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appPreviews | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppPreviews** | **[]string** | the fields to include for returned resources of type appPreviews | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -121,18 +215,55 @@ Name | Type | Description  | Notes
 
 ## AppPreviewsUpdateInstance
 
-> AppPreviewResponse AppPreviewsUpdateInstance(ctx, id, appPreviewUpdateRequest)
+> AppPreviewResponse AppPreviewsUpdateInstance(ctx, id).AppPreviewUpdateRequest(appPreviewUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appPreviewUpdateRequest := *openapiclient.NewAppPreviewUpdateRequest(*openapiclient.NewAppPreviewUpdateRequestData("Type_example", "Id_example")) // AppPreviewUpdateRequest | AppPreview representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreviewsApi.AppPreviewsUpdateInstance(context.Background(), id).AppPreviewUpdateRequest(appPreviewUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreviewsApi.AppPreviewsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreviewsUpdateInstance`: AppPreviewResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreviewsApi.AppPreviewsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appPreviewUpdateRequest** | [**AppPreviewUpdateRequest**](AppPreviewUpdateRequest.md)| AppPreview representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreviewsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appPreviewUpdateRequest** | [**AppPreviewUpdateRequest**](AppPreviewUpdateRequest.md) | AppPreview representation | 
 
 ### Return type
 

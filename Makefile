@@ -1,10 +1,13 @@
 
 generate:
-	docker run --rm \
-	  -v ${PWD}/config:/config \
-	  -v ${PWD}/out:/out \
-	  openapitools/openapi-generator-cli generate \
-	  -i /config/app-store-connect-openapi-spec.json \
+	rm -rf generated
+	/opt/homebrew/bin/openapi-generator generate \
+	  -i https://raw.githubusercontent.com/EvanBacon/App-Store-Connect-OpenAPI-Spec/main/specs/latest.json \
 	  -g go \
-	  -c /config/config.yml \
-	  -o /out/
+	  -c config/config.yml \
+	  -o generated \
+	  --skip-validate-spec \
+	  --git-repo-id appstoreconnect-openapi-go/generated \
+	  --git-user-id storm8studios \
+	
+

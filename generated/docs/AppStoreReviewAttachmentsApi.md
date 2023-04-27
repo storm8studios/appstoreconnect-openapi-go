@@ -13,17 +13,49 @@ Method | HTTP request | Description
 
 ## AppStoreReviewAttachmentsCreateInstance
 
-> AppStoreReviewAttachmentResponse AppStoreReviewAttachmentsCreateInstance(ctx, appStoreReviewAttachmentCreateRequest)
+> AppStoreReviewAttachmentResponse AppStoreReviewAttachmentsCreateInstance(ctx).AppStoreReviewAttachmentCreateRequest(appStoreReviewAttachmentCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appStoreReviewAttachmentCreateRequest := *openapiclient.NewAppStoreReviewAttachmentCreateRequest(*openapiclient.NewAppStoreReviewAttachmentCreateRequestData("Type_example", *openapiclient.NewAppClipAdvancedExperienceImageCreateRequestDataAttributes(int32(123), "FileName_example"), *openapiclient.NewAppStoreReviewAttachmentCreateRequestDataRelationships(*openapiclient.NewAppStoreReviewAttachmentCreateRequestDataRelationshipsAppStoreReviewDetail(*openapiclient.NewAppStoreReviewAttachmentRelationshipsAppStoreReviewDetailData("Type_example", "Id_example"))))) // AppStoreReviewAttachmentCreateRequest | AppStoreReviewAttachment representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsCreateInstance(context.Background()).AppStoreReviewAttachmentCreateRequest(appStoreReviewAttachmentCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreReviewAttachmentsCreateInstance`: AppStoreReviewAttachmentResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreReviewAttachmentsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appStoreReviewAttachmentCreateRequest** | [**AppStoreReviewAttachmentCreateRequest**](AppStoreReviewAttachmentCreateRequest.md)| AppStoreReviewAttachment representation | 
+ **appStoreReviewAttachmentCreateRequest** | [**AppStoreReviewAttachmentCreateRequest**](AppStoreReviewAttachmentCreateRequest.md) | AppStoreReviewAttachment representation | 
 
 ### Return type
 
@@ -45,17 +77,51 @@ Name | Type | Description  | Notes
 
 ## AppStoreReviewAttachmentsDeleteInstance
 
-> AppStoreReviewAttachmentsDeleteInstance(ctx, id)
+> AppStoreReviewAttachmentsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreReviewAttachmentsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -77,29 +143,57 @@ Name | Type | Description  | Notes
 
 ## AppStoreReviewAttachmentsGetInstance
 
-> AppStoreReviewAttachmentResponse AppStoreReviewAttachmentsGetInstance(ctx, id, optional)
+> AppStoreReviewAttachmentResponse AppStoreReviewAttachmentsGetInstance(ctx, id).FieldsAppStoreReviewAttachments(fieldsAppStoreReviewAttachments).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppStoreReviewAttachments := []string{"FieldsAppStoreReviewAttachments_example"} // []string | the fields to include for returned resources of type appStoreReviewAttachments (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsGetInstance(context.Background(), id).FieldsAppStoreReviewAttachments(fieldsAppStoreReviewAttachments).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreReviewAttachmentsGetInstance`: AppStoreReviewAttachmentResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppStoreReviewAttachmentsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppStoreReviewAttachmentsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppStoreReviewAttachmentsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppStoreReviewAttachments** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreReviewAttachments | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppStoreReviewAttachments** | **[]string** | the fields to include for returned resources of type appStoreReviewAttachments | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -121,18 +215,55 @@ Name | Type | Description  | Notes
 
 ## AppStoreReviewAttachmentsUpdateInstance
 
-> AppStoreReviewAttachmentResponse AppStoreReviewAttachmentsUpdateInstance(ctx, id, appStoreReviewAttachmentUpdateRequest)
+> AppStoreReviewAttachmentResponse AppStoreReviewAttachmentsUpdateInstance(ctx, id).AppStoreReviewAttachmentUpdateRequest(appStoreReviewAttachmentUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appStoreReviewAttachmentUpdateRequest := *openapiclient.NewAppStoreReviewAttachmentUpdateRequest(*openapiclient.NewAppStoreReviewAttachmentUpdateRequestData("Type_example", "Id_example")) // AppStoreReviewAttachmentUpdateRequest | AppStoreReviewAttachment representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsUpdateInstance(context.Background(), id).AppStoreReviewAttachmentUpdateRequest(appStoreReviewAttachmentUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreReviewAttachmentsUpdateInstance`: AppStoreReviewAttachmentResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreReviewAttachmentsApi.AppStoreReviewAttachmentsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appStoreReviewAttachmentUpdateRequest** | [**AppStoreReviewAttachmentUpdateRequest**](AppStoreReviewAttachmentUpdateRequest.md)| AppStoreReviewAttachment representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreReviewAttachmentsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appStoreReviewAttachmentUpdateRequest** | [**AppStoreReviewAttachmentUpdateRequest**](AppStoreReviewAttachmentUpdateRequest.md) | AppStoreReviewAttachment representation | 
 
 ### Return type
 

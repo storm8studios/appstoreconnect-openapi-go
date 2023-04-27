@@ -1,9 +1,12 @@
 # BetaInviteType
 
-## Properties
+## Enum
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+
+* `EMAIL` (value: `"EMAIL"`)
+
+* `PUBLIC_LINK` (value: `"PUBLIC_LINK"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

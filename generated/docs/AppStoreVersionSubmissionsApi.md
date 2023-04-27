@@ -11,17 +11,49 @@ Method | HTTP request | Description
 
 ## AppStoreVersionSubmissionsCreateInstance
 
-> AppStoreVersionSubmissionResponse AppStoreVersionSubmissionsCreateInstance(ctx, appStoreVersionSubmissionCreateRequest)
+> AppStoreVersionSubmissionResponse AppStoreVersionSubmissionsCreateInstance(ctx).AppStoreVersionSubmissionCreateRequest(appStoreVersionSubmissionCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appStoreVersionSubmissionCreateRequest := *openapiclient.NewAppStoreVersionSubmissionCreateRequest(*openapiclient.NewAppStoreVersionSubmissionCreateRequestData("Type_example", *openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationships(*openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationshipsAppStoreVersion(*openapiclient.NewAppClipDefaultExperienceRelationshipsReleaseWithAppStoreVersionData("Type_example", "Id_example"))))) // AppStoreVersionSubmissionCreateRequest | AppStoreVersionSubmission representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreVersionSubmissionsApi.AppStoreVersionSubmissionsCreateInstance(context.Background()).AppStoreVersionSubmissionCreateRequest(appStoreVersionSubmissionCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreVersionSubmissionsApi.AppStoreVersionSubmissionsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreVersionSubmissionsCreateInstance`: AppStoreVersionSubmissionResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreVersionSubmissionsApi.AppStoreVersionSubmissionsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreVersionSubmissionsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appStoreVersionSubmissionCreateRequest** | [**AppStoreVersionSubmissionCreateRequest**](AppStoreVersionSubmissionCreateRequest.md)| AppStoreVersionSubmission representation | 
+ **appStoreVersionSubmissionCreateRequest** | [**AppStoreVersionSubmissionCreateRequest**](AppStoreVersionSubmissionCreateRequest.md) | AppStoreVersionSubmission representation | 
 
 ### Return type
 
@@ -43,17 +75,51 @@ Name | Type | Description  | Notes
 
 ## AppStoreVersionSubmissionsDeleteInstance
 
-> AppStoreVersionSubmissionsDeleteInstance(ctx, id)
+> AppStoreVersionSubmissionsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppStoreVersionSubmissionsApi.AppStoreVersionSubmissionsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreVersionSubmissionsApi.AppStoreVersionSubmissionsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreVersionSubmissionsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 

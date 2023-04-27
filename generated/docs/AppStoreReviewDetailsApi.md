@@ -13,31 +13,61 @@ Method | HTTP request | Description
 
 ## AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated
 
-> AppStoreReviewAttachmentsResponse AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated(ctx, id, optional)
+> AppStoreReviewAttachmentsResponse AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated(ctx, id).FieldsAppStoreReviewDetails(fieldsAppStoreReviewDetails).FieldsAppStoreReviewAttachments(fieldsAppStoreReviewAttachments).Limit(limit).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppStoreReviewDetails := []string{"FieldsAppStoreReviewDetails_example"} // []string | the fields to include for returned resources of type appStoreReviewDetails (optional)
+    fieldsAppStoreReviewAttachments := []string{"FieldsAppStoreReviewAttachments_example"} // []string | the fields to include for returned resources of type appStoreReviewAttachments (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreReviewDetailsApi.AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated(context.Background(), id).FieldsAppStoreReviewDetails(fieldsAppStoreReviewDetails).FieldsAppStoreReviewAttachments(fieldsAppStoreReviewAttachments).Limit(limit).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewDetailsApi.AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated`: AppStoreReviewAttachmentsResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreReviewDetailsApi.AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiAppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppStoreReviewDetails** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreReviewDetails | 
- **fieldsAppStoreReviewAttachments** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreReviewAttachments | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppStoreReviewDetails** | **[]string** | the fields to include for returned resources of type appStoreReviewDetails | 
+ **fieldsAppStoreReviewAttachments** | **[]string** | the fields to include for returned resources of type appStoreReviewAttachments | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -59,17 +89,49 @@ Name | Type | Description  | Notes
 
 ## AppStoreReviewDetailsCreateInstance
 
-> AppStoreReviewDetailResponse AppStoreReviewDetailsCreateInstance(ctx, appStoreReviewDetailCreateRequest)
+> AppStoreReviewDetailResponse AppStoreReviewDetailsCreateInstance(ctx).AppStoreReviewDetailCreateRequest(appStoreReviewDetailCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appStoreReviewDetailCreateRequest := *openapiclient.NewAppStoreReviewDetailCreateRequest(*openapiclient.NewAppStoreReviewDetailCreateRequestData("Type_example", *openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationships(*openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationshipsAppStoreVersion(*openapiclient.NewAppClipDefaultExperienceRelationshipsReleaseWithAppStoreVersionData("Type_example", "Id_example"))))) // AppStoreReviewDetailCreateRequest | AppStoreReviewDetail representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreReviewDetailsApi.AppStoreReviewDetailsCreateInstance(context.Background()).AppStoreReviewDetailCreateRequest(appStoreReviewDetailCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewDetailsApi.AppStoreReviewDetailsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreReviewDetailsCreateInstance`: AppStoreReviewDetailResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreReviewDetailsApi.AppStoreReviewDetailsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreReviewDetailsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appStoreReviewDetailCreateRequest** | [**AppStoreReviewDetailCreateRequest**](AppStoreReviewDetailCreateRequest.md)| AppStoreReviewDetail representation | 
+ **appStoreReviewDetailCreateRequest** | [**AppStoreReviewDetailCreateRequest**](AppStoreReviewDetailCreateRequest.md) | AppStoreReviewDetail representation | 
 
 ### Return type
 
@@ -91,31 +153,61 @@ Name | Type | Description  | Notes
 
 ## AppStoreReviewDetailsGetInstance
 
-> AppStoreReviewDetailResponse AppStoreReviewDetailsGetInstance(ctx, id, optional)
+> AppStoreReviewDetailResponse AppStoreReviewDetailsGetInstance(ctx, id).FieldsAppStoreReviewDetails(fieldsAppStoreReviewDetails).Include(include).FieldsAppStoreReviewAttachments(fieldsAppStoreReviewAttachments).LimitAppStoreReviewAttachments(limitAppStoreReviewAttachments).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppStoreReviewDetails := []string{"FieldsAppStoreReviewDetails_example"} // []string | the fields to include for returned resources of type appStoreReviewDetails (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsAppStoreReviewAttachments := []string{"FieldsAppStoreReviewAttachments_example"} // []string | the fields to include for returned resources of type appStoreReviewAttachments (optional)
+    limitAppStoreReviewAttachments := int32(56) // int32 | maximum number of related appStoreReviewAttachments returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreReviewDetailsApi.AppStoreReviewDetailsGetInstance(context.Background(), id).FieldsAppStoreReviewDetails(fieldsAppStoreReviewDetails).Include(include).FieldsAppStoreReviewAttachments(fieldsAppStoreReviewAttachments).LimitAppStoreReviewAttachments(limitAppStoreReviewAttachments).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewDetailsApi.AppStoreReviewDetailsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreReviewDetailsGetInstance`: AppStoreReviewDetailResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreReviewDetailsApi.AppStoreReviewDetailsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppStoreReviewDetailsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppStoreReviewDetailsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppStoreReviewDetailsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppStoreReviewDetails** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreReviewDetails | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsAppStoreReviewAttachments** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appStoreReviewAttachments | 
- **limitAppStoreReviewAttachments** | **optional.Int32**| maximum number of related appStoreReviewAttachments returned (when they are included) | 
+ **fieldsAppStoreReviewDetails** | **[]string** | the fields to include for returned resources of type appStoreReviewDetails | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsAppStoreReviewAttachments** | **[]string** | the fields to include for returned resources of type appStoreReviewAttachments | 
+ **limitAppStoreReviewAttachments** | **int32** | maximum number of related appStoreReviewAttachments returned (when they are included) | 
 
 ### Return type
 
@@ -137,18 +229,55 @@ Name | Type | Description  | Notes
 
 ## AppStoreReviewDetailsUpdateInstance
 
-> AppStoreReviewDetailResponse AppStoreReviewDetailsUpdateInstance(ctx, id, appStoreReviewDetailUpdateRequest)
+> AppStoreReviewDetailResponse AppStoreReviewDetailsUpdateInstance(ctx, id).AppStoreReviewDetailUpdateRequest(appStoreReviewDetailUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appStoreReviewDetailUpdateRequest := *openapiclient.NewAppStoreReviewDetailUpdateRequest(*openapiclient.NewAppStoreReviewDetailUpdateRequestData("Type_example", "Id_example")) // AppStoreReviewDetailUpdateRequest | AppStoreReviewDetail representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreReviewDetailsApi.AppStoreReviewDetailsUpdateInstance(context.Background(), id).AppStoreReviewDetailUpdateRequest(appStoreReviewDetailUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreReviewDetailsApi.AppStoreReviewDetailsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreReviewDetailsUpdateInstance`: AppStoreReviewDetailResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreReviewDetailsApi.AppStoreReviewDetailsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appStoreReviewDetailUpdateRequest** | [**AppStoreReviewDetailUpdateRequest**](AppStoreReviewDetailUpdateRequest.md)| AppStoreReviewDetail representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreReviewDetailsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appStoreReviewDetailUpdateRequest** | [**AppStoreReviewDetailUpdateRequest**](AppStoreReviewDetailUpdateRequest.md) | AppStoreReviewDetail representation | 
 
 ### Return type
 

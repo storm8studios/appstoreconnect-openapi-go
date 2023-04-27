@@ -14,17 +14,49 @@ Method | HTTP request | Description
 
 ## EndUserLicenseAgreementsCreateInstance
 
-> EndUserLicenseAgreementResponse EndUserLicenseAgreementsCreateInstance(ctx, endUserLicenseAgreementCreateRequest)
+> EndUserLicenseAgreementResponse EndUserLicenseAgreementsCreateInstance(ctx).EndUserLicenseAgreementCreateRequest(endUserLicenseAgreementCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    endUserLicenseAgreementCreateRequest := *openapiclient.NewEndUserLicenseAgreementCreateRequest(*openapiclient.NewEndUserLicenseAgreementCreateRequestData("Type_example", *openapiclient.NewEndUserLicenseAgreementCreateRequestDataAttributes("AgreementText_example"), *openapiclient.NewEndUserLicenseAgreementCreateRequestDataRelationships(*openapiclient.NewAppAvailabilityCreateRequestDataRelationshipsApp(*openapiclient.NewAppAvailabilityRelationshipsAppData("Type_example", "Id_example")), *openapiclient.NewAppAvailabilityCreateRequestDataRelationshipsAvailableTerritories([]openapiclient.AppAvailabilityRelationshipsAvailableTerritoriesDataInner{*openapiclient.NewAppAvailabilityRelationshipsAvailableTerritoriesDataInner("Type_example", "Id_example")})))) // EndUserLicenseAgreementCreateRequest | EndUserLicenseAgreement representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndUserLicenseAgreementsApi.EndUserLicenseAgreementsCreateInstance(context.Background()).EndUserLicenseAgreementCreateRequest(endUserLicenseAgreementCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndUserLicenseAgreementsCreateInstance`: EndUserLicenseAgreementResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndUserLicenseAgreementsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**endUserLicenseAgreementCreateRequest** | [**EndUserLicenseAgreementCreateRequest**](EndUserLicenseAgreementCreateRequest.md)| EndUserLicenseAgreement representation | 
+ **endUserLicenseAgreementCreateRequest** | [**EndUserLicenseAgreementCreateRequest**](EndUserLicenseAgreementCreateRequest.md) | EndUserLicenseAgreement representation | 
 
 ### Return type
 
@@ -46,17 +78,51 @@ Name | Type | Description  | Notes
 
 ## EndUserLicenseAgreementsDeleteInstance
 
-> EndUserLicenseAgreementsDeleteInstance(ctx, id)
+> EndUserLicenseAgreementsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.EndUserLicenseAgreementsApi.EndUserLicenseAgreementsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndUserLicenseAgreementsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -78,31 +144,61 @@ Name | Type | Description  | Notes
 
 ## EndUserLicenseAgreementsGetInstance
 
-> EndUserLicenseAgreementResponse EndUserLicenseAgreementsGetInstance(ctx, id, optional)
+> EndUserLicenseAgreementResponse EndUserLicenseAgreementsGetInstance(ctx, id).FieldsEndUserLicenseAgreements(fieldsEndUserLicenseAgreements).Include(include).FieldsTerritories(fieldsTerritories).LimitTerritories(limitTerritories).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsEndUserLicenseAgreements := []string{"FieldsEndUserLicenseAgreements_example"} // []string | the fields to include for returned resources of type endUserLicenseAgreements (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsTerritories := []string{"FieldsTerritories_example"} // []string | the fields to include for returned resources of type territories (optional)
+    limitTerritories := int32(56) // int32 | maximum number of related territories returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndUserLicenseAgreementsApi.EndUserLicenseAgreementsGetInstance(context.Background(), id).FieldsEndUserLicenseAgreements(fieldsEndUserLicenseAgreements).Include(include).FieldsTerritories(fieldsTerritories).LimitTerritories(limitTerritories).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndUserLicenseAgreementsGetInstance`: EndUserLicenseAgreementResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***EndUserLicenseAgreementsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a EndUserLicenseAgreementsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiEndUserLicenseAgreementsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsEndUserLicenseAgreements** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type endUserLicenseAgreements | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsTerritories** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type territories | 
- **limitTerritories** | **optional.Int32**| maximum number of related territories returned (when they are included) | 
+ **fieldsEndUserLicenseAgreements** | **[]string** | the fields to include for returned resources of type endUserLicenseAgreements | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsTerritories** | **[]string** | the fields to include for returned resources of type territories | 
+ **limitTerritories** | **int32** | maximum number of related territories returned (when they are included) | 
 
 ### Return type
 
@@ -124,29 +220,57 @@ Name | Type | Description  | Notes
 
 ## EndUserLicenseAgreementsTerritoriesGetToManyRelated
 
-> TerritoriesResponse EndUserLicenseAgreementsTerritoriesGetToManyRelated(ctx, id, optional)
+> TerritoriesResponse EndUserLicenseAgreementsTerritoriesGetToManyRelated(ctx, id).FieldsTerritories(fieldsTerritories).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsTerritories := []string{"FieldsTerritories_example"} // []string | the fields to include for returned resources of type territories (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndUserLicenseAgreementsApi.EndUserLicenseAgreementsTerritoriesGetToManyRelated(context.Background(), id).FieldsTerritories(fieldsTerritories).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsTerritoriesGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndUserLicenseAgreementsTerritoriesGetToManyRelated`: TerritoriesResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsTerritoriesGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***EndUserLicenseAgreementsTerritoriesGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a EndUserLicenseAgreementsTerritoriesGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiEndUserLicenseAgreementsTerritoriesGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsTerritories** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type territories | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsTerritories** | **[]string** | the fields to include for returned resources of type territories | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -168,18 +292,55 @@ Name | Type | Description  | Notes
 
 ## EndUserLicenseAgreementsUpdateInstance
 
-> EndUserLicenseAgreementResponse EndUserLicenseAgreementsUpdateInstance(ctx, id, endUserLicenseAgreementUpdateRequest)
+> EndUserLicenseAgreementResponse EndUserLicenseAgreementsUpdateInstance(ctx, id).EndUserLicenseAgreementUpdateRequest(endUserLicenseAgreementUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    endUserLicenseAgreementUpdateRequest := *openapiclient.NewEndUserLicenseAgreementUpdateRequest(*openapiclient.NewEndUserLicenseAgreementUpdateRequestData("Type_example", "Id_example")) // EndUserLicenseAgreementUpdateRequest | EndUserLicenseAgreement representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EndUserLicenseAgreementsApi.EndUserLicenseAgreementsUpdateInstance(context.Background(), id).EndUserLicenseAgreementUpdateRequest(endUserLicenseAgreementUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EndUserLicenseAgreementsUpdateInstance`: EndUserLicenseAgreementResponse
+    fmt.Fprintf(os.Stdout, "Response from `EndUserLicenseAgreementsApi.EndUserLicenseAgreementsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**endUserLicenseAgreementUpdateRequest** | [**EndUserLicenseAgreementUpdateRequest**](EndUserLicenseAgreementUpdateRequest.md)| EndUserLicenseAgreement representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEndUserLicenseAgreementsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **endUserLicenseAgreementUpdateRequest** | [**EndUserLicenseAgreementUpdateRequest**](EndUserLicenseAgreementUpdateRequest.md) | EndUserLicenseAgreement representation | 
 
 ### Return type
 

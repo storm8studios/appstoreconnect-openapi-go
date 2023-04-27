@@ -12,17 +12,49 @@ Method | HTTP request | Description
 
 ## BundleIdCapabilitiesCreateInstance
 
-> BundleIdCapabilityResponse BundleIdCapabilitiesCreateInstance(ctx, bundleIdCapabilityCreateRequest)
+> BundleIdCapabilityResponse BundleIdCapabilitiesCreateInstance(ctx).BundleIdCapabilityCreateRequest(bundleIdCapabilityCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    bundleIdCapabilityCreateRequest := *openapiclient.NewBundleIdCapabilityCreateRequest(*openapiclient.NewBundleIdCapabilityCreateRequestData("Type_example", *openapiclient.NewBundleIdCapabilityCreateRequestDataAttributes(openapiclient.CapabilityType("ICLOUD")), *openapiclient.NewBundleIdCapabilityCreateRequestDataRelationships(*openapiclient.NewBundleIdCapabilityCreateRequestDataRelationshipsBundleId(*openapiclient.NewBundleIdCapabilityCreateRequestDataRelationshipsBundleIdData("Type_example", "Id_example"))))) // BundleIdCapabilityCreateRequest | BundleIdCapability representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdCapabilitiesApi.BundleIdCapabilitiesCreateInstance(context.Background()).BundleIdCapabilityCreateRequest(bundleIdCapabilityCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdCapabilitiesApi.BundleIdCapabilitiesCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdCapabilitiesCreateInstance`: BundleIdCapabilityResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdCapabilitiesApi.BundleIdCapabilitiesCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBundleIdCapabilitiesCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bundleIdCapabilityCreateRequest** | [**BundleIdCapabilityCreateRequest**](BundleIdCapabilityCreateRequest.md)| BundleIdCapability representation | 
+ **bundleIdCapabilityCreateRequest** | [**BundleIdCapabilityCreateRequest**](BundleIdCapabilityCreateRequest.md) | BundleIdCapability representation | 
 
 ### Return type
 
@@ -44,17 +76,51 @@ Name | Type | Description  | Notes
 
 ## BundleIdCapabilitiesDeleteInstance
 
-> BundleIdCapabilitiesDeleteInstance(ctx, id)
+> BundleIdCapabilitiesDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BundleIdCapabilitiesApi.BundleIdCapabilitiesDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdCapabilitiesApi.BundleIdCapabilitiesDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBundleIdCapabilitiesDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -76,18 +142,55 @@ Name | Type | Description  | Notes
 
 ## BundleIdCapabilitiesUpdateInstance
 
-> BundleIdCapabilityResponse BundleIdCapabilitiesUpdateInstance(ctx, id, bundleIdCapabilityUpdateRequest)
+> BundleIdCapabilityResponse BundleIdCapabilitiesUpdateInstance(ctx, id).BundleIdCapabilityUpdateRequest(bundleIdCapabilityUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    bundleIdCapabilityUpdateRequest := *openapiclient.NewBundleIdCapabilityUpdateRequest(*openapiclient.NewBundleIdCapabilityUpdateRequestData("Type_example", "Id_example")) // BundleIdCapabilityUpdateRequest | BundleIdCapability representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdCapabilitiesApi.BundleIdCapabilitiesUpdateInstance(context.Background(), id).BundleIdCapabilityUpdateRequest(bundleIdCapabilityUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdCapabilitiesApi.BundleIdCapabilitiesUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdCapabilitiesUpdateInstance`: BundleIdCapabilityResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdCapabilitiesApi.BundleIdCapabilitiesUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**bundleIdCapabilityUpdateRequest** | [**BundleIdCapabilityUpdateRequest**](BundleIdCapabilityUpdateRequest.md)| BundleIdCapability representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBundleIdCapabilitiesUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **bundleIdCapabilityUpdateRequest** | [**BundleIdCapabilityUpdateRequest**](BundleIdCapabilityUpdateRequest.md) | BundleIdCapability representation | 
 
 ### Return type
 

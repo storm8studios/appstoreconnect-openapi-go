@@ -10,17 +10,49 @@ Method | HTTP request | Description
 
 ## BetaTesterInvitationsCreateInstance
 
-> BetaTesterInvitationResponse BetaTesterInvitationsCreateInstance(ctx, betaTesterInvitationCreateRequest)
+> BetaTesterInvitationResponse BetaTesterInvitationsCreateInstance(ctx).BetaTesterInvitationCreateRequest(betaTesterInvitationCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    betaTesterInvitationCreateRequest := *openapiclient.NewBetaTesterInvitationCreateRequest(*openapiclient.NewBetaTesterInvitationCreateRequestData("Type_example", *openapiclient.NewBetaTesterInvitationCreateRequestDataRelationships(*openapiclient.NewBetaTesterInvitationCreateRequestDataRelationshipsBetaTester(*openapiclient.NewBetaGroupRelationshipsBetaTestersDataInner("Type_example", "Id_example")), *openapiclient.NewAppAvailabilityCreateRequestDataRelationshipsApp(*openapiclient.NewAppAvailabilityRelationshipsAppData("Type_example", "Id_example"))))) // BetaTesterInvitationCreateRequest | BetaTesterInvitation representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaTesterInvitationsApi.BetaTesterInvitationsCreateInstance(context.Background()).BetaTesterInvitationCreateRequest(betaTesterInvitationCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaTesterInvitationsApi.BetaTesterInvitationsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaTesterInvitationsCreateInstance`: BetaTesterInvitationResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaTesterInvitationsApi.BetaTesterInvitationsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaTesterInvitationsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**betaTesterInvitationCreateRequest** | [**BetaTesterInvitationCreateRequest**](BetaTesterInvitationCreateRequest.md)| BetaTesterInvitation representation | 
+ **betaTesterInvitationCreateRequest** | [**BetaTesterInvitationCreateRequest**](BetaTesterInvitationCreateRequest.md) | BetaTesterInvitation representation | 
 
 ### Return type
 

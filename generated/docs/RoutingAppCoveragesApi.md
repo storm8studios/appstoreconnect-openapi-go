@@ -13,17 +13,49 @@ Method | HTTP request | Description
 
 ## RoutingAppCoveragesCreateInstance
 
-> RoutingAppCoverageResponse RoutingAppCoveragesCreateInstance(ctx, routingAppCoverageCreateRequest)
+> RoutingAppCoverageResponse RoutingAppCoveragesCreateInstance(ctx).RoutingAppCoverageCreateRequest(routingAppCoverageCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    routingAppCoverageCreateRequest := *openapiclient.NewRoutingAppCoverageCreateRequest(*openapiclient.NewRoutingAppCoverageCreateRequestData("Type_example", *openapiclient.NewAppClipAdvancedExperienceImageCreateRequestDataAttributes(int32(123), "FileName_example"), *openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationships(*openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationshipsAppStoreVersion(*openapiclient.NewAppClipDefaultExperienceRelationshipsReleaseWithAppStoreVersionData("Type_example", "Id_example"))))) // RoutingAppCoverageCreateRequest | RoutingAppCoverage representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RoutingAppCoveragesApi.RoutingAppCoveragesCreateInstance(context.Background()).RoutingAppCoverageCreateRequest(routingAppCoverageCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RoutingAppCoveragesApi.RoutingAppCoveragesCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RoutingAppCoveragesCreateInstance`: RoutingAppCoverageResponse
+    fmt.Fprintf(os.Stdout, "Response from `RoutingAppCoveragesApi.RoutingAppCoveragesCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRoutingAppCoveragesCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**routingAppCoverageCreateRequest** | [**RoutingAppCoverageCreateRequest**](RoutingAppCoverageCreateRequest.md)| RoutingAppCoverage representation | 
+ **routingAppCoverageCreateRequest** | [**RoutingAppCoverageCreateRequest**](RoutingAppCoverageCreateRequest.md) | RoutingAppCoverage representation | 
 
 ### Return type
 
@@ -45,17 +77,51 @@ Name | Type | Description  | Notes
 
 ## RoutingAppCoveragesDeleteInstance
 
-> RoutingAppCoveragesDeleteInstance(ctx, id)
+> RoutingAppCoveragesDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.RoutingAppCoveragesApi.RoutingAppCoveragesDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RoutingAppCoveragesApi.RoutingAppCoveragesDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRoutingAppCoveragesDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -77,29 +143,57 @@ Name | Type | Description  | Notes
 
 ## RoutingAppCoveragesGetInstance
 
-> RoutingAppCoverageResponse RoutingAppCoveragesGetInstance(ctx, id, optional)
+> RoutingAppCoverageResponse RoutingAppCoveragesGetInstance(ctx, id).FieldsRoutingAppCoverages(fieldsRoutingAppCoverages).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsRoutingAppCoverages := []string{"FieldsRoutingAppCoverages_example"} // []string | the fields to include for returned resources of type routingAppCoverages (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RoutingAppCoveragesApi.RoutingAppCoveragesGetInstance(context.Background(), id).FieldsRoutingAppCoverages(fieldsRoutingAppCoverages).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RoutingAppCoveragesApi.RoutingAppCoveragesGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RoutingAppCoveragesGetInstance`: RoutingAppCoverageResponse
+    fmt.Fprintf(os.Stdout, "Response from `RoutingAppCoveragesApi.RoutingAppCoveragesGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***RoutingAppCoveragesGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a RoutingAppCoveragesGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiRoutingAppCoveragesGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsRoutingAppCoverages** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type routingAppCoverages | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsRoutingAppCoverages** | **[]string** | the fields to include for returned resources of type routingAppCoverages | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -121,18 +215,55 @@ Name | Type | Description  | Notes
 
 ## RoutingAppCoveragesUpdateInstance
 
-> RoutingAppCoverageResponse RoutingAppCoveragesUpdateInstance(ctx, id, routingAppCoverageUpdateRequest)
+> RoutingAppCoverageResponse RoutingAppCoveragesUpdateInstance(ctx, id).RoutingAppCoverageUpdateRequest(routingAppCoverageUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    routingAppCoverageUpdateRequest := *openapiclient.NewRoutingAppCoverageUpdateRequest(*openapiclient.NewRoutingAppCoverageUpdateRequestData("Type_example", "Id_example")) // RoutingAppCoverageUpdateRequest | RoutingAppCoverage representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RoutingAppCoveragesApi.RoutingAppCoveragesUpdateInstance(context.Background(), id).RoutingAppCoverageUpdateRequest(routingAppCoverageUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RoutingAppCoveragesApi.RoutingAppCoveragesUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RoutingAppCoveragesUpdateInstance`: RoutingAppCoverageResponse
+    fmt.Fprintf(os.Stdout, "Response from `RoutingAppCoveragesApi.RoutingAppCoveragesUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**routingAppCoverageUpdateRequest** | [**RoutingAppCoverageUpdateRequest**](RoutingAppCoverageUpdateRequest.md)| RoutingAppCoverage representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRoutingAppCoveragesUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **routingAppCoverageUpdateRequest** | [**RoutingAppCoverageUpdateRequest**](RoutingAppCoverageUpdateRequest.md) | RoutingAppCoverage representation | 
 
 ### Return type
 

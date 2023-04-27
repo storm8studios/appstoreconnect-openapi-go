@@ -15,31 +15,61 @@ Method | HTTP request | Description
 
 ## AppScreenshotSetsAppScreenshotsGetToManyRelated
 
-> AppScreenshotsResponse AppScreenshotSetsAppScreenshotsGetToManyRelated(ctx, id, optional)
+> AppScreenshotsResponse AppScreenshotSetsAppScreenshotsGetToManyRelated(ctx, id).FieldsAppScreenshotSets(fieldsAppScreenshotSets).FieldsAppScreenshots(fieldsAppScreenshots).Limit(limit).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppScreenshotSets := []string{"FieldsAppScreenshotSets_example"} // []string | the fields to include for returned resources of type appScreenshotSets (optional)
+    fieldsAppScreenshots := []string{"FieldsAppScreenshots_example"} // []string | the fields to include for returned resources of type appScreenshots (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsGetToManyRelated(context.Background(), id).FieldsAppScreenshotSets(fieldsAppScreenshotSets).FieldsAppScreenshots(fieldsAppScreenshots).Limit(limit).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppScreenshotSetsAppScreenshotsGetToManyRelated`: AppScreenshotsResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppScreenshotSetsAppScreenshotsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppScreenshotSetsAppScreenshotsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiAppScreenshotSetsAppScreenshotsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppScreenshotSets** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appScreenshotSets | 
- **fieldsAppScreenshots** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appScreenshots | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppScreenshotSets** | **[]string** | the fields to include for returned resources of type appScreenshotSets | 
+ **fieldsAppScreenshots** | **[]string** | the fields to include for returned resources of type appScreenshots | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -61,28 +91,55 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotSetsAppScreenshotsGetToManyRelationship
 
-> AppScreenshotSetAppScreenshotsLinkagesResponse AppScreenshotSetsAppScreenshotsGetToManyRelationship(ctx, id, optional)
+> AppScreenshotSetAppScreenshotsLinkagesResponse AppScreenshotSetsAppScreenshotsGetToManyRelationship(ctx, id).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsGetToManyRelationship(context.Background(), id).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsGetToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppScreenshotSetsAppScreenshotsGetToManyRelationship`: AppScreenshotSetAppScreenshotsLinkagesResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsGetToManyRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppScreenshotSetsAppScreenshotsGetToManyRelationshipOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppScreenshotSetsAppScreenshotsGetToManyRelationshipOpts struct
+Other parameters are passed through a pointer to a apiAppScreenshotSetsAppScreenshotsGetToManyRelationshipRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -104,18 +161,53 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotSetsAppScreenshotsReplaceToManyRelationship
 
-> AppScreenshotSetsAppScreenshotsReplaceToManyRelationship(ctx, id, appScreenshotSetAppScreenshotsLinkagesRequest)
+> AppScreenshotSetsAppScreenshotsReplaceToManyRelationship(ctx, id).AppScreenshotSetAppScreenshotsLinkagesRequest(appScreenshotSetAppScreenshotsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appScreenshotSetAppScreenshotsLinkagesRequest := *openapiclient.NewAppScreenshotSetAppScreenshotsLinkagesRequest([]openapiclient.AppScreenshotSetRelationshipsAppScreenshotsDataInner{*openapiclient.NewAppScreenshotSetRelationshipsAppScreenshotsDataInner("Type_example", "Id_example")}) // AppScreenshotSetAppScreenshotsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsReplaceToManyRelationship(context.Background(), id).AppScreenshotSetAppScreenshotsLinkagesRequest(appScreenshotSetAppScreenshotsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotSetsApi.AppScreenshotSetsAppScreenshotsReplaceToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appScreenshotSetAppScreenshotsLinkagesRequest** | [**AppScreenshotSetAppScreenshotsLinkagesRequest**](AppScreenshotSetAppScreenshotsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppScreenshotSetsAppScreenshotsReplaceToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appScreenshotSetAppScreenshotsLinkagesRequest** | [**AppScreenshotSetAppScreenshotsLinkagesRequest**](AppScreenshotSetAppScreenshotsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -137,17 +229,49 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotSetsCreateInstance
 
-> AppScreenshotSetResponse AppScreenshotSetsCreateInstance(ctx, appScreenshotSetCreateRequest)
+> AppScreenshotSetResponse AppScreenshotSetsCreateInstance(ctx).AppScreenshotSetCreateRequest(appScreenshotSetCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appScreenshotSetCreateRequest := *openapiclient.NewAppScreenshotSetCreateRequest(*openapiclient.NewAppScreenshotSetCreateRequestData("Type_example", *openapiclient.NewAppScreenshotSetCreateRequestDataAttributes(openapiclient.ScreenshotDisplayType("APP_IPHONE_67")))) // AppScreenshotSetCreateRequest | AppScreenshotSet representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppScreenshotSetsApi.AppScreenshotSetsCreateInstance(context.Background()).AppScreenshotSetCreateRequest(appScreenshotSetCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotSetsApi.AppScreenshotSetsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppScreenshotSetsCreateInstance`: AppScreenshotSetResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppScreenshotSetsApi.AppScreenshotSetsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppScreenshotSetsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appScreenshotSetCreateRequest** | [**AppScreenshotSetCreateRequest**](AppScreenshotSetCreateRequest.md)| AppScreenshotSet representation | 
+ **appScreenshotSetCreateRequest** | [**AppScreenshotSetCreateRequest**](AppScreenshotSetCreateRequest.md) | AppScreenshotSet representation | 
 
 ### Return type
 
@@ -169,17 +293,51 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotSetsDeleteInstance
 
-> AppScreenshotSetsDeleteInstance(ctx, id)
+> AppScreenshotSetsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppScreenshotSetsApi.AppScreenshotSetsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotSetsApi.AppScreenshotSetsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppScreenshotSetsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -201,31 +359,61 @@ Name | Type | Description  | Notes
 
 ## AppScreenshotSetsGetInstance
 
-> AppScreenshotSetResponse AppScreenshotSetsGetInstance(ctx, id, optional)
+> AppScreenshotSetResponse AppScreenshotSetsGetInstance(ctx, id).FieldsAppScreenshotSets(fieldsAppScreenshotSets).Include(include).FieldsAppScreenshots(fieldsAppScreenshots).LimitAppScreenshots(limitAppScreenshots).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppScreenshotSets := []string{"FieldsAppScreenshotSets_example"} // []string | the fields to include for returned resources of type appScreenshotSets (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsAppScreenshots := []string{"FieldsAppScreenshots_example"} // []string | the fields to include for returned resources of type appScreenshots (optional)
+    limitAppScreenshots := int32(56) // int32 | maximum number of related appScreenshots returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppScreenshotSetsApi.AppScreenshotSetsGetInstance(context.Background(), id).FieldsAppScreenshotSets(fieldsAppScreenshotSets).Include(include).FieldsAppScreenshots(fieldsAppScreenshots).LimitAppScreenshots(limitAppScreenshots).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppScreenshotSetsApi.AppScreenshotSetsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppScreenshotSetsGetInstance`: AppScreenshotSetResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppScreenshotSetsApi.AppScreenshotSetsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppScreenshotSetsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppScreenshotSetsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppScreenshotSetsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppScreenshotSets** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appScreenshotSets | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsAppScreenshots** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appScreenshots | 
- **limitAppScreenshots** | **optional.Int32**| maximum number of related appScreenshots returned (when they are included) | 
+ **fieldsAppScreenshotSets** | **[]string** | the fields to include for returned resources of type appScreenshotSets | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsAppScreenshots** | **[]string** | the fields to include for returned resources of type appScreenshots | 
+ **limitAppScreenshots** | **int32** | maximum number of related appScreenshots returned (when they are included) | 
 
 ### Return type
 

@@ -13,28 +13,55 @@ Method | HTTP request | Description
 
 ## BetaLicenseAgreementsAppGetToOneRelated
 
-> AppResponse BetaLicenseAgreementsAppGetToOneRelated(ctx, id, optional)
+> AppResponse BetaLicenseAgreementsAppGetToOneRelated(ctx, id).FieldsApps(fieldsApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaLicenseAgreementsApi.BetaLicenseAgreementsAppGetToOneRelated(context.Background(), id).FieldsApps(fieldsApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaLicenseAgreementsApi.BetaLicenseAgreementsAppGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaLicenseAgreementsAppGetToOneRelated`: AppResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaLicenseAgreementsApi.BetaLicenseAgreementsAppGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaLicenseAgreementsAppGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaLicenseAgreementsAppGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBetaLicenseAgreementsAppGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
 
 ### Return type
 
@@ -56,30 +83,57 @@ Name | Type | Description  | Notes
 
 ## BetaLicenseAgreementsGetCollection
 
-> BetaLicenseAgreementsResponse BetaLicenseAgreementsGetCollection(ctx, optional)
+> BetaLicenseAgreementsResponse BetaLicenseAgreementsGetCollection(ctx).FilterApp(filterApp).FieldsBetaLicenseAgreements(fieldsBetaLicenseAgreements).Limit(limit).Include(include).FieldsApps(fieldsApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterApp := []string{"Inner_example"} // []string | filter by id(s) of related 'app' (optional)
+    fieldsBetaLicenseAgreements := []string{"FieldsBetaLicenseAgreements_example"} // []string | the fields to include for returned resources of type betaLicenseAgreements (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaLicenseAgreementsApi.BetaLicenseAgreementsGetCollection(context.Background()).FilterApp(filterApp).FieldsBetaLicenseAgreements(fieldsBetaLicenseAgreements).Limit(limit).Include(include).FieldsApps(fieldsApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaLicenseAgreementsApi.BetaLicenseAgreementsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaLicenseAgreementsGetCollection`: BetaLicenseAgreementsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaLicenseAgreementsApi.BetaLicenseAgreementsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaLicenseAgreementsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***BetaLicenseAgreementsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a BetaLicenseAgreementsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterApp** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;app&#39; | 
- **fieldsBetaLicenseAgreements** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaLicenseAgreements | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
+ **filterApp** | **[]string** | filter by id(s) of related &#39;app&#39; | 
+ **fieldsBetaLicenseAgreements** | **[]string** | the fields to include for returned resources of type betaLicenseAgreements | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
 
 ### Return type
 
@@ -101,30 +155,59 @@ Name | Type | Description  | Notes
 
 ## BetaLicenseAgreementsGetInstance
 
-> BetaLicenseAgreementResponse BetaLicenseAgreementsGetInstance(ctx, id, optional)
+> BetaLicenseAgreementResponse BetaLicenseAgreementsGetInstance(ctx, id).FieldsBetaLicenseAgreements(fieldsBetaLicenseAgreements).Include(include).FieldsApps(fieldsApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaLicenseAgreements := []string{"FieldsBetaLicenseAgreements_example"} // []string | the fields to include for returned resources of type betaLicenseAgreements (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaLicenseAgreementsApi.BetaLicenseAgreementsGetInstance(context.Background(), id).FieldsBetaLicenseAgreements(fieldsBetaLicenseAgreements).Include(include).FieldsApps(fieldsApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaLicenseAgreementsApi.BetaLicenseAgreementsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaLicenseAgreementsGetInstance`: BetaLicenseAgreementResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaLicenseAgreementsApi.BetaLicenseAgreementsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaLicenseAgreementsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaLicenseAgreementsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiBetaLicenseAgreementsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaLicenseAgreements** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaLicenseAgreements | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
+ **fieldsBetaLicenseAgreements** | **[]string** | the fields to include for returned resources of type betaLicenseAgreements | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
 
 ### Return type
 
@@ -146,18 +229,55 @@ Name | Type | Description  | Notes
 
 ## BetaLicenseAgreementsUpdateInstance
 
-> BetaLicenseAgreementResponse BetaLicenseAgreementsUpdateInstance(ctx, id, betaLicenseAgreementUpdateRequest)
+> BetaLicenseAgreementResponse BetaLicenseAgreementsUpdateInstance(ctx, id).BetaLicenseAgreementUpdateRequest(betaLicenseAgreementUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    betaLicenseAgreementUpdateRequest := *openapiclient.NewBetaLicenseAgreementUpdateRequest(*openapiclient.NewBetaLicenseAgreementUpdateRequestData("Type_example", "Id_example")) // BetaLicenseAgreementUpdateRequest | BetaLicenseAgreement representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaLicenseAgreementsApi.BetaLicenseAgreementsUpdateInstance(context.Background(), id).BetaLicenseAgreementUpdateRequest(betaLicenseAgreementUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaLicenseAgreementsApi.BetaLicenseAgreementsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaLicenseAgreementsUpdateInstance`: BetaLicenseAgreementResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaLicenseAgreementsApi.BetaLicenseAgreementsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**betaLicenseAgreementUpdateRequest** | [**BetaLicenseAgreementUpdateRequest**](BetaLicenseAgreementUpdateRequest.md)| BetaLicenseAgreement representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaLicenseAgreementsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **betaLicenseAgreementUpdateRequest** | [**BetaLicenseAgreementUpdateRequest**](BetaLicenseAgreementUpdateRequest.md) | BetaLicenseAgreement representation | 
 
 ### Return type
 

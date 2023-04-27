@@ -13,28 +13,55 @@ Method | HTTP request | Description
 
 ## BuildBetaDetailsBuildGetToOneRelated
 
-> BuildResponse BuildBetaDetailsBuildGetToOneRelated(ctx, id, optional)
+> BuildResponse BuildBetaDetailsBuildGetToOneRelated(ctx, id).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildBetaDetailsApi.BuildBetaDetailsBuildGetToOneRelated(context.Background(), id).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildBetaDetailsApi.BuildBetaDetailsBuildGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildBetaDetailsBuildGetToOneRelated`: BuildResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildBetaDetailsApi.BuildBetaDetailsBuildGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildBetaDetailsBuildGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildBetaDetailsBuildGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBuildBetaDetailsBuildGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -56,31 +83,59 @@ Name | Type | Description  | Notes
 
 ## BuildBetaDetailsGetCollection
 
-> BuildBetaDetailsResponse BuildBetaDetailsGetCollection(ctx, optional)
+> BuildBetaDetailsResponse BuildBetaDetailsGetCollection(ctx).FilterBuild(filterBuild).FilterId(filterId).FieldsBuildBetaDetails(fieldsBuildBetaDetails).Limit(limit).Include(include).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterBuild := []string{"Inner_example"} // []string | filter by id(s) of related 'build' (optional)
+    filterId := []string{"Inner_example"} // []string | filter by id(s) (optional)
+    fieldsBuildBetaDetails := []string{"FieldsBuildBetaDetails_example"} // []string | the fields to include for returned resources of type buildBetaDetails (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildBetaDetailsApi.BuildBetaDetailsGetCollection(context.Background()).FilterBuild(filterBuild).FilterId(filterId).FieldsBuildBetaDetails(fieldsBuildBetaDetails).Limit(limit).Include(include).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildBetaDetailsApi.BuildBetaDetailsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildBetaDetailsGetCollection`: BuildBetaDetailsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildBetaDetailsApi.BuildBetaDetailsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildBetaDetailsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***BuildBetaDetailsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a BuildBetaDetailsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterBuild** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;build&#39; | 
- **filterId** | [**optional.Interface of []string**](string.md)| filter by id(s) | 
- **fieldsBuildBetaDetails** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildBetaDetails | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **filterBuild** | **[]string** | filter by id(s) of related &#39;build&#39; | 
+ **filterId** | **[]string** | filter by id(s) | 
+ **fieldsBuildBetaDetails** | **[]string** | the fields to include for returned resources of type buildBetaDetails | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -102,30 +157,59 @@ Name | Type | Description  | Notes
 
 ## BuildBetaDetailsGetInstance
 
-> BuildBetaDetailResponse BuildBetaDetailsGetInstance(ctx, id, optional)
+> BuildBetaDetailResponse BuildBetaDetailsGetInstance(ctx, id).FieldsBuildBetaDetails(fieldsBuildBetaDetails).Include(include).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuildBetaDetails := []string{"FieldsBuildBetaDetails_example"} // []string | the fields to include for returned resources of type buildBetaDetails (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildBetaDetailsApi.BuildBetaDetailsGetInstance(context.Background(), id).FieldsBuildBetaDetails(fieldsBuildBetaDetails).Include(include).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildBetaDetailsApi.BuildBetaDetailsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildBetaDetailsGetInstance`: BuildBetaDetailResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildBetaDetailsApi.BuildBetaDetailsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BuildBetaDetailsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BuildBetaDetailsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiBuildBetaDetailsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuildBetaDetails** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type buildBetaDetails | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **fieldsBuildBetaDetails** | **[]string** | the fields to include for returned resources of type buildBetaDetails | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -147,18 +231,55 @@ Name | Type | Description  | Notes
 
 ## BuildBetaDetailsUpdateInstance
 
-> BuildBetaDetailResponse BuildBetaDetailsUpdateInstance(ctx, id, buildBetaDetailUpdateRequest)
+> BuildBetaDetailResponse BuildBetaDetailsUpdateInstance(ctx, id).BuildBetaDetailUpdateRequest(buildBetaDetailUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    buildBetaDetailUpdateRequest := *openapiclient.NewBuildBetaDetailUpdateRequest(*openapiclient.NewBuildBetaDetailUpdateRequestData("Type_example", "Id_example")) // BuildBetaDetailUpdateRequest | BuildBetaDetail representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildBetaDetailsApi.BuildBetaDetailsUpdateInstance(context.Background(), id).BuildBetaDetailUpdateRequest(buildBetaDetailUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildBetaDetailsApi.BuildBetaDetailsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildBetaDetailsUpdateInstance`: BuildBetaDetailResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildBetaDetailsApi.BuildBetaDetailsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**buildBetaDetailUpdateRequest** | [**BuildBetaDetailUpdateRequest**](BuildBetaDetailUpdateRequest.md)| BuildBetaDetail representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildBetaDetailsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **buildBetaDetailUpdateRequest** | [**BuildBetaDetailUpdateRequest**](BuildBetaDetailUpdateRequest.md) | BuildBetaDetail representation | 
 
 ### Return type
 

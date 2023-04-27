@@ -14,17 +14,49 @@ Method | HTTP request | Description
 
 ## UserInvitationsCreateInstance
 
-> UserInvitationResponse UserInvitationsCreateInstance(ctx, userInvitationCreateRequest)
+> UserInvitationResponse UserInvitationsCreateInstance(ctx).UserInvitationCreateRequest(userInvitationCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    userInvitationCreateRequest := *openapiclient.NewUserInvitationCreateRequest(*openapiclient.NewUserInvitationCreateRequestData("Type_example", *openapiclient.NewUserInvitationCreateRequestDataAttributes("Email_example", "FirstName_example", "LastName_example", []openapiclient.UserRole{openapiclient.UserRole("ADMIN")}))) // UserInvitationCreateRequest | UserInvitation representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UserInvitationsApi.UserInvitationsCreateInstance(context.Background()).UserInvitationCreateRequest(userInvitationCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserInvitationsApi.UserInvitationsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UserInvitationsCreateInstance`: UserInvitationResponse
+    fmt.Fprintf(os.Stdout, "Response from `UserInvitationsApi.UserInvitationsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUserInvitationsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userInvitationCreateRequest** | [**UserInvitationCreateRequest**](UserInvitationCreateRequest.md)| UserInvitation representation | 
+ **userInvitationCreateRequest** | [**UserInvitationCreateRequest**](UserInvitationCreateRequest.md) | UserInvitation representation | 
 
 ### Return type
 
@@ -46,17 +78,51 @@ Name | Type | Description  | Notes
 
 ## UserInvitationsDeleteInstance
 
-> UserInvitationsDeleteInstance(ctx, id)
+> UserInvitationsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UserInvitationsApi.UserInvitationsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserInvitationsApi.UserInvitationsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUserInvitationsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -78,34 +144,65 @@ Name | Type | Description  | Notes
 
 ## UserInvitationsGetCollection
 
-> UserInvitationsResponse UserInvitationsGetCollection(ctx, optional)
+> UserInvitationsResponse UserInvitationsGetCollection(ctx).FilterEmail(filterEmail).FilterRoles(filterRoles).FilterVisibleApps(filterVisibleApps).Sort(sort).FieldsUserInvitations(fieldsUserInvitations).Limit(limit).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterEmail := []string{"Inner_example"} // []string | filter by attribute 'email' (optional)
+    filterRoles := []string{"FilterRoles_example"} // []string | filter by attribute 'roles' (optional)
+    filterVisibleApps := []string{"Inner_example"} // []string | filter by id(s) of related 'visibleApps' (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsUserInvitations := []string{"FieldsUserInvitations_example"} // []string | the fields to include for returned resources of type userInvitations (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limitVisibleApps := int32(56) // int32 | maximum number of related visibleApps returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UserInvitationsApi.UserInvitationsGetCollection(context.Background()).FilterEmail(filterEmail).FilterRoles(filterRoles).FilterVisibleApps(filterVisibleApps).Sort(sort).FieldsUserInvitations(fieldsUserInvitations).Limit(limit).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserInvitationsApi.UserInvitationsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UserInvitationsGetCollection`: UserInvitationsResponse
+    fmt.Fprintf(os.Stdout, "Response from `UserInvitationsApi.UserInvitationsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUserInvitationsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***UserInvitationsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a UserInvitationsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterEmail** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;email&#39; | 
- **filterRoles** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;roles&#39; | 
- **filterVisibleApps** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;visibleApps&#39; | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsUserInvitations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type userInvitations | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitVisibleApps** | **optional.Int32**| maximum number of related visibleApps returned (when they are included) | 
+ **filterEmail** | **[]string** | filter by attribute &#39;email&#39; | 
+ **filterRoles** | **[]string** | filter by attribute &#39;roles&#39; | 
+ **filterVisibleApps** | **[]string** | filter by id(s) of related &#39;visibleApps&#39; | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsUserInvitations** | **[]string** | the fields to include for returned resources of type userInvitations | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limitVisibleApps** | **int32** | maximum number of related visibleApps returned (when they are included) | 
 
 ### Return type
 
@@ -127,31 +224,61 @@ Name | Type | Description  | Notes
 
 ## UserInvitationsGetInstance
 
-> UserInvitationResponse UserInvitationsGetInstance(ctx, id, optional)
+> UserInvitationResponse UserInvitationsGetInstance(ctx, id).FieldsUserInvitations(fieldsUserInvitations).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsUserInvitations := []string{"FieldsUserInvitations_example"} // []string | the fields to include for returned resources of type userInvitations (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limitVisibleApps := int32(56) // int32 | maximum number of related visibleApps returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UserInvitationsApi.UserInvitationsGetInstance(context.Background(), id).FieldsUserInvitations(fieldsUserInvitations).Include(include).FieldsApps(fieldsApps).LimitVisibleApps(limitVisibleApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserInvitationsApi.UserInvitationsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UserInvitationsGetInstance`: UserInvitationResponse
+    fmt.Fprintf(os.Stdout, "Response from `UserInvitationsApi.UserInvitationsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***UserInvitationsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UserInvitationsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiUserInvitationsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsUserInvitations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type userInvitations | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitVisibleApps** | **optional.Int32**| maximum number of related visibleApps returned (when they are included) | 
+ **fieldsUserInvitations** | **[]string** | the fields to include for returned resources of type userInvitations | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limitVisibleApps** | **int32** | maximum number of related visibleApps returned (when they are included) | 
 
 ### Return type
 
@@ -173,29 +300,57 @@ Name | Type | Description  | Notes
 
 ## UserInvitationsVisibleAppsGetToManyRelated
 
-> AppsResponse UserInvitationsVisibleAppsGetToManyRelated(ctx, id, optional)
+> AppsResponse UserInvitationsVisibleAppsGetToManyRelated(ctx, id).FieldsApps(fieldsApps).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.UserInvitationsApi.UserInvitationsVisibleAppsGetToManyRelated(context.Background(), id).FieldsApps(fieldsApps).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UserInvitationsApi.UserInvitationsVisibleAppsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UserInvitationsVisibleAppsGetToManyRelated`: AppsResponse
+    fmt.Fprintf(os.Stdout, "Response from `UserInvitationsApi.UserInvitationsVisibleAppsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***UserInvitationsVisibleAppsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UserInvitationsVisibleAppsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiUserInvitationsVisibleAppsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 

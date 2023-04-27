@@ -10,17 +10,49 @@ Method | HTTP request | Description
 
 ## BuildBetaNotificationsCreateInstance
 
-> BuildBetaNotificationResponse BuildBetaNotificationsCreateInstance(ctx, buildBetaNotificationCreateRequest)
+> BuildBetaNotificationResponse BuildBetaNotificationsCreateInstance(ctx).BuildBetaNotificationCreateRequest(buildBetaNotificationCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    buildBetaNotificationCreateRequest := *openapiclient.NewBuildBetaNotificationCreateRequest(*openapiclient.NewBuildBetaNotificationCreateRequestData("Type_example", *openapiclient.NewBetaAppReviewSubmissionCreateRequestDataRelationships(*openapiclient.NewBetaAppReviewSubmissionCreateRequestDataRelationshipsBuild(*openapiclient.NewAppEncryptionDeclarationRelationshipsBuildsDataInner("Type_example", "Id_example"))))) // BuildBetaNotificationCreateRequest | BuildBetaNotification representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BuildBetaNotificationsApi.BuildBetaNotificationsCreateInstance(context.Background()).BuildBetaNotificationCreateRequest(buildBetaNotificationCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BuildBetaNotificationsApi.BuildBetaNotificationsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BuildBetaNotificationsCreateInstance`: BuildBetaNotificationResponse
+    fmt.Fprintf(os.Stdout, "Response from `BuildBetaNotificationsApi.BuildBetaNotificationsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBuildBetaNotificationsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**buildBetaNotificationCreateRequest** | [**BuildBetaNotificationCreateRequest**](BuildBetaNotificationCreateRequest.md)| BuildBetaNotification representation | 
+ **buildBetaNotificationCreateRequest** | [**BuildBetaNotificationCreateRequest**](BuildBetaNotificationCreateRequest.md) | BuildBetaNotification representation | 
 
 ### Return type
 

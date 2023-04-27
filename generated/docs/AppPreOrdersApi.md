@@ -13,17 +13,49 @@ Method | HTTP request | Description
 
 ## AppPreOrdersCreateInstance
 
-> AppPreOrderResponse AppPreOrdersCreateInstance(ctx, appPreOrderCreateRequest)
+> AppPreOrderResponse AppPreOrdersCreateInstance(ctx).AppPreOrderCreateRequest(appPreOrderCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appPreOrderCreateRequest := *openapiclient.NewAppPreOrderCreateRequest(*openapiclient.NewAppPreOrderCreateRequestData("Type_example", *openapiclient.NewAppEventCreateRequestDataRelationships(*openapiclient.NewAppAvailabilityCreateRequestDataRelationshipsApp(*openapiclient.NewAppAvailabilityRelationshipsAppData("Type_example", "Id_example"))))) // AppPreOrderCreateRequest | AppPreOrder representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreOrdersApi.AppPreOrdersCreateInstance(context.Background()).AppPreOrderCreateRequest(appPreOrderCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreOrdersApi.AppPreOrdersCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreOrdersCreateInstance`: AppPreOrderResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreOrdersApi.AppPreOrdersCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreOrdersCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appPreOrderCreateRequest** | [**AppPreOrderCreateRequest**](AppPreOrderCreateRequest.md)| AppPreOrder representation | 
+ **appPreOrderCreateRequest** | [**AppPreOrderCreateRequest**](AppPreOrderCreateRequest.md) | AppPreOrder representation | 
 
 ### Return type
 
@@ -45,17 +77,51 @@ Name | Type | Description  | Notes
 
 ## AppPreOrdersDeleteInstance
 
-> AppPreOrdersDeleteInstance(ctx, id)
+> AppPreOrdersDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppPreOrdersApi.AppPreOrdersDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreOrdersApi.AppPreOrdersDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreOrdersDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -77,29 +143,57 @@ Name | Type | Description  | Notes
 
 ## AppPreOrdersGetInstance
 
-> AppPreOrderResponse AppPreOrdersGetInstance(ctx, id, optional)
+> AppPreOrderResponse AppPreOrdersGetInstance(ctx, id).FieldsAppPreOrders(fieldsAppPreOrders).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppPreOrders := []string{"FieldsAppPreOrders_example"} // []string | the fields to include for returned resources of type appPreOrders (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreOrdersApi.AppPreOrdersGetInstance(context.Background(), id).FieldsAppPreOrders(fieldsAppPreOrders).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreOrdersApi.AppPreOrdersGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreOrdersGetInstance`: AppPreOrderResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreOrdersApi.AppPreOrdersGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppPreOrdersGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppPreOrdersGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppPreOrdersGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppPreOrders** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appPreOrders | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppPreOrders** | **[]string** | the fields to include for returned resources of type appPreOrders | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 
@@ -121,18 +215,55 @@ Name | Type | Description  | Notes
 
 ## AppPreOrdersUpdateInstance
 
-> AppPreOrderResponse AppPreOrdersUpdateInstance(ctx, id, appPreOrderUpdateRequest)
+> AppPreOrderResponse AppPreOrdersUpdateInstance(ctx, id).AppPreOrderUpdateRequest(appPreOrderUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appPreOrderUpdateRequest := *openapiclient.NewAppPreOrderUpdateRequest(*openapiclient.NewAppPreOrderUpdateRequestData("Type_example", "Id_example")) // AppPreOrderUpdateRequest | AppPreOrder representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPreOrdersApi.AppPreOrdersUpdateInstance(context.Background(), id).AppPreOrderUpdateRequest(appPreOrderUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPreOrdersApi.AppPreOrdersUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPreOrdersUpdateInstance`: AppPreOrderResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPreOrdersApi.AppPreOrdersUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appPreOrderUpdateRequest** | [**AppPreOrderUpdateRequest**](AppPreOrderUpdateRequest.md)| AppPreOrder representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppPreOrdersUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appPreOrderUpdateRequest** | [**AppPreOrderUpdateRequest**](AppPreOrderUpdateRequest.md) | AppPreOrder representation | 
 
 ### Return type
 

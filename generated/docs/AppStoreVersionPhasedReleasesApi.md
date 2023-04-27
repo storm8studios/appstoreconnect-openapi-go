@@ -12,17 +12,49 @@ Method | HTTP request | Description
 
 ## AppStoreVersionPhasedReleasesCreateInstance
 
-> AppStoreVersionPhasedReleaseResponse AppStoreVersionPhasedReleasesCreateInstance(ctx, appStoreVersionPhasedReleaseCreateRequest)
+> AppStoreVersionPhasedReleaseResponse AppStoreVersionPhasedReleasesCreateInstance(ctx).AppStoreVersionPhasedReleaseCreateRequest(appStoreVersionPhasedReleaseCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    appStoreVersionPhasedReleaseCreateRequest := *openapiclient.NewAppStoreVersionPhasedReleaseCreateRequest(*openapiclient.NewAppStoreVersionPhasedReleaseCreateRequestData("Type_example", *openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationships(*openapiclient.NewAppStoreReviewDetailCreateRequestDataRelationshipsAppStoreVersion(*openapiclient.NewAppClipDefaultExperienceRelationshipsReleaseWithAppStoreVersionData("Type_example", "Id_example"))))) // AppStoreVersionPhasedReleaseCreateRequest | AppStoreVersionPhasedRelease representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesCreateInstance(context.Background()).AppStoreVersionPhasedReleaseCreateRequest(appStoreVersionPhasedReleaseCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreVersionPhasedReleasesCreateInstance`: AppStoreVersionPhasedReleaseResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreVersionPhasedReleasesCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**appStoreVersionPhasedReleaseCreateRequest** | [**AppStoreVersionPhasedReleaseCreateRequest**](AppStoreVersionPhasedReleaseCreateRequest.md)| AppStoreVersionPhasedRelease representation | 
+ **appStoreVersionPhasedReleaseCreateRequest** | [**AppStoreVersionPhasedReleaseCreateRequest**](AppStoreVersionPhasedReleaseCreateRequest.md) | AppStoreVersionPhasedRelease representation | 
 
 ### Return type
 
@@ -44,17 +76,51 @@ Name | Type | Description  | Notes
 
 ## AppStoreVersionPhasedReleasesDeleteInstance
 
-> AppStoreVersionPhasedReleasesDeleteInstance(ctx, id)
+> AppStoreVersionPhasedReleasesDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreVersionPhasedReleasesDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -76,18 +142,55 @@ Name | Type | Description  | Notes
 
 ## AppStoreVersionPhasedReleasesUpdateInstance
 
-> AppStoreVersionPhasedReleaseResponse AppStoreVersionPhasedReleasesUpdateInstance(ctx, id, appStoreVersionPhasedReleaseUpdateRequest)
+> AppStoreVersionPhasedReleaseResponse AppStoreVersionPhasedReleasesUpdateInstance(ctx, id).AppStoreVersionPhasedReleaseUpdateRequest(appStoreVersionPhasedReleaseUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    appStoreVersionPhasedReleaseUpdateRequest := *openapiclient.NewAppStoreVersionPhasedReleaseUpdateRequest(*openapiclient.NewAppStoreVersionPhasedReleaseUpdateRequestData("Type_example", "Id_example")) // AppStoreVersionPhasedReleaseUpdateRequest | AppStoreVersionPhasedRelease representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesUpdateInstance(context.Background(), id).AppStoreVersionPhasedReleaseUpdateRequest(appStoreVersionPhasedReleaseUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppStoreVersionPhasedReleasesUpdateInstance`: AppStoreVersionPhasedReleaseResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreVersionPhasedReleasesApi.AppStoreVersionPhasedReleasesUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**appStoreVersionPhasedReleaseUpdateRequest** | [**AppStoreVersionPhasedReleaseUpdateRequest**](AppStoreVersionPhasedReleaseUpdateRequest.md)| AppStoreVersionPhasedRelease representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppStoreVersionPhasedReleasesUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **appStoreVersionPhasedReleaseUpdateRequest** | [**AppStoreVersionPhasedReleaseUpdateRequest**](AppStoreVersionPhasedReleaseUpdateRequest.md) | AppStoreVersionPhasedRelease representation | 
 
 ### Return type
 

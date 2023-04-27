@@ -10,27 +10,51 @@ Method | HTTP request | Description
 
 ## TerritoriesGetCollection
 
-> TerritoriesResponse TerritoriesGetCollection(ctx, optional)
+> TerritoriesResponse TerritoriesGetCollection(ctx).FieldsTerritories(fieldsTerritories).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    fieldsTerritories := []string{"FieldsTerritories_example"} // []string | the fields to include for returned resources of type territories (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TerritoriesApi.TerritoriesGetCollection(context.Background()).FieldsTerritories(fieldsTerritories).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TerritoriesApi.TerritoriesGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `TerritoriesGetCollection`: TerritoriesResponse
+    fmt.Fprintf(os.Stdout, "Response from `TerritoriesApi.TerritoriesGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTerritoriesGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***TerritoriesGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a TerritoriesGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **fieldsTerritories** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type territories | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsTerritories** | **[]string** | the fields to include for returned resources of type territories | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 

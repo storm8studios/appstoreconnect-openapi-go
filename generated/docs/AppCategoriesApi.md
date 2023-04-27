@@ -13,31 +13,59 @@ Method | HTTP request | Description
 
 ## AppCategoriesGetCollection
 
-> AppCategoriesResponse AppCategoriesGetCollection(ctx, optional)
+> AppCategoriesResponse AppCategoriesGetCollection(ctx).FilterPlatforms(filterPlatforms).ExistsParent(existsParent).FieldsAppCategories(fieldsAppCategories).Limit(limit).Include(include).LimitSubcategories(limitSubcategories).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterPlatforms := []string{"FilterPlatforms_example"} // []string | filter by attribute 'platforms' (optional)
+    existsParent := true // bool | filter by existence or non-existence of related 'parent' (optional)
+    fieldsAppCategories := []string{"FieldsAppCategories_example"} // []string | the fields to include for returned resources of type appCategories (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    limitSubcategories := int32(56) // int32 | maximum number of related subcategories returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppCategoriesApi.AppCategoriesGetCollection(context.Background()).FilterPlatforms(filterPlatforms).ExistsParent(existsParent).FieldsAppCategories(fieldsAppCategories).Limit(limit).Include(include).LimitSubcategories(limitSubcategories).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppCategoriesApi.AppCategoriesGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppCategoriesGetCollection`: AppCategoriesResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppCategoriesApi.AppCategoriesGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAppCategoriesGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***AppCategoriesGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a AppCategoriesGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterPlatforms** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;platforms&#39; | 
- **existsParent** | [**optional.Interface of []string**](string.md)| filter by existence or non-existence of related &#39;parent&#39; | 
- **fieldsAppCategories** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appCategories | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **limitSubcategories** | **optional.Int32**| maximum number of related subcategories returned (when they are included) | 
+ **filterPlatforms** | **[]string** | filter by attribute &#39;platforms&#39; | 
+ **existsParent** | **bool** | filter by existence or non-existence of related &#39;parent&#39; | 
+ **fieldsAppCategories** | **[]string** | the fields to include for returned resources of type appCategories | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **limitSubcategories** | **int32** | maximum number of related subcategories returned (when they are included) | 
 
 ### Return type
 
@@ -59,30 +87,59 @@ Name | Type | Description  | Notes
 
 ## AppCategoriesGetInstance
 
-> AppCategoryResponse AppCategoriesGetInstance(ctx, id, optional)
+> AppCategoryResponse AppCategoriesGetInstance(ctx, id).FieldsAppCategories(fieldsAppCategories).Include(include).LimitSubcategories(limitSubcategories).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppCategories := []string{"FieldsAppCategories_example"} // []string | the fields to include for returned resources of type appCategories (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    limitSubcategories := int32(56) // int32 | maximum number of related subcategories returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppCategoriesApi.AppCategoriesGetInstance(context.Background(), id).FieldsAppCategories(fieldsAppCategories).Include(include).LimitSubcategories(limitSubcategories).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppCategoriesApi.AppCategoriesGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppCategoriesGetInstance`: AppCategoryResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppCategoriesApi.AppCategoriesGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppCategoriesGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppCategoriesGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppCategoriesGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppCategories** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appCategories | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **limitSubcategories** | **optional.Int32**| maximum number of related subcategories returned (when they are included) | 
+ **fieldsAppCategories** | **[]string** | the fields to include for returned resources of type appCategories | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **limitSubcategories** | **int32** | maximum number of related subcategories returned (when they are included) | 
 
 ### Return type
 
@@ -104,28 +161,55 @@ Name | Type | Description  | Notes
 
 ## AppCategoriesParentGetToOneRelated
 
-> AppCategoryResponse AppCategoriesParentGetToOneRelated(ctx, id, optional)
+> AppCategoryResponse AppCategoriesParentGetToOneRelated(ctx, id).FieldsAppCategories(fieldsAppCategories).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppCategories := []string{"FieldsAppCategories_example"} // []string | the fields to include for returned resources of type appCategories (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppCategoriesApi.AppCategoriesParentGetToOneRelated(context.Background(), id).FieldsAppCategories(fieldsAppCategories).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppCategoriesApi.AppCategoriesParentGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppCategoriesParentGetToOneRelated`: AppCategoryResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppCategoriesApi.AppCategoriesParentGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppCategoriesParentGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppCategoriesParentGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiAppCategoriesParentGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppCategories** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appCategories | 
+ **fieldsAppCategories** | **[]string** | the fields to include for returned resources of type appCategories | 
 
 ### Return type
 
@@ -147,29 +231,57 @@ Name | Type | Description  | Notes
 
 ## AppCategoriesSubcategoriesGetToManyRelated
 
-> AppCategoriesResponse AppCategoriesSubcategoriesGetToManyRelated(ctx, id, optional)
+> AppCategoriesResponse AppCategoriesSubcategoriesGetToManyRelated(ctx, id).FieldsAppCategories(fieldsAppCategories).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppCategories := []string{"FieldsAppCategories_example"} // []string | the fields to include for returned resources of type appCategories (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppCategoriesApi.AppCategoriesSubcategoriesGetToManyRelated(context.Background(), id).FieldsAppCategories(fieldsAppCategories).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppCategoriesApi.AppCategoriesSubcategoriesGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppCategoriesSubcategoriesGetToManyRelated`: AppCategoriesResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppCategoriesApi.AppCategoriesSubcategoriesGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppCategoriesSubcategoriesGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppCategoriesSubcategoriesGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiAppCategoriesSubcategoriesGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppCategories** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appCategories | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsAppCategories** | **[]string** | the fields to include for returned resources of type appCategories | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 

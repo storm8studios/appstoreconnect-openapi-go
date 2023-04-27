@@ -13,28 +13,55 @@ Method | HTTP request | Description
 
 ## BetaAppReviewSubmissionsBuildGetToOneRelated
 
-> BuildResponse BetaAppReviewSubmissionsBuildGetToOneRelated(ctx, id, optional)
+> BuildResponse BetaAppReviewSubmissionsBuildGetToOneRelated(ctx, id).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsBuildGetToOneRelated(context.Background(), id).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsBuildGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaAppReviewSubmissionsBuildGetToOneRelated`: BuildResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsBuildGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaAppReviewSubmissionsBuildGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaAppReviewSubmissionsBuildGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBetaAppReviewSubmissionsBuildGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -56,17 +83,49 @@ Name | Type | Description  | Notes
 
 ## BetaAppReviewSubmissionsCreateInstance
 
-> BetaAppReviewSubmissionResponse BetaAppReviewSubmissionsCreateInstance(ctx, betaAppReviewSubmissionCreateRequest)
+> BetaAppReviewSubmissionResponse BetaAppReviewSubmissionsCreateInstance(ctx).BetaAppReviewSubmissionCreateRequest(betaAppReviewSubmissionCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    betaAppReviewSubmissionCreateRequest := *openapiclient.NewBetaAppReviewSubmissionCreateRequest(*openapiclient.NewBetaAppReviewSubmissionCreateRequestData("Type_example", *openapiclient.NewBetaAppReviewSubmissionCreateRequestDataRelationships(*openapiclient.NewBetaAppReviewSubmissionCreateRequestDataRelationshipsBuild(*openapiclient.NewAppEncryptionDeclarationRelationshipsBuildsDataInner("Type_example", "Id_example"))))) // BetaAppReviewSubmissionCreateRequest | BetaAppReviewSubmission representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsCreateInstance(context.Background()).BetaAppReviewSubmissionCreateRequest(betaAppReviewSubmissionCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaAppReviewSubmissionsCreateInstance`: BetaAppReviewSubmissionResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaAppReviewSubmissionsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**betaAppReviewSubmissionCreateRequest** | [**BetaAppReviewSubmissionCreateRequest**](BetaAppReviewSubmissionCreateRequest.md)| BetaAppReviewSubmission representation | 
+ **betaAppReviewSubmissionCreateRequest** | [**BetaAppReviewSubmissionCreateRequest**](BetaAppReviewSubmissionCreateRequest.md) | BetaAppReviewSubmission representation | 
 
 ### Return type
 
@@ -88,32 +147,59 @@ Name | Type | Description  | Notes
 
 ## BetaAppReviewSubmissionsGetCollection
 
-> BetaAppReviewSubmissionsResponse BetaAppReviewSubmissionsGetCollection(ctx, filterBuild, optional)
+> BetaAppReviewSubmissionsResponse BetaAppReviewSubmissionsGetCollection(ctx).FilterBuild(filterBuild).FilterBetaReviewState(filterBetaReviewState).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).Limit(limit).Include(include).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterBuild := []string{"Inner_example"} // []string | filter by id(s) of related 'build'
+    filterBetaReviewState := []string{"FilterBetaReviewState_example"} // []string | filter by attribute 'betaReviewState' (optional)
+    fieldsBetaAppReviewSubmissions := []string{"FieldsBetaAppReviewSubmissions_example"} // []string | the fields to include for returned resources of type betaAppReviewSubmissions (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsGetCollection(context.Background()).FilterBuild(filterBuild).FilterBetaReviewState(filterBetaReviewState).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).Limit(limit).Include(include).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaAppReviewSubmissionsGetCollection`: BetaAppReviewSubmissionsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaAppReviewSubmissionsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**filterBuild** | [**[]string**](string.md)| filter by id(s) of related &#39;build&#39; | 
- **optional** | ***BetaAppReviewSubmissionsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a BetaAppReviewSubmissionsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **filterBetaReviewState** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;betaReviewState&#39; | 
- **fieldsBetaAppReviewSubmissions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaAppReviewSubmissions | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **filterBuild** | **[]string** | filter by id(s) of related &#39;build&#39; | 
+ **filterBetaReviewState** | **[]string** | filter by attribute &#39;betaReviewState&#39; | 
+ **fieldsBetaAppReviewSubmissions** | **[]string** | the fields to include for returned resources of type betaAppReviewSubmissions | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -135,30 +221,59 @@ Name | Type | Description  | Notes
 
 ## BetaAppReviewSubmissionsGetInstance
 
-> BetaAppReviewSubmissionResponse BetaAppReviewSubmissionsGetInstance(ctx, id, optional)
+> BetaAppReviewSubmissionResponse BetaAppReviewSubmissionsGetInstance(ctx, id).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).Include(include).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaAppReviewSubmissions := []string{"FieldsBetaAppReviewSubmissions_example"} // []string | the fields to include for returned resources of type betaAppReviewSubmissions (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsGetInstance(context.Background(), id).FieldsBetaAppReviewSubmissions(fieldsBetaAppReviewSubmissions).Include(include).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaAppReviewSubmissionsGetInstance`: BetaAppReviewSubmissionResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaAppReviewSubmissionsApi.BetaAppReviewSubmissionsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaAppReviewSubmissionsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaAppReviewSubmissionsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiBetaAppReviewSubmissionsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaAppReviewSubmissions** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaAppReviewSubmissions | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **fieldsBetaAppReviewSubmissions** | **[]string** | the fields to include for returned resources of type betaAppReviewSubmissions | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 

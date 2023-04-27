@@ -10,29 +10,57 @@ Method | HTTP request | Description
 
 ## AppPricesGetInstance
 
-> AppPriceResponse AppPricesGetInstance(ctx, id, optional)
+> AppPriceResponse AppPricesGetInstance(ctx, id).FieldsAppPrices(fieldsAppPrices).Include(include).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsAppPrices := []string{"FieldsAppPrices_example"} // []string | the fields to include for returned resources of type appPrices (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AppPricesApi.AppPricesGetInstance(context.Background(), id).FieldsAppPrices(fieldsAppPrices).Include(include).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AppPricesApi.AppPricesGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AppPricesGetInstance`: AppPriceResponse
+    fmt.Fprintf(os.Stdout, "Response from `AppPricesApi.AppPricesGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***AppPricesGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a AppPricesGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiAppPricesGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsAppPrices** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type appPrices | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
+ **fieldsAppPrices** | **[]string** | the fields to include for returned resources of type appPrices | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
 
 ### Return type
 

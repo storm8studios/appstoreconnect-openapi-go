@@ -17,28 +17,55 @@ Method | HTTP request | Description
 
 ## BundleIdsAppGetToOneRelated
 
-> AppResponse BundleIdsAppGetToOneRelated(ctx, id, optional)
+> AppResponse BundleIdsAppGetToOneRelated(ctx, id).FieldsApps(fieldsApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdsApi.BundleIdsAppGetToOneRelated(context.Background(), id).FieldsApps(fieldsApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsAppGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdsAppGetToOneRelated`: AppResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdsApi.BundleIdsAppGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BundleIdsAppGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BundleIdsAppGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBundleIdsAppGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
 
 ### Return type
 
@@ -60,29 +87,57 @@ Name | Type | Description  | Notes
 
 ## BundleIdsBundleIdCapabilitiesGetToManyRelated
 
-> BundleIdCapabilitiesResponse BundleIdsBundleIdCapabilitiesGetToManyRelated(ctx, id, optional)
+> BundleIdCapabilitiesResponse BundleIdsBundleIdCapabilitiesGetToManyRelated(ctx, id).FieldsBundleIdCapabilities(fieldsBundleIdCapabilities).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBundleIdCapabilities := []string{"FieldsBundleIdCapabilities_example"} // []string | the fields to include for returned resources of type bundleIdCapabilities (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdsApi.BundleIdsBundleIdCapabilitiesGetToManyRelated(context.Background(), id).FieldsBundleIdCapabilities(fieldsBundleIdCapabilities).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsBundleIdCapabilitiesGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdsBundleIdCapabilitiesGetToManyRelated`: BundleIdCapabilitiesResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdsApi.BundleIdsBundleIdCapabilitiesGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BundleIdsBundleIdCapabilitiesGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BundleIdsBundleIdCapabilitiesGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBundleIdsBundleIdCapabilitiesGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBundleIdCapabilities** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIdCapabilities | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsBundleIdCapabilities** | **[]string** | the fields to include for returned resources of type bundleIdCapabilities | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -104,17 +159,49 @@ Name | Type | Description  | Notes
 
 ## BundleIdsCreateInstance
 
-> BundleIdResponse BundleIdsCreateInstance(ctx, bundleIdCreateRequest)
+> BundleIdResponse BundleIdsCreateInstance(ctx).BundleIdCreateRequest(bundleIdCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    bundleIdCreateRequest := *openapiclient.NewBundleIdCreateRequest(*openapiclient.NewBundleIdCreateRequestData("Type_example", *openapiclient.NewBundleIdCreateRequestDataAttributes("Name_example", openapiclient.BundleIdPlatform("IOS"), "Identifier_example"))) // BundleIdCreateRequest | BundleId representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdsApi.BundleIdsCreateInstance(context.Background()).BundleIdCreateRequest(bundleIdCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdsCreateInstance`: BundleIdResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdsApi.BundleIdsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBundleIdsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**bundleIdCreateRequest** | [**BundleIdCreateRequest**](BundleIdCreateRequest.md)| BundleId representation | 
+ **bundleIdCreateRequest** | [**BundleIdCreateRequest**](BundleIdCreateRequest.md) | BundleId representation | 
 
 ### Return type
 
@@ -136,17 +223,51 @@ Name | Type | Description  | Notes
 
 ## BundleIdsDeleteInstance
 
-> BundleIdsDeleteInstance(ctx, id)
+> BundleIdsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BundleIdsApi.BundleIdsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBundleIdsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -168,39 +289,75 @@ Name | Type | Description  | Notes
 
 ## BundleIdsGetCollection
 
-> BundleIdsResponse BundleIdsGetCollection(ctx, optional)
+> BundleIdsResponse BundleIdsGetCollection(ctx).FilterIdentifier(filterIdentifier).FilterName(filterName).FilterPlatform(filterPlatform).FilterSeedId(filterSeedId).FilterId(filterId).Sort(sort).FieldsBundleIds(fieldsBundleIds).Limit(limit).Include(include).FieldsBundleIdCapabilities(fieldsBundleIdCapabilities).FieldsProfiles(fieldsProfiles).FieldsApps(fieldsApps).LimitBundleIdCapabilities(limitBundleIdCapabilities).LimitProfiles(limitProfiles).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterIdentifier := []string{"Inner_example"} // []string | filter by attribute 'identifier' (optional)
+    filterName := []string{"Inner_example"} // []string | filter by attribute 'name' (optional)
+    filterPlatform := []string{"FilterPlatform_example"} // []string | filter by attribute 'platform' (optional)
+    filterSeedId := []string{"Inner_example"} // []string | filter by attribute 'seedId' (optional)
+    filterId := []string{"Inner_example"} // []string | filter by id(s) (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsBundleIds := []string{"FieldsBundleIds_example"} // []string | the fields to include for returned resources of type bundleIds (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBundleIdCapabilities := []string{"FieldsBundleIdCapabilities_example"} // []string | the fields to include for returned resources of type bundleIdCapabilities (optional)
+    fieldsProfiles := []string{"FieldsProfiles_example"} // []string | the fields to include for returned resources of type profiles (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limitBundleIdCapabilities := int32(56) // int32 | maximum number of related bundleIdCapabilities returned (when they are included) (optional)
+    limitProfiles := int32(56) // int32 | maximum number of related profiles returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdsApi.BundleIdsGetCollection(context.Background()).FilterIdentifier(filterIdentifier).FilterName(filterName).FilterPlatform(filterPlatform).FilterSeedId(filterSeedId).FilterId(filterId).Sort(sort).FieldsBundleIds(fieldsBundleIds).Limit(limit).Include(include).FieldsBundleIdCapabilities(fieldsBundleIdCapabilities).FieldsProfiles(fieldsProfiles).FieldsApps(fieldsApps).LimitBundleIdCapabilities(limitBundleIdCapabilities).LimitProfiles(limitProfiles).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdsGetCollection`: BundleIdsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdsApi.BundleIdsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBundleIdsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***BundleIdsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a BundleIdsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterIdentifier** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;identifier&#39; | 
- **filterName** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;name&#39; | 
- **filterPlatform** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;platform&#39; | 
- **filterSeedId** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;seedId&#39; | 
- **filterId** | [**optional.Interface of []string**](string.md)| filter by id(s) | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsBundleIds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIds | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBundleIdCapabilities** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIdCapabilities | 
- **fieldsProfiles** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type profiles | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBundleIdCapabilities** | **optional.Int32**| maximum number of related bundleIdCapabilities returned (when they are included) | 
- **limitProfiles** | **optional.Int32**| maximum number of related profiles returned (when they are included) | 
+ **filterIdentifier** | **[]string** | filter by attribute &#39;identifier&#39; | 
+ **filterName** | **[]string** | filter by attribute &#39;name&#39; | 
+ **filterPlatform** | **[]string** | filter by attribute &#39;platform&#39; | 
+ **filterSeedId** | **[]string** | filter by attribute &#39;seedId&#39; | 
+ **filterId** | **[]string** | filter by id(s) | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsBundleIds** | **[]string** | the fields to include for returned resources of type bundleIds | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBundleIdCapabilities** | **[]string** | the fields to include for returned resources of type bundleIdCapabilities | 
+ **fieldsProfiles** | **[]string** | the fields to include for returned resources of type profiles | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limitBundleIdCapabilities** | **int32** | maximum number of related bundleIdCapabilities returned (when they are included) | 
+ **limitProfiles** | **int32** | maximum number of related profiles returned (when they are included) | 
 
 ### Return type
 
@@ -222,34 +379,67 @@ Name | Type | Description  | Notes
 
 ## BundleIdsGetInstance
 
-> BundleIdResponse BundleIdsGetInstance(ctx, id, optional)
+> BundleIdResponse BundleIdsGetInstance(ctx, id).FieldsBundleIds(fieldsBundleIds).Include(include).FieldsBundleIdCapabilities(fieldsBundleIdCapabilities).FieldsProfiles(fieldsProfiles).FieldsApps(fieldsApps).LimitBundleIdCapabilities(limitBundleIdCapabilities).LimitProfiles(limitProfiles).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBundleIds := []string{"FieldsBundleIds_example"} // []string | the fields to include for returned resources of type bundleIds (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBundleIdCapabilities := []string{"FieldsBundleIdCapabilities_example"} // []string | the fields to include for returned resources of type bundleIdCapabilities (optional)
+    fieldsProfiles := []string{"FieldsProfiles_example"} // []string | the fields to include for returned resources of type profiles (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    limitBundleIdCapabilities := int32(56) // int32 | maximum number of related bundleIdCapabilities returned (when they are included) (optional)
+    limitProfiles := int32(56) // int32 | maximum number of related profiles returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdsApi.BundleIdsGetInstance(context.Background(), id).FieldsBundleIds(fieldsBundleIds).Include(include).FieldsBundleIdCapabilities(fieldsBundleIdCapabilities).FieldsProfiles(fieldsProfiles).FieldsApps(fieldsApps).LimitBundleIdCapabilities(limitBundleIdCapabilities).LimitProfiles(limitProfiles).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdsGetInstance`: BundleIdResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdsApi.BundleIdsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BundleIdsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BundleIdsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiBundleIdsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBundleIds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIds | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBundleIdCapabilities** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type bundleIdCapabilities | 
- **fieldsProfiles** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type profiles | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBundleIdCapabilities** | **optional.Int32**| maximum number of related bundleIdCapabilities returned (when they are included) | 
- **limitProfiles** | **optional.Int32**| maximum number of related profiles returned (when they are included) | 
+ **fieldsBundleIds** | **[]string** | the fields to include for returned resources of type bundleIds | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBundleIdCapabilities** | **[]string** | the fields to include for returned resources of type bundleIdCapabilities | 
+ **fieldsProfiles** | **[]string** | the fields to include for returned resources of type profiles | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **limitBundleIdCapabilities** | **int32** | maximum number of related bundleIdCapabilities returned (when they are included) | 
+ **limitProfiles** | **int32** | maximum number of related profiles returned (when they are included) | 
 
 ### Return type
 
@@ -271,29 +461,57 @@ Name | Type | Description  | Notes
 
 ## BundleIdsProfilesGetToManyRelated
 
-> ProfilesResponse BundleIdsProfilesGetToManyRelated(ctx, id, optional)
+> ProfilesResponse BundleIdsProfilesGetToManyRelated(ctx, id).FieldsProfiles(fieldsProfiles).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsProfiles := []string{"FieldsProfiles_example"} // []string | the fields to include for returned resources of type profiles (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdsApi.BundleIdsProfilesGetToManyRelated(context.Background(), id).FieldsProfiles(fieldsProfiles).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsProfilesGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdsProfilesGetToManyRelated`: ProfilesResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdsApi.BundleIdsProfilesGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BundleIdsProfilesGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BundleIdsProfilesGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBundleIdsProfilesGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsProfiles** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type profiles | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsProfiles** | **[]string** | the fields to include for returned resources of type profiles | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -315,18 +533,55 @@ Name | Type | Description  | Notes
 
 ## BundleIdsUpdateInstance
 
-> BundleIdResponse BundleIdsUpdateInstance(ctx, id, bundleIdUpdateRequest)
+> BundleIdResponse BundleIdsUpdateInstance(ctx, id).BundleIdUpdateRequest(bundleIdUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    bundleIdUpdateRequest := *openapiclient.NewBundleIdUpdateRequest(*openapiclient.NewBundleIdUpdateRequestData("Type_example", "Id_example")) // BundleIdUpdateRequest | BundleId representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BundleIdsApi.BundleIdsUpdateInstance(context.Background(), id).BundleIdUpdateRequest(bundleIdUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BundleIdsApi.BundleIdsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BundleIdsUpdateInstance`: BundleIdResponse
+    fmt.Fprintf(os.Stdout, "Response from `BundleIdsApi.BundleIdsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**bundleIdUpdateRequest** | [**BundleIdUpdateRequest**](BundleIdUpdateRequest.md)| BundleId representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBundleIdsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **bundleIdUpdateRequest** | [**BundleIdUpdateRequest**](BundleIdUpdateRequest.md) | BundleId representation | 
 
 ### Return type
 

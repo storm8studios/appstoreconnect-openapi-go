@@ -15,28 +15,55 @@ Method | HTTP request | Description
 
 ## BetaBuildLocalizationsBuildGetToOneRelated
 
-> BuildResponse BetaBuildLocalizationsBuildGetToOneRelated(ctx, id, optional)
+> BuildResponse BetaBuildLocalizationsBuildGetToOneRelated(ctx, id).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaBuildLocalizationsApi.BetaBuildLocalizationsBuildGetToOneRelated(context.Background(), id).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaBuildLocalizationsApi.BetaBuildLocalizationsBuildGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaBuildLocalizationsBuildGetToOneRelated`: BuildResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaBuildLocalizationsApi.BetaBuildLocalizationsBuildGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaBuildLocalizationsBuildGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaBuildLocalizationsBuildGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBetaBuildLocalizationsBuildGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -58,17 +85,49 @@ Name | Type | Description  | Notes
 
 ## BetaBuildLocalizationsCreateInstance
 
-> BetaBuildLocalizationResponse BetaBuildLocalizationsCreateInstance(ctx, betaBuildLocalizationCreateRequest)
+> BetaBuildLocalizationResponse BetaBuildLocalizationsCreateInstance(ctx).BetaBuildLocalizationCreateRequest(betaBuildLocalizationCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    betaBuildLocalizationCreateRequest := *openapiclient.NewBetaBuildLocalizationCreateRequest(*openapiclient.NewBetaBuildLocalizationCreateRequestData("Type_example", *openapiclient.NewBetaBuildLocalizationCreateRequestDataAttributes("Locale_example"), *openapiclient.NewBetaAppReviewSubmissionCreateRequestDataRelationships(*openapiclient.NewBetaAppReviewSubmissionCreateRequestDataRelationshipsBuild(*openapiclient.NewAppEncryptionDeclarationRelationshipsBuildsDataInner("Type_example", "Id_example"))))) // BetaBuildLocalizationCreateRequest | BetaBuildLocalization representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaBuildLocalizationsApi.BetaBuildLocalizationsCreateInstance(context.Background()).BetaBuildLocalizationCreateRequest(betaBuildLocalizationCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaBuildLocalizationsApi.BetaBuildLocalizationsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaBuildLocalizationsCreateInstance`: BetaBuildLocalizationResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaBuildLocalizationsApi.BetaBuildLocalizationsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaBuildLocalizationsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**betaBuildLocalizationCreateRequest** | [**BetaBuildLocalizationCreateRequest**](BetaBuildLocalizationCreateRequest.md)| BetaBuildLocalization representation | 
+ **betaBuildLocalizationCreateRequest** | [**BetaBuildLocalizationCreateRequest**](BetaBuildLocalizationCreateRequest.md) | BetaBuildLocalization representation | 
 
 ### Return type
 
@@ -90,17 +149,51 @@ Name | Type | Description  | Notes
 
 ## BetaBuildLocalizationsDeleteInstance
 
-> BetaBuildLocalizationsDeleteInstance(ctx, id)
+> BetaBuildLocalizationsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BetaBuildLocalizationsApi.BetaBuildLocalizationsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaBuildLocalizationsApi.BetaBuildLocalizationsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaBuildLocalizationsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -122,31 +215,59 @@ Name | Type | Description  | Notes
 
 ## BetaBuildLocalizationsGetCollection
 
-> BetaBuildLocalizationsResponse BetaBuildLocalizationsGetCollection(ctx, optional)
+> BetaBuildLocalizationsResponse BetaBuildLocalizationsGetCollection(ctx).FilterLocale(filterLocale).FilterBuild(filterBuild).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).Limit(limit).Include(include).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterLocale := []string{"Inner_example"} // []string | filter by attribute 'locale' (optional)
+    filterBuild := []string{"Inner_example"} // []string | filter by id(s) of related 'build' (optional)
+    fieldsBetaBuildLocalizations := []string{"FieldsBetaBuildLocalizations_example"} // []string | the fields to include for returned resources of type betaBuildLocalizations (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaBuildLocalizationsApi.BetaBuildLocalizationsGetCollection(context.Background()).FilterLocale(filterLocale).FilterBuild(filterBuild).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).Limit(limit).Include(include).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaBuildLocalizationsApi.BetaBuildLocalizationsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaBuildLocalizationsGetCollection`: BetaBuildLocalizationsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaBuildLocalizationsApi.BetaBuildLocalizationsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaBuildLocalizationsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***BetaBuildLocalizationsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a BetaBuildLocalizationsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterLocale** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;locale&#39; | 
- **filterBuild** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;build&#39; | 
- **fieldsBetaBuildLocalizations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaBuildLocalizations | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **filterLocale** | **[]string** | filter by attribute &#39;locale&#39; | 
+ **filterBuild** | **[]string** | filter by id(s) of related &#39;build&#39; | 
+ **fieldsBetaBuildLocalizations** | **[]string** | the fields to include for returned resources of type betaBuildLocalizations | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -168,30 +289,59 @@ Name | Type | Description  | Notes
 
 ## BetaBuildLocalizationsGetInstance
 
-> BetaBuildLocalizationResponse BetaBuildLocalizationsGetInstance(ctx, id, optional)
+> BetaBuildLocalizationResponse BetaBuildLocalizationsGetInstance(ctx, id).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).Include(include).FieldsBuilds(fieldsBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaBuildLocalizations := []string{"FieldsBetaBuildLocalizations_example"} // []string | the fields to include for returned resources of type betaBuildLocalizations (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaBuildLocalizationsApi.BetaBuildLocalizationsGetInstance(context.Background(), id).FieldsBetaBuildLocalizations(fieldsBetaBuildLocalizations).Include(include).FieldsBuilds(fieldsBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaBuildLocalizationsApi.BetaBuildLocalizationsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaBuildLocalizationsGetInstance`: BetaBuildLocalizationResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaBuildLocalizationsApi.BetaBuildLocalizationsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaBuildLocalizationsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaBuildLocalizationsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiBetaBuildLocalizationsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaBuildLocalizations** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaBuildLocalizations | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
+ **fieldsBetaBuildLocalizations** | **[]string** | the fields to include for returned resources of type betaBuildLocalizations | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
 
 ### Return type
 
@@ -213,18 +363,55 @@ Name | Type | Description  | Notes
 
 ## BetaBuildLocalizationsUpdateInstance
 
-> BetaBuildLocalizationResponse BetaBuildLocalizationsUpdateInstance(ctx, id, betaBuildLocalizationUpdateRequest)
+> BetaBuildLocalizationResponse BetaBuildLocalizationsUpdateInstance(ctx, id).BetaBuildLocalizationUpdateRequest(betaBuildLocalizationUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    betaBuildLocalizationUpdateRequest := *openapiclient.NewBetaBuildLocalizationUpdateRequest(*openapiclient.NewBetaBuildLocalizationUpdateRequestData("Type_example", "Id_example")) // BetaBuildLocalizationUpdateRequest | BetaBuildLocalization representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaBuildLocalizationsApi.BetaBuildLocalizationsUpdateInstance(context.Background(), id).BetaBuildLocalizationUpdateRequest(betaBuildLocalizationUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaBuildLocalizationsApi.BetaBuildLocalizationsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaBuildLocalizationsUpdateInstance`: BetaBuildLocalizationResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaBuildLocalizationsApi.BetaBuildLocalizationsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**betaBuildLocalizationUpdateRequest** | [**BetaBuildLocalizationUpdateRequest**](BetaBuildLocalizationUpdateRequest.md)| BetaBuildLocalization representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaBuildLocalizationsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **betaBuildLocalizationUpdateRequest** | [**BetaBuildLocalizationUpdateRequest**](BetaBuildLocalizationUpdateRequest.md) | BetaBuildLocalization representation | 
 
 ### Return type
 

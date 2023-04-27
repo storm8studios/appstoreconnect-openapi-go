@@ -13,17 +13,49 @@ Method | HTTP request | Description
 
 ## CertificatesCreateInstance
 
-> CertificateResponse CertificatesCreateInstance(ctx, certificateCreateRequest)
+> CertificateResponse CertificatesCreateInstance(ctx).CertificateCreateRequest(certificateCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    certificateCreateRequest := *openapiclient.NewCertificateCreateRequest(*openapiclient.NewCertificateCreateRequestData("Type_example", *openapiclient.NewCertificateCreateRequestDataAttributes("CsrContent_example", openapiclient.CertificateType("IOS_DEVELOPMENT")))) // CertificateCreateRequest | Certificate representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificatesApi.CertificatesCreateInstance(context.Background()).CertificateCreateRequest(certificateCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificatesApi.CertificatesCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CertificatesCreateInstance`: CertificateResponse
+    fmt.Fprintf(os.Stdout, "Response from `CertificatesApi.CertificatesCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCertificatesCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**certificateCreateRequest** | [**CertificateCreateRequest**](CertificateCreateRequest.md)| Certificate representation | 
+ **certificateCreateRequest** | [**CertificateCreateRequest**](CertificateCreateRequest.md) | Certificate representation | 
 
 ### Return type
 
@@ -45,17 +77,51 @@ Name | Type | Description  | Notes
 
 ## CertificatesDeleteInstance
 
-> CertificatesDeleteInstance(ctx, id)
+> CertificatesDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.CertificatesApi.CertificatesDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificatesApi.CertificatesDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCertificatesDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -77,32 +143,61 @@ Name | Type | Description  | Notes
 
 ## CertificatesGetCollection
 
-> CertificatesResponse CertificatesGetCollection(ctx, optional)
+> CertificatesResponse CertificatesGetCollection(ctx).FilterCertificateType(filterCertificateType).FilterDisplayName(filterDisplayName).FilterSerialNumber(filterSerialNumber).FilterId(filterId).Sort(sort).FieldsCertificates(fieldsCertificates).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterCertificateType := []string{"FilterCertificateType_example"} // []string | filter by attribute 'certificateType' (optional)
+    filterDisplayName := []string{"Inner_example"} // []string | filter by attribute 'displayName' (optional)
+    filterSerialNumber := []string{"Inner_example"} // []string | filter by attribute 'serialNumber' (optional)
+    filterId := []string{"Inner_example"} // []string | filter by id(s) (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsCertificates := []string{"FieldsCertificates_example"} // []string | the fields to include for returned resources of type certificates (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificatesApi.CertificatesGetCollection(context.Background()).FilterCertificateType(filterCertificateType).FilterDisplayName(filterDisplayName).FilterSerialNumber(filterSerialNumber).FilterId(filterId).Sort(sort).FieldsCertificates(fieldsCertificates).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificatesApi.CertificatesGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CertificatesGetCollection`: CertificatesResponse
+    fmt.Fprintf(os.Stdout, "Response from `CertificatesApi.CertificatesGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCertificatesGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***CertificatesGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a CertificatesGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterCertificateType** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;certificateType&#39; | 
- **filterDisplayName** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;displayName&#39; | 
- **filterSerialNumber** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;serialNumber&#39; | 
- **filterId** | [**optional.Interface of []string**](string.md)| filter by id(s) | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsCertificates** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type certificates | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **filterCertificateType** | **[]string** | filter by attribute &#39;certificateType&#39; | 
+ **filterDisplayName** | **[]string** | filter by attribute &#39;displayName&#39; | 
+ **filterSerialNumber** | **[]string** | filter by attribute &#39;serialNumber&#39; | 
+ **filterId** | **[]string** | filter by id(s) | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsCertificates** | **[]string** | the fields to include for returned resources of type certificates | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -124,28 +219,55 @@ Name | Type | Description  | Notes
 
 ## CertificatesGetInstance
 
-> CertificateResponse CertificatesGetInstance(ctx, id, optional)
+> CertificateResponse CertificatesGetInstance(ctx, id).FieldsCertificates(fieldsCertificates).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsCertificates := []string{"FieldsCertificates_example"} // []string | the fields to include for returned resources of type certificates (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificatesApi.CertificatesGetInstance(context.Background(), id).FieldsCertificates(fieldsCertificates).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificatesApi.CertificatesGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CertificatesGetInstance`: CertificateResponse
+    fmt.Fprintf(os.Stdout, "Response from `CertificatesApi.CertificatesGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***CertificatesGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a CertificatesGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiCertificatesGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsCertificates** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type certificates | 
+ **fieldsCertificates** | **[]string** | the fields to include for returned resources of type certificates | 
 
 ### Return type
 

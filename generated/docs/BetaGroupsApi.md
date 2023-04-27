@@ -23,28 +23,55 @@ Method | HTTP request | Description
 
 ## BetaGroupsAppGetToOneRelated
 
-> AppResponse BetaGroupsAppGetToOneRelated(ctx, id, optional)
+> AppResponse BetaGroupsAppGetToOneRelated(ctx, id).FieldsApps(fieldsApps).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsAppGetToOneRelated(context.Background(), id).FieldsApps(fieldsApps).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsAppGetToOneRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsAppGetToOneRelated`: AppResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsAppGetToOneRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaGroupsAppGetToOneRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaGroupsAppGetToOneRelatedOpts struct
+Other parameters are passed through a pointer to a apiBetaGroupsAppGetToOneRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
 
 ### Return type
 
@@ -66,18 +93,53 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBetaTestersCreateToManyRelationship
 
-> BetaGroupsBetaTestersCreateToManyRelationship(ctx, id, betaGroupBetaTestersLinkagesRequest)
+> BetaGroupsBetaTestersCreateToManyRelationship(ctx, id).BetaGroupBetaTestersLinkagesRequest(betaGroupBetaTestersLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    betaGroupBetaTestersLinkagesRequest := *openapiclient.NewBetaGroupBetaTestersLinkagesRequest([]openapiclient.BetaGroupRelationshipsBetaTestersDataInner{*openapiclient.NewBetaGroupRelationshipsBetaTestersDataInner("Type_example", "Id_example")}) // BetaGroupBetaTestersLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BetaGroupsApi.BetaGroupsBetaTestersCreateToManyRelationship(context.Background(), id).BetaGroupBetaTestersLinkagesRequest(betaGroupBetaTestersLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBetaTestersCreateToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**betaGroupBetaTestersLinkagesRequest** | [**BetaGroupBetaTestersLinkagesRequest**](BetaGroupBetaTestersLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsBetaTestersCreateToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **betaGroupBetaTestersLinkagesRequest** | [**BetaGroupBetaTestersLinkagesRequest**](BetaGroupBetaTestersLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -99,18 +161,53 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBetaTestersDeleteToManyRelationship
 
-> BetaGroupsBetaTestersDeleteToManyRelationship(ctx, id, betaGroupBetaTestersLinkagesRequest)
+> BetaGroupsBetaTestersDeleteToManyRelationship(ctx, id).BetaGroupBetaTestersLinkagesRequest(betaGroupBetaTestersLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    betaGroupBetaTestersLinkagesRequest := *openapiclient.NewBetaGroupBetaTestersLinkagesRequest([]openapiclient.BetaGroupRelationshipsBetaTestersDataInner{*openapiclient.NewBetaGroupRelationshipsBetaTestersDataInner("Type_example", "Id_example")}) // BetaGroupBetaTestersLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BetaGroupsApi.BetaGroupsBetaTestersDeleteToManyRelationship(context.Background(), id).BetaGroupBetaTestersLinkagesRequest(betaGroupBetaTestersLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBetaTestersDeleteToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**betaGroupBetaTestersLinkagesRequest** | [**BetaGroupBetaTestersLinkagesRequest**](BetaGroupBetaTestersLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsBetaTestersDeleteToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **betaGroupBetaTestersLinkagesRequest** | [**BetaGroupBetaTestersLinkagesRequest**](BetaGroupBetaTestersLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -132,29 +229,57 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBetaTestersGetToManyRelated
 
-> BetaTestersResponse BetaGroupsBetaTestersGetToManyRelated(ctx, id, optional)
+> BetaTestersResponse BetaGroupsBetaTestersGetToManyRelated(ctx, id).FieldsBetaTesters(fieldsBetaTesters).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaTesters := []string{"FieldsBetaTesters_example"} // []string | the fields to include for returned resources of type betaTesters (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsBetaTestersGetToManyRelated(context.Background(), id).FieldsBetaTesters(fieldsBetaTesters).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBetaTestersGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsBetaTestersGetToManyRelated`: BetaTestersResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsBetaTestersGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaGroupsBetaTestersGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaGroupsBetaTestersGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBetaGroupsBetaTestersGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaTesters** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaTesters | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsBetaTesters** | **[]string** | the fields to include for returned resources of type betaTesters | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -176,28 +301,55 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBetaTestersGetToManyRelationship
 
-> BetaGroupBetaTestersLinkagesResponse BetaGroupsBetaTestersGetToManyRelationship(ctx, id, optional)
+> BetaGroupBetaTestersLinkagesResponse BetaGroupsBetaTestersGetToManyRelationship(ctx, id).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsBetaTestersGetToManyRelationship(context.Background(), id).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBetaTestersGetToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsBetaTestersGetToManyRelationship`: BetaGroupBetaTestersLinkagesResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsBetaTestersGetToManyRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaGroupsBetaTestersGetToManyRelationshipOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaGroupsBetaTestersGetToManyRelationshipOpts struct
+Other parameters are passed through a pointer to a apiBetaGroupsBetaTestersGetToManyRelationshipRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -219,18 +371,53 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBuildsCreateToManyRelationship
 
-> BetaGroupsBuildsCreateToManyRelationship(ctx, id, betaGroupBuildsLinkagesRequest)
+> BetaGroupsBuildsCreateToManyRelationship(ctx, id).BetaGroupBuildsLinkagesRequest(betaGroupBuildsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    betaGroupBuildsLinkagesRequest := *openapiclient.NewBetaGroupBuildsLinkagesRequest([]openapiclient.AppEncryptionDeclarationRelationshipsBuildsDataInner{*openapiclient.NewAppEncryptionDeclarationRelationshipsBuildsDataInner("Type_example", "Id_example")}) // BetaGroupBuildsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BetaGroupsApi.BetaGroupsBuildsCreateToManyRelationship(context.Background(), id).BetaGroupBuildsLinkagesRequest(betaGroupBuildsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBuildsCreateToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**betaGroupBuildsLinkagesRequest** | [**BetaGroupBuildsLinkagesRequest**](BetaGroupBuildsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsBuildsCreateToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **betaGroupBuildsLinkagesRequest** | [**BetaGroupBuildsLinkagesRequest**](BetaGroupBuildsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -252,18 +439,53 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBuildsDeleteToManyRelationship
 
-> BetaGroupsBuildsDeleteToManyRelationship(ctx, id, betaGroupBuildsLinkagesRequest)
+> BetaGroupsBuildsDeleteToManyRelationship(ctx, id).BetaGroupBuildsLinkagesRequest(betaGroupBuildsLinkagesRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    betaGroupBuildsLinkagesRequest := *openapiclient.NewBetaGroupBuildsLinkagesRequest([]openapiclient.AppEncryptionDeclarationRelationshipsBuildsDataInner{*openapiclient.NewAppEncryptionDeclarationRelationshipsBuildsDataInner("Type_example", "Id_example")}) // BetaGroupBuildsLinkagesRequest | List of related linkages
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BetaGroupsApi.BetaGroupsBuildsDeleteToManyRelationship(context.Background(), id).BetaGroupBuildsLinkagesRequest(betaGroupBuildsLinkagesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBuildsDeleteToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**betaGroupBuildsLinkagesRequest** | [**BetaGroupBuildsLinkagesRequest**](BetaGroupBuildsLinkagesRequest.md)| List of related linkages | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsBuildsDeleteToManyRelationshipRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **betaGroupBuildsLinkagesRequest** | [**BetaGroupBuildsLinkagesRequest**](BetaGroupBuildsLinkagesRequest.md) | List of related linkages | 
 
 ### Return type
 
@@ -285,29 +507,57 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBuildsGetToManyRelated
 
-> BuildsResponse BetaGroupsBuildsGetToManyRelated(ctx, id, optional)
+> BuildsResponse BetaGroupsBuildsGetToManyRelated(ctx, id).FieldsBuilds(fieldsBuilds).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsBuildsGetToManyRelated(context.Background(), id).FieldsBuilds(fieldsBuilds).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBuildsGetToManyRelated``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsBuildsGetToManyRelated`: BuildsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsBuildsGetToManyRelated`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaGroupsBuildsGetToManyRelatedOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaGroupsBuildsGetToManyRelatedOpts struct
+Other parameters are passed through a pointer to a apiBetaGroupsBuildsGetToManyRelatedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -329,28 +579,55 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsBuildsGetToManyRelationship
 
-> BetaGroupBuildsLinkagesResponse BetaGroupsBuildsGetToManyRelationship(ctx, id, optional)
+> BetaGroupBuildsLinkagesResponse BetaGroupsBuildsGetToManyRelationship(ctx, id).Limit(limit).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    limit := int32(56) // int32 | maximum resources per page (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsBuildsGetToManyRelationship(context.Background(), id).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsBuildsGetToManyRelationship``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsBuildsGetToManyRelationship`: BetaGroupBuildsLinkagesResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsBuildsGetToManyRelationship`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaGroupsBuildsGetToManyRelationshipOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaGroupsBuildsGetToManyRelationshipOpts struct
+Other parameters are passed through a pointer to a apiBetaGroupsBuildsGetToManyRelationshipRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **limit** | **optional.Int32**| maximum resources per page | 
+ **limit** | **int32** | maximum resources per page | 
 
 ### Return type
 
@@ -372,17 +649,49 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsCreateInstance
 
-> BetaGroupResponse BetaGroupsCreateInstance(ctx, betaGroupCreateRequest)
+> BetaGroupResponse BetaGroupsCreateInstance(ctx).BetaGroupCreateRequest(betaGroupCreateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    betaGroupCreateRequest := *openapiclient.NewBetaGroupCreateRequest(*openapiclient.NewBetaGroupCreateRequestData("Type_example", *openapiclient.NewBetaGroupCreateRequestDataAttributes("Name_example"), *openapiclient.NewBetaGroupCreateRequestDataRelationships(*openapiclient.NewAppAvailabilityCreateRequestDataRelationshipsApp(*openapiclient.NewAppAvailabilityRelationshipsAppData("Type_example", "Id_example"))))) // BetaGroupCreateRequest | BetaGroup representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsCreateInstance(context.Background()).BetaGroupCreateRequest(betaGroupCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsCreateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsCreateInstance`: BetaGroupResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsCreateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsCreateInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**betaGroupCreateRequest** | [**BetaGroupCreateRequest**](BetaGroupCreateRequest.md)| BetaGroup representation | 
+ **betaGroupCreateRequest** | [**BetaGroupCreateRequest**](BetaGroupCreateRequest.md) | BetaGroup representation | 
 
 ### Return type
 
@@ -404,17 +713,51 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsDeleteInstance
 
-> BetaGroupsDeleteInstance(ctx, id)
+> BetaGroupsDeleteInstance(ctx, id).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BetaGroupsApi.BetaGroupsDeleteInstance(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsDeleteInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsDeleteInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -436,42 +779,81 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsGetCollection
 
-> BetaGroupsResponse BetaGroupsGetCollection(ctx, optional)
+> BetaGroupsResponse BetaGroupsGetCollection(ctx).FilterIsInternalGroup(filterIsInternalGroup).FilterName(filterName).FilterPublicLink(filterPublicLink).FilterPublicLinkEnabled(filterPublicLinkEnabled).FilterPublicLinkLimitEnabled(filterPublicLinkLimitEnabled).FilterApp(filterApp).FilterBuilds(filterBuilds).FilterId(filterId).Sort(sort).FieldsBetaGroups(fieldsBetaGroups).Limit(limit).Include(include).FieldsBetaTesters(fieldsBetaTesters).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBetaTesters(limitBetaTesters).LimitBuilds(limitBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    filterIsInternalGroup := []string{"Inner_example"} // []string | filter by attribute 'isInternalGroup' (optional)
+    filterName := []string{"Inner_example"} // []string | filter by attribute 'name' (optional)
+    filterPublicLink := []string{"Inner_example"} // []string | filter by attribute 'publicLink' (optional)
+    filterPublicLinkEnabled := []string{"Inner_example"} // []string | filter by attribute 'publicLinkEnabled' (optional)
+    filterPublicLinkLimitEnabled := []string{"Inner_example"} // []string | filter by attribute 'publicLinkLimitEnabled' (optional)
+    filterApp := []string{"Inner_example"} // []string | filter by id(s) of related 'app' (optional)
+    filterBuilds := []string{"Inner_example"} // []string | filter by id(s) of related 'builds' (optional)
+    filterId := []string{"Inner_example"} // []string | filter by id(s) (optional)
+    sort := []string{"Sort_example"} // []string | comma-separated list of sort expressions; resources will be sorted as specified (optional)
+    fieldsBetaGroups := []string{"FieldsBetaGroups_example"} // []string | the fields to include for returned resources of type betaGroups (optional)
+    limit := int32(56) // int32 | maximum resources per page (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBetaTesters := []string{"FieldsBetaTesters_example"} // []string | the fields to include for returned resources of type betaTesters (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    limitBetaTesters := int32(56) // int32 | maximum number of related betaTesters returned (when they are included) (optional)
+    limitBuilds := int32(56) // int32 | maximum number of related builds returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsGetCollection(context.Background()).FilterIsInternalGroup(filterIsInternalGroup).FilterName(filterName).FilterPublicLink(filterPublicLink).FilterPublicLinkEnabled(filterPublicLinkEnabled).FilterPublicLinkLimitEnabled(filterPublicLinkLimitEnabled).FilterApp(filterApp).FilterBuilds(filterBuilds).FilterId(filterId).Sort(sort).FieldsBetaGroups(fieldsBetaGroups).Limit(limit).Include(include).FieldsBetaTesters(fieldsBetaTesters).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBetaTesters(limitBetaTesters).LimitBuilds(limitBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsGetCollection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsGetCollection`: BetaGroupsResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsGetCollection`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsGetCollectionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***BetaGroupsGetCollectionOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a BetaGroupsGetCollectionOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filterIsInternalGroup** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;isInternalGroup&#39; | 
- **filterName** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;name&#39; | 
- **filterPublicLink** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;publicLink&#39; | 
- **filterPublicLinkEnabled** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;publicLinkEnabled&#39; | 
- **filterPublicLinkLimitEnabled** | [**optional.Interface of []string**](string.md)| filter by attribute &#39;publicLinkLimitEnabled&#39; | 
- **filterApp** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;app&#39; | 
- **filterBuilds** | [**optional.Interface of []string**](string.md)| filter by id(s) of related &#39;builds&#39; | 
- **filterId** | [**optional.Interface of []string**](string.md)| filter by id(s) | 
- **sort** | [**optional.Interface of []string**](string.md)| comma-separated list of sort expressions; resources will be sorted as specified | 
- **fieldsBetaGroups** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaGroups | 
- **limit** | **optional.Int32**| maximum resources per page | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **fieldsBetaTesters** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaTesters | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBetaTesters** | **optional.Int32**| maximum number of related betaTesters returned (when they are included) | 
- **limitBuilds** | **optional.Int32**| maximum number of related builds returned (when they are included) | 
+ **filterIsInternalGroup** | **[]string** | filter by attribute &#39;isInternalGroup&#39; | 
+ **filterName** | **[]string** | filter by attribute &#39;name&#39; | 
+ **filterPublicLink** | **[]string** | filter by attribute &#39;publicLink&#39; | 
+ **filterPublicLinkEnabled** | **[]string** | filter by attribute &#39;publicLinkEnabled&#39; | 
+ **filterPublicLinkLimitEnabled** | **[]string** | filter by attribute &#39;publicLinkLimitEnabled&#39; | 
+ **filterApp** | **[]string** | filter by id(s) of related &#39;app&#39; | 
+ **filterBuilds** | **[]string** | filter by id(s) of related &#39;builds&#39; | 
+ **filterId** | **[]string** | filter by id(s) | 
+ **sort** | **[]string** | comma-separated list of sort expressions; resources will be sorted as specified | 
+ **fieldsBetaGroups** | **[]string** | the fields to include for returned resources of type betaGroups | 
+ **limit** | **int32** | maximum resources per page | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBetaTesters** | **[]string** | the fields to include for returned resources of type betaTesters | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **limitBetaTesters** | **int32** | maximum number of related betaTesters returned (when they are included) | 
+ **limitBuilds** | **int32** | maximum number of related builds returned (when they are included) | 
 
 ### Return type
 
@@ -493,34 +875,67 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsGetInstance
 
-> BetaGroupResponse BetaGroupsGetInstance(ctx, id, optional)
+> BetaGroupResponse BetaGroupsGetInstance(ctx, id).FieldsBetaGroups(fieldsBetaGroups).Include(include).FieldsBetaTesters(fieldsBetaTesters).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBetaTesters(limitBetaTesters).LimitBuilds(limitBuilds).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    fieldsBetaGroups := []string{"FieldsBetaGroups_example"} // []string | the fields to include for returned resources of type betaGroups (optional)
+    include := []string{"Include_example"} // []string | comma-separated list of relationships to include (optional)
+    fieldsBetaTesters := []string{"FieldsBetaTesters_example"} // []string | the fields to include for returned resources of type betaTesters (optional)
+    fieldsApps := []string{"FieldsApps_example"} // []string | the fields to include for returned resources of type apps (optional)
+    fieldsBuilds := []string{"FieldsBuilds_example"} // []string | the fields to include for returned resources of type builds (optional)
+    limitBetaTesters := int32(56) // int32 | maximum number of related betaTesters returned (when they are included) (optional)
+    limitBuilds := int32(56) // int32 | maximum number of related builds returned (when they are included) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsGetInstance(context.Background(), id).FieldsBetaGroups(fieldsBetaGroups).Include(include).FieldsBetaTesters(fieldsBetaTesters).FieldsApps(fieldsApps).FieldsBuilds(fieldsBuilds).LimitBetaTesters(limitBetaTesters).LimitBuilds(limitBuilds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsGetInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsGetInstance`: BetaGroupResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsGetInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
- **optional** | ***BetaGroupsGetInstanceOpts** | optional parameters | nil if no parameters
+**id** | **string** | the id of the requested resource | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a BetaGroupsGetInstanceOpts struct
+Other parameters are passed through a pointer to a apiBetaGroupsGetInstanceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **fieldsBetaGroups** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaGroups | 
- **include** | [**optional.Interface of []string**](string.md)| comma-separated list of relationships to include | 
- **fieldsBuilds** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type builds | 
- **fieldsBetaTesters** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type betaTesters | 
- **fieldsApps** | [**optional.Interface of []string**](string.md)| the fields to include for returned resources of type apps | 
- **limitBetaTesters** | **optional.Int32**| maximum number of related betaTesters returned (when they are included) | 
- **limitBuilds** | **optional.Int32**| maximum number of related builds returned (when they are included) | 
+ **fieldsBetaGroups** | **[]string** | the fields to include for returned resources of type betaGroups | 
+ **include** | **[]string** | comma-separated list of relationships to include | 
+ **fieldsBetaTesters** | **[]string** | the fields to include for returned resources of type betaTesters | 
+ **fieldsApps** | **[]string** | the fields to include for returned resources of type apps | 
+ **fieldsBuilds** | **[]string** | the fields to include for returned resources of type builds | 
+ **limitBetaTesters** | **int32** | maximum number of related betaTesters returned (when they are included) | 
+ **limitBuilds** | **int32** | maximum number of related builds returned (when they are included) | 
 
 ### Return type
 
@@ -542,18 +957,55 @@ Name | Type | Description  | Notes
 
 ## BetaGroupsUpdateInstance
 
-> BetaGroupResponse BetaGroupsUpdateInstance(ctx, id, betaGroupUpdateRequest)
+> BetaGroupResponse BetaGroupsUpdateInstance(ctx, id).BetaGroupUpdateRequest(betaGroupUpdateRequest).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/storm8studios/appstoreconnect-openapi-go/generated"
+)
+
+func main() {
+    id := "id_example" // string | the id of the requested resource
+    betaGroupUpdateRequest := *openapiclient.NewBetaGroupUpdateRequest(*openapiclient.NewBetaGroupUpdateRequestData("Type_example", "Id_example")) // BetaGroupUpdateRequest | BetaGroup representation
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BetaGroupsApi.BetaGroupsUpdateInstance(context.Background(), id).BetaGroupUpdateRequest(betaGroupUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BetaGroupsApi.BetaGroupsUpdateInstance``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BetaGroupsUpdateInstance`: BetaGroupResponse
+    fmt.Fprintf(os.Stdout, "Response from `BetaGroupsApi.BetaGroupsUpdateInstance`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string**| the id of the requested resource | 
-**betaGroupUpdateRequest** | [**BetaGroupUpdateRequest**](BetaGroupUpdateRequest.md)| BetaGroup representation | 
+**id** | **string** | the id of the requested resource | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBetaGroupsUpdateInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **betaGroupUpdateRequest** | [**BetaGroupUpdateRequest**](BetaGroupUpdateRequest.md) | BetaGroup representation | 
 
 ### Return type
 

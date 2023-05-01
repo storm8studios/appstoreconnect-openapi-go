@@ -9,9 +9,8 @@ import (
 	"io/ioutil"
 	"time"
 
-	api "github.com/xr1337/appstoreconnect-openapi-go/generated"
-
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
+	api "github.com/storm8studios/appstoreconnect-openapi-go/generated"
 )
 
 // Variables from the appstore
@@ -44,8 +43,8 @@ func main() {
 	// cfg.Debug = false
 	auth := context.WithValue(context.Background(), api.ContextAccessToken, signedToken)
 	client := api.NewAPIClient(cfg)
-	var response api.UsersResponse
-	if response, _, err = client.UsersApi.UsersGetCollection(auth, nil); err != nil {
+	var response *api.UsersResponse
+	if response, _, err = client.UsersApi.UsersGetCollection(auth).Execute(); err != nil {
 		fmt.Println(err)
 		return
 	}
